@@ -1,0 +1,334 @@
+mostafa@MMostafa Hermes % 
+mostafa@MMostafa Hermes % 
+mostafa@MMostafa Hermes % >....                                                                                    
+  -print 2>/dev/null \
+  | head -160
+
+echo
+echo "=== 4. PROFILE CONFIG FILES ==="
+find "$ROOT" \
+  -maxdepth 6 \
+  -type f \
+  \( -name 'config.yaml' -o -name 'config.yml' -o -name 'SOUL.md' \) \
+  -print 2>/dev/null \
+  | head -200
+
+echo
+echo "=== 5. SCHOLAR REFERENCES IN HERMES STATE ==="
+grep -Ril \
+  'Scholar' \
+  "$ROOT" \
+  --exclude-dir=node_modules \
+  --exclude-dir=.git \
+  2>/dev/null \
+  | head -100
+
+echo
+echo "=== 6. RECENT HERMES STATE FILES ==="
+find "$ROOT" \
+  -type f \
+  -not -path '*/node_modules/*' \
+  -not -path '*/.git/*' \
+  -print0 2>/dev/null \
+  | xargs -0 stat -f '%m %N' 2>/dev/null \
+  | sort -rn \
+  | head -80
+
+echo
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo " END — NOTHING WAS MODIFIED"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ HERMES DESKTOP — PROFILE / STATE INSPECTION
+ READ-ONLY — NO CHANGES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+=== 1. DESKTOP APP ===
+APP: /Users/mostafa/.hermes/hermes-agent/apps/desktop
+
+=== 2. PROFILE-RELATED CODE ===
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/git-review-ops.ts:268:        // hundreds of thousands of rows for browser profiles, generated
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/updater-process.test.ts:187:  assert.deepEqual(handoff.args, ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', expected])
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/updater-process.test.ts:242:    '-NoProfile',
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/updater-process.test.ts:299:    '--profile=work'
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/updater-process.test.ts:302:  assert.deepEqual(collectRelaunchArgs(argv), ['--no-sandbox', 'hermes://open/session/abc', '--profile=work'])
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/windows-remote-live.test.ts:37:      profile: '',
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/windows-remote-live.test.ts:87:        await ssh.exec(`powershell.exe -NoProfile -NonInteractive -Command "${runtimeScript}"`)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/windows-remote-live.test.ts:93:        await ssh.exec(`powershell.exe -NoProfile -NonInteractive -Command "${terminate}"`)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/windows-remote-live.test.ts:95:          `powershell.exe -NoProfile -NonInteractive -Command "& '${python}' -m hermes_cli.windows_ssh_runtime remove-lock '${ownershipId}'"`
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/windows-remote-live.test.ts:98:          `powershell.exe -NoProfile -NonInteractive -Command "& '${python}' -m hermes_cli.windows_ssh_runtime remove-log '${ownershipId}' '${lock.spawnNonce}'"`
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/hardening.ts:83: * bit), and userData there is already ACL'd to the user profile, so we report
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/pool-eviction.test.ts:5: * per-profile remote overrides) must not count against it, or a roster
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/remote-liveness.test.ts:335:  it('keeps a healthy sibling when another profile on a different host dies', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/ssh-bootstrap-coordinator.test.ts:31:    remoteProfile: 'default',
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/ssh-bootstrap-coordinator.test.ts:37:  assert.notEqual(base, sshConfigFingerprint('profile', config))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/bootstrap-runner.ts:462:    const fullArgs = ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', scriptPath, ...args]
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/updater-process.ts:62:        args: ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', candidate],
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/wsl-clipboard-image.ts:72:        ['-NoProfile', '-NonInteractive', '-STA', '-ExecutionPolicy', 'Bypass', '-EncodedCommand', encoded],
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:77:  localProfileEntry,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:83:  pathWithGlobalRemoteProfile,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:84:  pathWithProfileScope,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:85:  profileHasRemoteConnection,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:86:  profileRemoteOverride,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:87:  profileSshOverride,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:90:  resolveProfileApiRequest,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:91:  resolveProfileBackendRoute,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:92:  resolveRemoteSshDashboardProfile,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:94:  savedProfileSsh,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:96:  translateSelfProfileQuery
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:238:  buildRegistryProfileRoutes,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:239:  localRouteFallbackProfiles,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:242:} from './plugin-profile-routes'
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:255:  assertLocalProfileCanStart,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:256:  decideProfileDeleteAction,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:257:  localProfilePoolKeys,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:258:  ProfileDeletionGate,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:259:  profileNameFromDeleteRequest,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:260:  resolveRouteProfile
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:261:} from './profile-delete-routing'
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:262:import { prepareProfileRenameLifecycle, profileRenameFromRequest } from './profile-rename-routing'
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:265:  fetchPrimaryProfileSessions,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:267:  fetchRemoteProfileSessions,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:268:  mergeProfileSessionWindow,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:271:} from './profile-session-routing'
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:762:// profile keep working; the registry imports from it once and then owns its
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:769:// active-profile.json records which Hermes profile the desktop launches its
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:770:// local backend as. When set, startHermes() passes `hermes --profile <name>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:772:// _apply_profile_override in hermes_cli/main.py) and bypasses the sticky
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:773:// ~/.hermes/active_profile file. Unset (null) preserves the legacy behavior:
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:774:// no --profile flag, so the backend honors active_profile / default.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:775:const DESKTOP_PROFILE_CONFIG_PATH = path.join(app.getPath('userData'), 'active-profile.json')
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:776:// Mirrors hermes_cli.profiles._PROFILE_ID_RE so we never hand the backend a
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:777:// value its profile resolver would reject and exit on.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:778:const PROFILE_NAME_RE = /^[a-z0-9][a-z0-9_-]{0,63}$/
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1263:    resolveRemoteConnection: profile => ensureBackend(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1276:// Additional per-profile backends, keyed by profile name. The PRIMARY backend
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1277:// (the desktop's launch profile) stays managed by backendConnectionState +
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1278:// startHermes(); this pool only holds EXTRA profile
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1279:// backends spawned lazily when a session belongs to a different profile. A user
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1280:// with no named profiles never populates this map, so their experience is
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1282:const backendPool = new Map() // profile -> { process, port, token, connectionPromise, lastActiveAt }
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1283:const profileDeletionGate = new ProfileDeletionGate()
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1284:// Keep the pool light: cap concurrent profile backends (LRU eviction) and reap
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1286:// exist while a non-primary profile is actively being chatted through.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1290:// pings every 60s for every open profile). LRU eviction must spare these — a
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1291:// concurrent multi-profile session keeps several backends "fresh" at once, and
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:3134:        '-NoProfile',
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:3166:          '-NoProfile',
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:3289:async function claimBackendChild(child, command, profile, nonce) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:3295:      profile,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7268:  const profile = payload.profile || null
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7269:  const connection = await ensureBackend(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7274:  const requestPath = pathWithGlobalRemoteProfile(
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7276:    profile,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7277:    profileRouteOptions(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7291:      return await saveGatewayFileViaDataUrl(connection, profile, filePath, ctx)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7302:async function saveGatewayFileViaDataUrl(connection, profile, filePath, ctx: any = {}) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7303:  const requestPath = pathWithGlobalRemoteProfile(
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7305:    profile,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7306:    profileRouteOptions(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7385:async function freshGatewayWsUrl(profile) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7386:  // Mint for the requested profile's backend, NOT always the primary. The
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7388:  // pooled profile we must return THAT backend's ws URL, otherwise the connect
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7390:  // the wrong profile's DB. A null/empty profile resolves to the primary, so
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7391:  // legacy callers and single-profile users are unchanged.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7392:  const connection = await ensureBackend(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8092:// Validate + normalize the per-profile remote overrides map read from disk.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8095:function sanitizeConnectionProfiles(raw: Record<string, any>) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8107:    if (name !== 'default' && !PROFILE_NAME_RE.test(name)) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8164:    // reopen into the same org for a per-profile cloud connection.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8195:  let config = { mode: 'local', remote: {}, profiles: {} }
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8221:    // through sanitizeConnectionProfiles below rather than persisting raw
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8234:        // Per-profile remote overrides: each profile may point at its own
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8236:        // profileRemoteOverride() can resolve them; normalized lazily on save.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8237:        profiles: sanitizeConnectionProfiles(parsed.profiles)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8381: * editor doesn't carry — cloud `org`, ssh `remoteHermesPath`/`remoteProfile` —
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8436:// Returns the desktop's chosen profile name, or null when unset. "default" is
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8438:// preference" and preserves the legacy launch (no --profile flag).
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8439:function readActiveDesktopProfile() {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8441:    const raw = fs.readFileSync(DESKTOP_PROFILE_CONFIG_PATH, 'utf8')
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8443:    const name = parsed && typeof parsed.profile === 'string' ? parsed.profile.trim() : ''
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8445:    if (name && (name === 'default' || PROFILE_NAME_RE.test(name))) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8455:function writeActiveDesktopProfile(name) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8458:  if (value && value !== 'default' && !PROFILE_NAME_RE.test(value)) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8459:    throw new Error(`Invalid profile name: ${value}`)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8462:  fs.mkdirSync(path.dirname(DESKTOP_PROFILE_CONFIG_PATH), { recursive: true })
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8463:  writeFileAtomic(DESKTOP_PROFILE_CONFIG_PATH, JSON.stringify({ profile: value || null }, null, 2))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8469:// `profile` this describes the global/default connection (the existing
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8470:// behavior); with a `profile` it describes that profile's per-profile remote
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8471:// override (or an empty "local/inherit" view when the profile has none).
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8472:async function sanitizeDesktopConnectionConfig(config = readDesktopConnectionConfig(), profile = null) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8473:  const key = connectionScopeKey(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8474:  const scoped = key ? config.profiles?.[key] || null : null
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8481:  const savedSsh = savedMode === 'local' ? (key ? savedProfileSsh(config, key) : normalizeSshConfig(block)) : null
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8523:    // Echo the scope back so the UI knows which profile (if any) this reflects.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8524:    profile: key,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8543:    sshRemoteProfile: (ssh || savedSsh)?.remoteProfile || '',
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8544:    // The env override only forces the global/primary connection; a per-profile
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8584:  const key = connectionScopeKey(input.profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8591:  // The block being edited: a per-profile entry or the global remote block.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8592:  const rawExistingBlock = key ? existing.profiles?.[key] || {} : existing.remote || {}
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8599:  const existingMode = key ? existing.profiles?.[key]?.mode : existing.mode
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8629:    const sshBlock = buildSshBlock(input, savedProfileSsh(existing, key) || rawExistingBlock)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8632:      const profiles = { ...(existing.profiles || {}), [key]: sshBlock }
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8637:        profiles
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8641:    return { mode: 'ssh', remote: sshBlock, profiles: existing.profiles || {} }
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8645:    // Per-profile scope: a remote/cloud entry pins this profile to its own
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8646:    // backend; a local entry clears the override so the profile inherits the
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8648:    const profiles = { ...(existing.profiles || {}) }
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8651:      profiles[key] = {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8656:      const localEntry = localProfileEntry(rawExistingBlock)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8659:        profiles[key] = localEntry
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8661:        delete profiles[key]
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8668:      profiles
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8678:  // Preserve per-profile overrides when saving the global connection.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8679:  return { mode, remote: nextRemote, profiles: existing.profiles || {} }
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8685:// normalizeSshConfig/profileSshOverride recognize it.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8696:    remoteProfile: input.sshRemoteProfile ?? existingBlock.remoteProfile
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8714:// and is shared by the per-profile, env, and global resolution paths. `token`
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8716:// for diagnostics ('profile' | 'env' | 'settings').
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8827:function sshScopeKey(profile) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8828:  return connectionScopeKey(profile) || ''
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8831:function sshOwnershipKey(profile) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8832:  return sshOwnershipId(desktopInstallationId, sshScopeKey(profile))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8855:async function teardownSshConnection(profile) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8856:  const scope = sshScopeKey(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8887:// any cached SSH state. A per-profile token/OAuth override wins over a global
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8888:// SSH connection — so if the active profile resolves to a NON-SSH backend, the
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8891:  const profile = primaryProfileKey()
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8894:  if (profileSshOverride(config, profile)) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8895:    const scope = sshScopeKey(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8901:  if (profileRemoteOverride(config, profile)) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8995:async function bootstrapSshConnection(profile, sshConfig, reuseToken, source) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8996:  const scope = sshScopeKey(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:9002:    bootstrapSshConnectionInner(profile, resolvedConfig, reuseToken, source, fingerprint, lease)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:9006:async function bootstrapSshConnectionInner(profile, sshConfig, reuseToken, source, fingerprint, lease) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:9007:  const scope = sshScopeKey(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:9012:    await teardownSshConnection(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:9037:        ownershipId: sshOwnershipKey(profile),
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:9053:      profile: resolveRemoteSshDashboardProfile(sshConfig.remoteProfile, profile),
+
+=== 3. HERMES PROFILE DIRECTORIES ===
+/Users/mostafa/.hermes/hermes-agent/ui-tui/scripts/profile-tui.mjs
+/Users/mostafa/.hermes/hermes-agent/docker/cont-init.d/02-reconcile-profiles
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_routers/__pycache__/profiles.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_routers/profiles.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/subcommands/profile.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/subcommands/__pycache__/profile.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_dist/assets/ProfileBuilderPage-DsdwS39T.js
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_dist/assets/useProfileScope-D4PhX9DW.js
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_dist/assets/ProfilesPage-B5rwhwyA.js
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/profile_describer.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/profile_distribution.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/__pycache__/profiles.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/profiles.py
+/Users/mostafa/.hermes/hermes-agent/web/src/contexts/useProfileScope.ts
+/Users/mostafa/.hermes/hermes-agent/web/src/contexts/ProfileProvider.tsx
+/Users/mostafa/.hermes/hermes-agent/web/src/contexts/profile-context.ts
+/Users/mostafa/.hermes/hermes-agent/web/src/components/ProfileScopeBanner.tsx
+/Users/mostafa/.hermes/hermes-agent/web/src/components/ProfileSwitcher.tsx
+/Users/mostafa/.hermes/hermes-agent/web/src/pages/ProfileBuilderPage.tsx
+/Users/mostafa/.hermes/hermes-agent/web/src/pages/ProfilesPage.tsx
+/Users/mostafa/.hermes/hermes-agent/website/docs/user-guide/profiles.md
+/Users/mostafa/.hermes/hermes-agent/website/docs/user-guide/profile-distributions.md
+/Users/mostafa/.hermes/hermes-agent/website/docs/user-guide/multi-profile-gateways.md
+/Users/mostafa/.hermes/hermes-agent/website/docs/reference/profile-commands.md
+/Users/mostafa/.hermes/hermes-agent/node_modules/iconv-lite/.idea/inspectionProfiles
+/Users/mostafa/.hermes/hermes-agent/tests/honcho_plugin/test_empty_profile_hint.py
+/Users/mostafa/.hermes/hermes-agent/tests/tools/test_cross_profile_guard.py
+/Users/mostafa/.hermes/hermes-agent/tests/tools/test_skills_tool_profile_scope.py
+/Users/mostafa/.hermes/hermes-agent/tests/tools/test_file_tools_tilde_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/tools/test_mcp_loop_profile_override.py
+/Users/mostafa/.hermes/hermes-agent/tests/docker/test_profile_gateway.py
+/Users/mostafa/.hermes/hermes-agent/tests/docker/test_s6_profile_gateway_integration.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profiles_s6_hooks.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_web_server_skills_profiles.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_apply_profile_override.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_subcommands_profile_gateway.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_dashboard_profiles_nav_label.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profiles_sidebar_cache.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profile_export_credentials.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_cron_profile_enumeration_lightweight.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profile_install_env_encoding.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_xai_oauth_profile_auth.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_web_server_profile_unification.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profiles.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_web_profile_soul_writes.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_web_server_cron_profiles.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profile_distribution.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profile_describer.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_kanban_per_profile_cap.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profile_display_name.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_web_server_messaging_profiles.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_auth_profile_fallback.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profiles_sidebar_scope.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_gemini_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_upstage_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_copilot_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_zai_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_deepseek_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_commandcode_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_custom_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_fireworks_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_kimi_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_minimax_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_opencode_go_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_ollama_cloud_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/secret_sources/test_profile_secrets.py
+/Users/mostafa/.hermes/hermes-agent/tests/providers/test_meta_ai_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/providers/test_provider_profiles.py
+/Users/mostafa/.hermes/hermes-agent/tests/providers/test_profile_wiring.py
+/Users/mostafa/.hermes/hermes-agent/tests/test_profile_isolation_runtime.py
+/Users/mostafa/.hermes/hermes-agent/tests/agent/test_profile_home_override_precedence.py
+/Users/mostafa/.hermes/hermes-agent/tests/agent/test_soul_md_profile_isolation.py
+/Users/mostafa/.hermes/hermes-agent/tests/agent/test_bot_profile_prompt_isolation.py
+/Users/mostafa/.hermes/hermes-agent/tests/agent/test_file_safety_cross_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/tui_gateway/test_mcp_profile_rpcs.py
+/Users/mostafa/.hermes/hermes-agent/tests/tui_gateway/test_profiles_list_preferred_session.py
+/Users/mostafa/.hermes/hermes-agent/tests/tui_gateway/test_slash_worker_profile_home.py
+/Users/mostafa/.hermes/hermes-agent/tests/tui_gateway/test_ephemeral_profile_override.py
+/Users/mostafa/.hermes/hermes-agent/tests/test_plugins_manage_profile_scope.py
+/Users/mostafa/.hermes/hermes-agent/tests/test_cron_manage_profile_scope.py
+/Users/mostafa/.hermes/hermes-agent/tests/test_hermes_home_profile_warning.py
+/Users/mostafa/.hermes/hermes-agent/tests/gateway/test_profile_resolution.py
+/Users/mostafa/.hermes/hermes-agent/tests/gateway/test_multiplex_session_db_profile_scope.py
+/Users/mostafa/.hermes/hermes-agent/tests/gateway/test_multiplex_profile_authz.py
+/Users/mostafa/.hermes/hermes-agent/tests/gateway/test_whatsapp_media_path_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/gateway/test_profile_routing.py
+/Users/mostafa/.hermes/hermes-agent/tests/gateway/test_model_command_profile_config.py
+/Users/mostafa/.hermes/hermes-agent/tests/cron/test_cron_profile_isolation.py
+/Users/mostafa/.hermes/hermes-agent/docs/design/profile-builder.md
+/Users/mostafa/.hermes/hermes-agent/docs/profile-routing.md
+/Users/mostafa/.hermes/hermes-agent/tui_gateway/__pycache__/methods_profiles.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/tui_gateway/methods_profiles.py
+/Users/mostafa/.hermes/hermes-agent/scripts/profile-tui.py
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/scripts/profile-typing-lag.md
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/scripts/profile-model-picker.mjs
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-rename-routing.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-rename-routing.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-delete-routing.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-delete-routing.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/plugin-profile-routes.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/plugin-profile-routes.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-session-routing.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-session-routing.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/hermes-profile-scope.test.ts
+/Users/mostafa/.hermes/hermes-agent/gateway/profile_routing.py
+/Users/mostafa/.hermes/hermes-agent/gateway/__pycache__/profile_routing.cpython-311.pyc
+/Users/mostafa/.hermes/profiles
+
+=== 4. PROFILE CONFIG FILES ===
+/Users/mostafa/.hermes/plugins/hermes-labyrinth/.github/ISSUE_TEMPLATE/config.yml
+/Users/mostafa/.hermes/config.yaml
+/Users/mostafa/.hermes/state-snapshots/20260819-072604-pre-update/config.yaml
+/Users/mostafa/.hermes/hermes-agent/docker/SOUL.md
+/Users/mostafa/.hermes/hermes-agent/node_modules/tmp-promise/.circleci/config.yml
+/Users/mostafa/.hermes/hermes-agent/.github/ISSUE_TEMPLATE/config.yml
+/Users/mostafa/.hermes/SOUL.md
+/Users/mostafa/.hermes/profiles/default/config.yaml
+/Users/mostafa/.hermes/profiles/default/SOUL.md
+
+=== 5. SCHOLAR REFERENCES IN HERMES STATE ===
+
+
+number 5 still tryin to load....seems stuck...
