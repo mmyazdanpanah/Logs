@@ -1,0 +1,421 @@
+Last login: Wed Aug 19 17:25:18 on ttys001
+mostafa@MMostafa ~ % cd ~/Hermes
+ls -l test.txt 2>/dev/null || echo "NO FILE CREATED"
+NO FILE CREATED
+mostafa@MMostafa Hermes % >....                                                 
+echo "=== 5. OLLAMA / OPENAI-COMPATIBLE PATH ==="
+grep -RniE \
+  'ollama|base_url|chat.completions|OpenAI\(' \
+  "$APP/hermes_cli" \
+  --include='*.py' \
+  2>/dev/null | head -160
+
+echo
+echo "=== 6. QWEN MODEL REFERENCES ==="
+grep -RniE \
+  'qwen3\.5|qwen3' \
+  "$APP/hermes_cli" \
+  --include='*.py' \
+  2>/dev/null | head -100
+
+echo
+echo "=== 7. GIT ==="
+git -C "$APP" status --short --branch 2>/dev/null
+
+echo
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo " END — NOTHING MODIFIED"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ HERMES — QWEN TOOL-CALLING PATH INSPECTION
+ READ-ONLY / NOTHING MODIFIED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+=== 1. ACTIVE MODEL ===
+provider: ollama-launch
+default: qwen3.5:4b
+
+=== 2. ACTIVE TOOLSETS ===
+- hermes-cli
+
+=== 3. MCP SERVERS ===
+filesystem:
+  command: mcp-server-filesystem
+  args:
+  - /Users/mostafa/Hermes
+  enabled: true
+
+=== 4. TOOL-CALL IMPLEMENTATION ===
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/session_recap.py:42:_FILE_EDIT_TOOLS: Mapping[str, str] = {
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/session_recap.py:103:def _iter_assistant_tool_calls(
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/session_recap.py:111:        tool_calls = msg.get("tool_calls") or []
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/session_recap.py:112:        if not isinstance(tool_calls, list):
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/session_recap.py:114:        for tc in tool_calls:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/session_recap.py:206:    tool_calls: Sequence[Tuple[str, Mapping[str, Any]]],
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/session_recap.py:218:    for name, args in reversed(list(tool_calls)):
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/session_recap.py:256:            ``tool_calls``, …).
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/session_recap.py:291:    tool_calls = list(_iter_assistant_tool_calls(window))
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/session_recap.py:292:    tool_counts, files = _summarise_tool_activity(tool_calls)
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/prompt_size.py:209:def _compute_toolsets_breakdown(tools: List[Any]) -> List[Dict[str, Any]]:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/prompt_size.py:222:    for tool in tools:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/mcp_catalog.py:146:    tools: ToolsSpec = field(default_factory=ToolsSpec)
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/mcp_catalog.py:343:        tools=tools_spec,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/plugins.py:1039:    provides_tools: List[str] = field(default_factory=list)
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/plugins.py:3464:        self._predeclared_tools: Dict[str, List[str]] = {}
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/plugins.py:3681:            # Symmetric sweep for tools: names in _plugin_tool_names that no
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/plugins.py:3699:            if preledger_tools:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/plugins.py:3705:                    for tool_name in preledger_tools:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/plugins.py:4337:                provides_tools=data.get("provides_tools", []),
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/plugins.py:4555:        if not manifest.provides_tools:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/plugins.py:6535:    toolset_tools: Dict[str, List[str]] = {}
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/plugins.py:6548:            if entry and entry.toolset in toolset_tools:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:479:        # - GLM / Kimi use OpenAI-compatible chat completions under /v1
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:754:                f"{base_url}/chat/completions",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:901:    the OpenAI SDK appends ``/chat/completions``.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/context_switch_guard.py:52:                    tools=tools or None,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/sessions_cmd.py:409:            "min_tool_calls", "max_tool_calls",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/sessions_cmd.py:907:                "min_tool_calls", "max_tool_calls",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/config.py:1319:    "openai": "chat_completions",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/config.py:1320:    "openai_chat": "chat_completions",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/config.py:1321:    "openai-chat": "chat_completions",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/config.py:1322:    "chat-completions": "chat_completions",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/config.py:1323:    "chatcompletions": "chat_completions",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/plugin_dev.py:105:            registered_tools=tuple(sorted(loaded.tools_registered)),
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/plugin_dev.py:147:    registered_tools: tuple[str, ...] = ()
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/proxy/server.py:131:        # chat/completions/embeddings are small (<1MB typically). If we ever
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/proxy/adapters/nous_portal.py:37:        "/chat/completions",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/proxy/adapters/xai.py:23:        "/chat/completions",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/proxy/adapters/base.py:57:        ``"/chat/completions"`` corresponds to a client request to
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/proxy/adapters/base.py:58:        ``http://127.0.0.1:<port>/v1/chat/completions``. Requests to paths
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/foreign_sessions.py:22:  ``function_call`` payloads for tool activity.  (Schema verified against
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/foreign_sessions.py:30:  never fabricate ``tool_calls`` structures);
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/foreign_sessions.py:263:        elif ptype in ("custom_tool_call", "function_call", "local_shell_call"):
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:308:    # Native OpenAI Chat Completions (api.openai.com). Used by /model counts and
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:4367:            {"/chat/completions", "/responses", "/v1/messages"}
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:4951:    Chat Completions.  All non-GPT models (Claude, Gemini, etc.) use
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:4952:    Chat Completions.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:4982:        return "chat_completions"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:4992:    # auth/wire shape. Keep non-GPT Copilot slots on chat_completions.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:4993:    return "chat_completions"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:4997:# rejects /chat/completions against these deployments with
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:5003:# Mistral / Grok deployments on chat completions.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:5019:    back to the configured/default api_mode (typically ``chat_completions``)
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:5033:    # gpt-5-mini speaks chat completions on Copilot but Azure Foundry deploys
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:5064:    - GLM / Kimi / DeepSeek / MiMo on Go use ``/v1/chat/completions``
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:5067:      ``/v1/chat/completions``
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:5075:        return "chat_completions"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:5089:        return "chat_completions"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:5100:        return "chat_completions"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:5102:    return "chat_completions"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:5111:    appends ``/chat/completions`` or ``/responses``), while the Anthropic SDK
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:5118:    to a chat_completions model (glm, deepseek, kimi) then inherited the
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:5119:    stripped URL and POSTed to ``https://opencode.ai/zen/go/chat/completions``
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:5138:    # chat_completions / codex_responses: ensure the /v1 suffix is present on
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/codex_runtime_switch.py:3:Toggles `model.openai_runtime` between "auto" (= chat_completions, Hermes'
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/subcommands/tools.py:12:def build_tools_parser(subparsers, *, cmd_tools: Callable) -> None:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_models.py:369:    min_tool_calls: Optional[int] = None
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_models.py:370:    max_tool_calls: Optional[int] = None
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_switch.py:2030:    #      kept the prior openrouter/chat_completions mode). A host that mandates
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_switch.py:2032:    #      goes out on chat_completions and OpenAI 400s on tools+reasoning_effort.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_switch.py:2142:    # /chat/completions. resolve_runtime_provider already sets this when it
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_switch.py:2159:    # chat_completions / codex_responses).  Mirrors the same logic in
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_switch.py:2165:    # model.base_url broke every later chat_completions model (glm, deepseek,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_server.py:7307:        gateway_tools: list[str] = []
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_server.py:12217:            "min_tool_calls", "max_tool_calls",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_server.py:12247:            min_tool_calls=body.min_tool_calls,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_server.py:12248:            max_tool_calls=body.max_tool_calls,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_server.py:15461:                   SUM(tool_call_count) as tool_calls,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_server.py:15486:                "tool_calls": 0,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_server.py:15520:                            "tool_calls",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_server.py:15544:                            "tool_calls",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_server.py:15587:                "tool_calls": row["tool_calls"],
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_server.py:18175:        if provides_tools:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_server.py:18178:                for tname in provides_tools:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_setup_flows.py:240:        model["api_mode"] = "chat_completions"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_setup_flows.py:305:        model["api_mode"] = "chat_completions"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_setup_flows.py:945:    # in the base URL for OpenAI-compatible chat completions.  Prompt the
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_setup_flows.py:999:    # providers don't silently fall back to chat_completions.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_setup_flows.py:1140:    Azure Foundry supports both OpenAI-style (``/v1/chat/completions``) and
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_setup_flows.py:1210:            if current_api_mode == "chat_completions"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_setup_flows.py:1369:            "OpenAI-style" if api_mode == "chat_completions" else "Anthropic-style"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_setup_flows.py:1382:        print("  1. OpenAI-style  (POST /v1/chat/completions)")
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_setup_flows.py:1395:        api_mode = "anthropic_messages" if mode_choice == "2" else "chat_completions"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_setup_flows.py:1489:    mode_label = "OpenAI-style" if api_mode == "chat_completions" else "Anthropic-style"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_setup_flows.py:2108:    model["api_mode"] = "chat_completions"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_setup_flows.py:2727:        model.pop("api_mode", None)  # chat_completions is the profile default
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/observability/relay_shared_metrics.py:101:    unidentified_tool_calls: int = 0
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/observability/relay_shared_metrics.py:113:    tool_calls: dict[tuple[str, str, str, str], _ToolCall] = field(
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/observability/relay_shared_metrics.py:400:            if identity in task.completed_tool_call_ids or key in session.tool_calls:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/observability/relay_shared_metrics.py:403:            session.tool_calls[key] = self._open_tool_call(task, event)
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/observability/relay_shared_metrics.py:420:                tool_call = session.tool_calls.get((task.task_id, *identity))
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/observability/relay_shared_metrics.py:424:                        for key in session.tool_calls
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/observability/relay_shared_metrics.py:432:                        session.tool_calls[matching_keys[0]]
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/observability/relay_shared_metrics.py:467:                tool_call = session.tool_calls.pop((task_id, *identity), None)
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/observability/relay_shared_metrics.py:479:                        for key in session.tool_calls
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/observability/relay_shared_metrics.py:493:                        tool_call = session.tool_calls.pop(key)
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/observability/relay_shared_metrics.py:500:                task.unidentified_tool_calls += 1
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/observability/relay_shared_metrics.py:918:    def _end_pending_tool_calls(
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/observability/relay_shared_metrics.py:924:        pending_keys = [key for key in session.tool_calls if key[0] == task.task_id]
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/observability/relay_shared_metrics.py:931:            tool_call = session.tool_calls.pop(key, None)
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/observability/relay_shared_metrics.py:1017:        self._end_pending_tool_calls(session, task, event)
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/observability/relay_shared_metrics.py:1023:            tool_call_count=len(task.tool_call_ids) + task.unidentified_tool_calls,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/session_filters.py:177:        "min_tool_calls": getattr(args, "min_tool_calls", None),
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/session_filters.py:178:        "max_tool_calls": getattr(args, "max_tool_calls", None),
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/session_filters.py:230:    if filters.get("min_tool_calls") is not None:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/session_filters.py:231:        parts.append(f">= {filters['min_tool_calls']} tool calls")
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/session_filters.py:232:    if filters.get("max_tool_calls") is not None:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/session_filters.py:233:        parts.append(f"<= {filters['max_tool_calls']} tool calls")
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/kanban_decompose.py:317:        # all apply — the previous direct client.chat.completions.create()
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/tips.py:267:    "The API server supports both Chat Completions and Responses API with server-side state.",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/providers.py:436:    "openai_chat": "chat_completions",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/providers.py:650:        models when tools + reasoning are in play (chat/completions 400s).
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/providers.py:652:        prompt_cache_retention; /v1/chat/completions returns 0 cached
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/providers.py:659:    /model switch that kept the previous provider's ``chat_completions``)
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/providers.py:682:    # Responses API with prompt_cache_retention; chat/completions stays
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/providers.py:696:    ``/v1/chat/completions`` used by every other model it proxies.  Claude
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/providers.py:701:    When *model* is empty/unknown, defaults to ``chat_completions`` — the
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/providers.py:707:    return "chat_completions"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/providers.py:718:      5. Default: 'chat_completions'.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/providers.py:728:    # chat_completions. The Hermes overlay still advertises openai_chat
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/providers.py:737:        return TRANSPORT_TO_API_MODE.get(pdef.transport, "chat_completions")
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/providers.py:743:    return "chat_completions"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/config_defaults.py:1352:        # Human-phrased tool status labels for built-in tools: "Searching the
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/config_defaults.py:1830:        "api_mode": "",    # wire protocol for delegation.base_url: "chat_completions",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/config_defaults.py:2150:        # discord / discord_admin tools: restrict which actions the agent may call.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/config_defaults.py:2642:            #   Tier 0 — no MCP/plugin tools: everything stays eager.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/config_defaults.py:2747:    #         supports_tools: true
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/config_defaults.py:2964:            # concurrently. Requests to /v1/chat/completions, /v1/responses,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/cli_commands_mixin.py:1390:                        "tool_calls": msg.get("tool_calls"),
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/setup.py:655:    if disabled_tools:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/setup.py:1729:    print_info("  log     — Silent in chat; write every tool call to ~/.hermes/logs/tool_calls.log (gateway only)")
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/setup.py:2467:        if tools:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/setup.py:3303:        print_info("  Enable tools:        hermes tools")
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/setup.py:3390:    print_info("  Enable more tools:   hermes tools")
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/setup.py:3469:    if missing_tools:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/setup.py:3474:        for var in missing_tools:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/runtime_provider.py:110:      tool calls with reasoning (chat/completions returns 400).
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/runtime_provider.py:113:      ``/chat/completions`` shim on the same host, but Pro/Max OAuth
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/runtime_provider.py:122:      ``chat_completions``.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/runtime_provider.py:138:    # chat/completions vs 93-99% on /responses with retention). Exact
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/runtime_provider.py:165:    ``chat_completions`` default for genuinely unknown providers/endpoints.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/runtime_provider.py:168:    silently landed reasoning providers on ``chat_completions`` whenever the
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/runtime_provider.py:180:    return determine_api_mode(provider, base_url, model) or "chat_completions"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/runtime_provider.py:203:    return configured_mode or detected_mode or "chat_completions"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/runtime_provider.py:391:        return "chat_completions"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/runtime_provider.py:398:        return "chat_completions"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/runtime_provider.py:402:    "chat_completions",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/runtime_provider.py:483:    # opencode-zen /v1 to be stripped for chat_completions requests when
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/runtime_provider.py:488:    api_mode = "chat_completions"
+
+=== 5. OLLAMA / OPENAI-COMPATIBLE PATH ===
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/route_identity.py:9:def normalize_route_base_url(base_url: Any) -> str:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/route_identity.py:11:    raw = str(base_url or "")
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/route_identity.py:53:    configured_base_url: Any,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/route_identity.py:54:    active_base_url: Any,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/route_identity.py:70:            configured_base_url,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/route_identity.py:71:            active_base_url,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/route_identity.py:82:    configured_base_url: Any,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/route_identity.py:83:    active_base_url: Any,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/route_identity.py:100:        configured_base_url,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/route_identity.py:101:        active_base_url,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/prompt_size.py:53:    Dummy ``api_key`` + ``base_url`` force the direct-construction path in
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/prompt_size.py:75:        base_url="https://openrouter.ai/api/v1",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/diagnostics_upload.py:31:    "HERMES_DIAGNOSTICS_BASE_URL", "https://portal.nousresearch.com"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/plugins.py:2954:          - Has its provider/model/base_url/api_key bridged from config.yaml to
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/plugins.py:2968:                ``base_url`` (default ""), ``api_key`` (default ""),
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/plugins.py:3029:            "base_url": "",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:90:from hermes_constants import OPENROUTER_BASE_URL, secure_parent_dir
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:124:DEFAULT_CODEX_BASE_URL = "https://chatgpt.com/backend-api/codex"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:125:DEFAULT_XAI_OAUTH_BASE_URL = "https://api.x.ai/v1"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:134:DEFAULT_QWEN_BASE_URL = "https://portal.qwen.ai/v1"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:135:DEFAULT_GITHUB_MODELS_BASE_URL = "https://api.githubcopilot.com"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:136:DEFAULT_COPILOT_ACP_BASE_URL = "acp://copilot"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:137:DEFAULT_OLLAMA_CLOUD_BASE_URL = "https://ollama.com/v1"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:138:DEFAULT_ACTUAL_BASE_URL = "https://api.actual.inc/v1"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:139:DEFAULT_ACTUAL_LOCAL_BASE_URL = "http://127.0.0.1:8080/v1"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:140:STEPFUN_STEP_PLAN_INTL_BASE_URL = "https://api.stepfun.ai/step_plan/v1"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:141:STEPFUN_STEP_PLAN_CN_BASE_URL = "https://api.stepfun.com/step_plan/v1"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:164:DEFAULT_SPOTIFY_ACCOUNTS_BASE_URL = "https://accounts.spotify.com"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:165:DEFAULT_SPOTIFY_API_BASE_URL = "https://api.spotify.com/v1"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:196:def is_actual_local_base_url(base_url: str) -> bool:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:199:        host = (urlparse(base_url or "").hostname or "").lower().rstrip(".")
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:205:def normalize_actual_base_url(base_url: str) -> str:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:212:    url = str(base_url or "").strip().rstrip("/")
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:214:        return DEFAULT_ACTUAL_BASE_URL
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:223:    if is_actual_local_base_url(url) and path in {"", "/"}:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:238:    portal_base_url: str = ""
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:239:    inference_base_url: str = ""
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:246:    base_url_env_var: str = ""
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:254:        portal_base_url=DEFAULT_NOUS_PORTAL_URL,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:255:        inference_base_url=DEFAULT_NOUS_INFERENCE_URL,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:263:        inference_base_url=DEFAULT_CODEX_BASE_URL,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:269:        inference_base_url="https://api.openai.com/v1",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:271:        base_url_env_var="OPENAI_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:277:        inference_base_url=DEFAULT_XAI_OAUTH_BASE_URL,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:283:        inference_base_url=DEFAULT_QWEN_BASE_URL,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:289:        inference_base_url="http://127.0.0.1:1234/v1",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:291:        base_url_env_var="LM_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:297:        inference_base_url=DEFAULT_GITHUB_MODELS_BASE_URL,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:299:        base_url_env_var="COPILOT_API_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:305:        inference_base_url=DEFAULT_COPILOT_ACP_BASE_URL,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:306:        base_url_env_var="COPILOT_ACP_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:312:        inference_base_url="https://generativelanguage.googleapis.com/v1beta",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:314:        base_url_env_var="GEMINI_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:320:        inference_base_url="https://api.z.ai/api/paas/v4",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:322:        base_url_env_var="GLM_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:330:        # by _resolve_kimi_base_url() below.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:331:        inference_base_url="https://api.moonshot.ai/v1",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:333:        base_url_env_var="KIMI_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:339:        inference_base_url="https://api.moonshot.cn/v1",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:346:        inference_base_url=STEPFUN_STEP_PLAN_INTL_BASE_URL,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:348:        base_url_env_var="STEPFUN_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:354:        inference_base_url="https://api.arcee.ai/api/v1",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:356:        base_url_env_var="ARCEE_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:362:        inference_base_url="https://api.gmi-serving.com/v1",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:364:        base_url_env_var="GMI_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:370:        inference_base_url=DEFAULT_ACTUAL_BASE_URL,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:372:        base_url_env_var="ACTUAL_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:378:        inference_base_url="https://api.minimax.io/anthropic",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:380:        base_url_env_var="MINIMAX_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:386:        portal_base_url=MINIMAX_OAUTH_GLOBAL_BASE,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:387:        inference_base_url=MINIMAX_OAUTH_GLOBAL_INFERENCE,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:390:        extra={"region": "global", "cn_portal_base_url": MINIMAX_OAUTH_CN_BASE,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:391:               "cn_inference_base_url": MINIMAX_OAUTH_CN_INFERENCE},
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:397:        inference_base_url="https://api.anthropic.com",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:408:        base_url_env_var="ANTHROPIC_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:414:        inference_base_url="https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:416:        base_url_env_var="DASHSCOPE_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:422:        inference_base_url="https://coding-intl.dashscope.aliyuncs.com/v1",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:424:        base_url_env_var="ALIBABA_CODING_PLAN_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:430:        inference_base_url="https://api.minimaxi.com/anthropic",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:432:        base_url_env_var="MINIMAX_CN_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:438:        inference_base_url="https://api.deepseek.com/v1",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:440:        base_url_env_var="DEEPSEEK_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:446:        inference_base_url="https://api.x.ai/v1",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:448:        base_url_env_var="XAI_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:454:        inference_base_url="https://integrate.api.nvidia.com/v1",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:456:        base_url_env_var="NVIDIA_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:462:        inference_base_url="https://ai-gateway.vercel.sh/v1",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:464:        base_url_env_var="AI_GATEWAY_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:470:        inference_base_url="https://opencode.ai/zen/v1",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:472:        base_url_env_var="OPENCODE_ZEN_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:479:        # - GLM / Kimi use OpenAI-compatible chat completions under /v1
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:483:        inference_base_url="https://opencode.ai/zen/go/v1",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:485:        base_url_env_var="OPENCODE_GO_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:491:        inference_base_url="https://api.kilo.ai/api/gateway",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:493:        base_url_env_var="KILOCODE_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:499:        inference_base_url="https://router.huggingface.co/v1",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:501:        base_url_env_var="HF_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:507:        inference_base_url="https://api.xiaomimimo.com/v1",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:509:        base_url_env_var="XIAOMI_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:515:        inference_base_url="https://tokenhub.tencentmaas.com/v1",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:517:        base_url_env_var="TOKENHUB_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:519:    "ollama-cloud": ProviderConfig(
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:520:        id="ollama-cloud",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:521:        name="Ollama Cloud",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:523:        inference_base_url=DEFAULT_OLLAMA_CLOUD_BASE_URL,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:524:        api_key_env_vars=("OLLAMA_API_KEY",),
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:525:        base_url_env_var="OLLAMA_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:531:        inference_base_url="https://bedrock-runtime.us-east-1.amazonaws.com",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:533:        base_url_env_var="BEDROCK_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:539:        # No static inference_base_url: Vertex's endpoint is computed per
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:541:        # build_vertex_base_url), not a fixed host like the other entries.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:542:        inference_base_url="",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:544:        base_url_env_var="",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:550:        inference_base_url="",  # User-provided endpoint
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:552:        base_url_env_var="AZURE_FOUNDRY_BASE_URL",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:573:        _api_key_vars = tuple(v for v in _pp.env_vars if not v.endswith("_BASE_URL") and not v.endswith("_URL"))
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:574:        _base_url_var = next((v for v in _pp.env_vars if v.endswith("_BASE_URL") or v.endswith("_URL")), None)
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:579:            inference_base_url=_pp.base_url,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:581:            base_url_env_var=_base_url_var or "",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:622:# KIMI_BASE_URL explicitly.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:629:KIMI_CODE_BASE_URL = "https://api.kimi.com/coding"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:632:def _resolve_kimi_base_url(api_key: str, default_url: str, env_override: str) -> str:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:635:    If the user has explicitly set KIMI_BASE_URL, that always wins.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:644:        return KIMI_CODE_BASE_URL
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:687:                api_token, _base_url = get_copilot_api_token(token)
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:733:    # (id, base_url, probe_models, label)
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:750:    ep_id, base_url, probe_models, label = endpoint
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:754:                f"{base_url}/chat/completions",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:768:                logger.debug("Z.AI endpoint probe: %s (%s) model=%s OK", ep_id, base_url, model)
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:771:                    "base_url": base_url,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:784:    Returns {"id": ..., "base_url": ..., "model": ..., "label": ...} for the
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:831:def _resolve_zai_base_url(api_key: str, default_url: str, env_override: str) -> str:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:834:    If the user has explicitly set GLM_BASE_URL, that always wins.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:854:    if isinstance(cached, dict) and cached.get("base_url"):
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:857:            logger.debug("Z.AI: using cached endpoint %s", cached["base_url"])
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:858:            return cached["base_url"]
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:862:    if detected and detected.get("base_url"):
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:866:            "base_url": detected["base_url"],
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:888:        logger.info("Z.AI: auto-detected endpoint %s (%s)", detected["label"], detected["base_url"])
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:889:        return detected["base_url"]
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:895:def _normalize_lmstudio_runtime_base_url(base_url: str) -> str:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:900:    either form into ``LM_BASE_URL`` or ``model.base_url``; normalize before
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:901:    the OpenAI SDK appends ``/chat/completions``.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:903:    root = str(base_url or "").strip().rstrip("/")
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:2074:    explicit_base_url: Optional[str] = None,
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:2081:    1. Explicit CLI api_key/base_url -> "openrouter"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:2125:        "ollama": "custom", "ollama_cloud": "ollama-cloud",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:2159:    if explicit_api_key or explicit_base_url:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:2333:def _optional_base_url(value: Any) -> Optional[str]:
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:2344:# Allowlist of valid Nous Portal hosts. A portal_base_url outside this
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:2358:    stored = (nous.get("portal_base_url") or "").strip()
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:2363:                "auth: migrating stale nous portal_base_url %s -> %s",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:2366:            nous["portal_base_url"] = DEFAULT_NOUS_PORTAL_URL
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:2374:# (NOUS_INFERENCE_BASE_URL) bypass validation — that's the documented
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:2398:    The env-var override path (``NOUS_INFERENCE_BASE_URL``) bypasses
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:2430:    """Return the user-set ``NOUS_INFERENCE_BASE_URL`` override, if any.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:2439:    return _optional_base_url(os.getenv("NOUS_INFERENCE_BASE_URL"))
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:2445:    Mirrors ``_nous_inference_env_override()``: ``HERMES_PORTAL_BASE_URL`` /
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/auth.py:2446:    ``NOUS_PORTAL_BASE_URL`` are the documented dev/staging escape hatch for
+
+=== 6. QWEN MODEL REFERENCES ===
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:113:    ("qwen/qwen3.8-max",                       ""),
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:153:    ("alibaba/qwen3.6-plus",                 ""),
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:289:        "qwen/qwen3.8-max",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:528:        "qwen3.7-plus",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:529:        "qwen3.6-plus",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:530:        "qwen3.5-plus",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:554:        "qwen3.7-max",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:555:        "qwen3.7-plus",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:556:        "qwen3.6-plus",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:557:        "qwen3.5-plus",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:572:        "qwen3.7-max",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:573:        "qwen3.7-plus",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:574:        "qwen3.6-plus",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:576:        "qwen3.5-plus",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:577:        "qwen3-coder-plus",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:578:        "qwen3-coder-next",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:587:        "qwen3.7-plus",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:588:        "qwen3.6-plus",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:589:        "qwen3.5-plus",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:590:        "qwen3-max-2026-01-23",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:591:        "qwen3-coder-plus",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:592:        "qwen3-coder-next",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:601:        "Qwen/Qwen3.5-397B-A17B",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:602:        "Qwen/Qwen3.5-35B-A3B",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:653:        "qwen/qwen3-235b-a22b-fp8",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:5086:            # All Qwen models on Go (qwen3.7-max, qwen3.7-plus, qwen3.6-plus)
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/models.py:6130:            # unrelated typed name (e.g. `qwen3.5-4b`, `llama-3.1-8b`) here turns
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_switch.py:367:# unrelated local Modelfiles like ``hermes-brain:qwen3-14b-ctx16k`` that just
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_switch.py:373:#   hermes-brain:qwen3-14b-ctx16k, qwen3:14b, claude-opus-4-6
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_switch.py:536:            model: "qwen3.5:397b"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_switch.py:3549:    # names ("Ollama — GLM 5.1", "Ollama — Qwen3-coder", ...) appear as one
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_setup_flows.py:826:    default = current_model or (models[0] if models else "qwen3-coder-plus")
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/setup.py:112:    "opencode-go": ["kimi-k3", "kimi-k2.6", "kimi-k2.5", "glm-5.1", "glm-5", "mimo-v2.5-pro", "mimo-v2.5", "mimo-v2-pro", "mimo-v2-omni", "minimax-m2.7", "minimax-m2.5", "qwen3.7-max", "qwen3.6-plus", "qwen3.5-plus"],
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/setup.py:114:        "Qwen/Qwen3.5-397B-A17B", "Qwen/Qwen3-235B-A22B-Thinking-2507",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/setup.py:115:        "Qwen/Qwen3-Coder-480B-A35B-Instruct", "deepseek-ai/DeepSeek-R1-0528",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/tools_config.py:409:                "tag": "Chatterbox, Qwen3-TTS, … — live catalog from api.deepinfra.com",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/cli_agent_setup_mixin.py:153:        # the configured model (e.g. "qwen3.6-plus"), causing 400 errors.
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/model_normalize.py:332:    # e.g. "qwen3.5-plus" -> first token "qwen3.5", but prefix is "qwen"
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/main.py:4537:    "qwen3-coder-plus",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/main.py:4538:    "qwen3-coder",
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/doctor.py:1315:                # is exclusively ``vendor/model`` slugs (Qwen/Qwen3.5-…,
+
+=== 7. GIT ===
+## main...origin/main
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ END — NOTHING MODIFIED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+mostafa@MMostafa Hermes % 
