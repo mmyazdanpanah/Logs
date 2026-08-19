@@ -1,0 +1,1111 @@
+mostafa@MMostafa Hermes % 
+mostafa@MMostafa Hermes % 
+mostafa@MMostafa Hermes % >....                                                                                    
+  -print 2>/dev/null \
+  | head -160
+
+echo
+echo "=== 4. PROFILE CONFIG FILES ==="
+find "$ROOT" \
+  -maxdepth 6 \
+  -type f \
+  \( -name 'config.yaml' -o -name 'config.yml' -o -name 'SOUL.md' \) \
+  -print 2>/dev/null \
+  | head -200
+
+echo
+echo "=== 5. SCHOLAR REFERENCES IN HERMES STATE ==="
+grep -Ril \
+  'Scholar' \
+  "$ROOT" \
+  --exclude-dir=node_modules \
+  --exclude-dir=.git \
+  2>/dev/null \
+  | head -100
+
+echo
+echo "=== 6. RECENT HERMES STATE FILES ==="
+find "$ROOT" \
+  -type f \
+  -not -path '*/node_modules/*' \
+  -not -path '*/.git/*' \
+  -print0 2>/dev/null \
+  | xargs -0 stat -f '%m %N' 2>/dev/null \
+  | sort -rn \
+  | head -80
+
+echo
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo " END — NOTHING WAS MODIFIED"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ HERMES DESKTOP — PROFILE / STATE INSPECTION
+ READ-ONLY — NO CHANGES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+=== 1. DESKTOP APP ===
+APP: /Users/mostafa/.hermes/hermes-agent/apps/desktop
+
+=== 2. PROFILE-RELATED CODE ===
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/git-review-ops.ts:268:        // hundreds of thousands of rows for browser profiles, generated
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/updater-process.test.ts:187:  assert.deepEqual(handoff.args, ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', expected])
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/updater-process.test.ts:242:    '-NoProfile',
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/updater-process.test.ts:299:    '--profile=work'
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/updater-process.test.ts:302:  assert.deepEqual(collectRelaunchArgs(argv), ['--no-sandbox', 'hermes://open/session/abc', '--profile=work'])
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/windows-remote-live.test.ts:37:      profile: '',
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/windows-remote-live.test.ts:87:        await ssh.exec(`powershell.exe -NoProfile -NonInteractive -Command "${runtimeScript}"`)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/windows-remote-live.test.ts:93:        await ssh.exec(`powershell.exe -NoProfile -NonInteractive -Command "${terminate}"`)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/windows-remote-live.test.ts:95:          `powershell.exe -NoProfile -NonInteractive -Command "& '${python}' -m hermes_cli.windows_ssh_runtime remove-lock '${ownershipId}'"`
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/windows-remote-live.test.ts:98:          `powershell.exe -NoProfile -NonInteractive -Command "& '${python}' -m hermes_cli.windows_ssh_runtime remove-log '${ownershipId}' '${lock.spawnNonce}'"`
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/hardening.ts:83: * bit), and userData there is already ACL'd to the user profile, so we report
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/pool-eviction.test.ts:5: * per-profile remote overrides) must not count against it, or a roster
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/remote-liveness.test.ts:335:  it('keeps a healthy sibling when another profile on a different host dies', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/ssh-bootstrap-coordinator.test.ts:31:    remoteProfile: 'default',
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/ssh-bootstrap-coordinator.test.ts:37:  assert.notEqual(base, sshConfigFingerprint('profile', config))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/bootstrap-runner.ts:462:    const fullArgs = ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', scriptPath, ...args]
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/updater-process.ts:62:        args: ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', candidate],
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/wsl-clipboard-image.ts:72:        ['-NoProfile', '-NonInteractive', '-STA', '-ExecutionPolicy', 'Bypass', '-EncodedCommand', encoded],
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:77:  localProfileEntry,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:83:  pathWithGlobalRemoteProfile,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:84:  pathWithProfileScope,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:85:  profileHasRemoteConnection,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:86:  profileRemoteOverride,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:87:  profileSshOverride,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:90:  resolveProfileApiRequest,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:91:  resolveProfileBackendRoute,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:92:  resolveRemoteSshDashboardProfile,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:94:  savedProfileSsh,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:96:  translateSelfProfileQuery
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:238:  buildRegistryProfileRoutes,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:239:  localRouteFallbackProfiles,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:242:} from './plugin-profile-routes'
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:255:  assertLocalProfileCanStart,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:256:  decideProfileDeleteAction,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:257:  localProfilePoolKeys,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:258:  ProfileDeletionGate,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:259:  profileNameFromDeleteRequest,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:260:  resolveRouteProfile
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:261:} from './profile-delete-routing'
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:262:import { prepareProfileRenameLifecycle, profileRenameFromRequest } from './profile-rename-routing'
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:265:  fetchPrimaryProfileSessions,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:267:  fetchRemoteProfileSessions,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:268:  mergeProfileSessionWindow,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:271:} from './profile-session-routing'
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:762:// profile keep working; the registry imports from it once and then owns its
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:769:// active-profile.json records which Hermes profile the desktop launches its
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:770:// local backend as. When set, startHermes() passes `hermes --profile <name>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:772:// _apply_profile_override in hermes_cli/main.py) and bypasses the sticky
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:773:// ~/.hermes/active_profile file. Unset (null) preserves the legacy behavior:
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:774:// no --profile flag, so the backend honors active_profile / default.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:775:const DESKTOP_PROFILE_CONFIG_PATH = path.join(app.getPath('userData'), 'active-profile.json')
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:776:// Mirrors hermes_cli.profiles._PROFILE_ID_RE so we never hand the backend a
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:777:// value its profile resolver would reject and exit on.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:778:const PROFILE_NAME_RE = /^[a-z0-9][a-z0-9_-]{0,63}$/
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1263:    resolveRemoteConnection: profile => ensureBackend(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1276:// Additional per-profile backends, keyed by profile name. The PRIMARY backend
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1277:// (the desktop's launch profile) stays managed by backendConnectionState +
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1278:// startHermes(); this pool only holds EXTRA profile
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1279:// backends spawned lazily when a session belongs to a different profile. A user
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1280:// with no named profiles never populates this map, so their experience is
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1282:const backendPool = new Map() // profile -> { process, port, token, connectionPromise, lastActiveAt }
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1283:const profileDeletionGate = new ProfileDeletionGate()
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1284:// Keep the pool light: cap concurrent profile backends (LRU eviction) and reap
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1286:// exist while a non-primary profile is actively being chatted through.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1290:// pings every 60s for every open profile). LRU eviction must spare these — a
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:1291:// concurrent multi-profile session keeps several backends "fresh" at once, and
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:3134:        '-NoProfile',
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:3166:          '-NoProfile',
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:3289:async function claimBackendChild(child, command, profile, nonce) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:3295:      profile,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7268:  const profile = payload.profile || null
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7269:  const connection = await ensureBackend(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7274:  const requestPath = pathWithGlobalRemoteProfile(
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7276:    profile,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7277:    profileRouteOptions(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7291:      return await saveGatewayFileViaDataUrl(connection, profile, filePath, ctx)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7302:async function saveGatewayFileViaDataUrl(connection, profile, filePath, ctx: any = {}) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7303:  const requestPath = pathWithGlobalRemoteProfile(
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7305:    profile,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7306:    profileRouteOptions(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7385:async function freshGatewayWsUrl(profile) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7386:  // Mint for the requested profile's backend, NOT always the primary. The
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7388:  // pooled profile we must return THAT backend's ws URL, otherwise the connect
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7390:  // the wrong profile's DB. A null/empty profile resolves to the primary, so
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7391:  // legacy callers and single-profile users are unchanged.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7392:  const connection = await ensureBackend(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8092:// Validate + normalize the per-profile remote overrides map read from disk.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8095:function sanitizeConnectionProfiles(raw: Record<string, any>) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8107:    if (name !== 'default' && !PROFILE_NAME_RE.test(name)) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8164:    // reopen into the same org for a per-profile cloud connection.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8195:  let config = { mode: 'local', remote: {}, profiles: {} }
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8221:    // through sanitizeConnectionProfiles below rather than persisting raw
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8234:        // Per-profile remote overrides: each profile may point at its own
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8236:        // profileRemoteOverride() can resolve them; normalized lazily on save.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8237:        profiles: sanitizeConnectionProfiles(parsed.profiles)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8381: * editor doesn't carry — cloud `org`, ssh `remoteHermesPath`/`remoteProfile` —
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8436:// Returns the desktop's chosen profile name, or null when unset. "default" is
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8438:// preference" and preserves the legacy launch (no --profile flag).
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8439:function readActiveDesktopProfile() {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8441:    const raw = fs.readFileSync(DESKTOP_PROFILE_CONFIG_PATH, 'utf8')
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8443:    const name = parsed && typeof parsed.profile === 'string' ? parsed.profile.trim() : ''
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8445:    if (name && (name === 'default' || PROFILE_NAME_RE.test(name))) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8455:function writeActiveDesktopProfile(name) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8458:  if (value && value !== 'default' && !PROFILE_NAME_RE.test(value)) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8459:    throw new Error(`Invalid profile name: ${value}`)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8462:  fs.mkdirSync(path.dirname(DESKTOP_PROFILE_CONFIG_PATH), { recursive: true })
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8463:  writeFileAtomic(DESKTOP_PROFILE_CONFIG_PATH, JSON.stringify({ profile: value || null }, null, 2))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8469:// `profile` this describes the global/default connection (the existing
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8470:// behavior); with a `profile` it describes that profile's per-profile remote
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8471:// override (or an empty "local/inherit" view when the profile has none).
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8472:async function sanitizeDesktopConnectionConfig(config = readDesktopConnectionConfig(), profile = null) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8473:  const key = connectionScopeKey(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8474:  const scoped = key ? config.profiles?.[key] || null : null
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8481:  const savedSsh = savedMode === 'local' ? (key ? savedProfileSsh(config, key) : normalizeSshConfig(block)) : null
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8523:    // Echo the scope back so the UI knows which profile (if any) this reflects.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8524:    profile: key,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8543:    sshRemoteProfile: (ssh || savedSsh)?.remoteProfile || '',
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8544:    // The env override only forces the global/primary connection; a per-profile
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8584:  const key = connectionScopeKey(input.profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8591:  // The block being edited: a per-profile entry or the global remote block.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8592:  const rawExistingBlock = key ? existing.profiles?.[key] || {} : existing.remote || {}
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8599:  const existingMode = key ? existing.profiles?.[key]?.mode : existing.mode
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8629:    const sshBlock = buildSshBlock(input, savedProfileSsh(existing, key) || rawExistingBlock)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8632:      const profiles = { ...(existing.profiles || {}), [key]: sshBlock }
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8637:        profiles
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8641:    return { mode: 'ssh', remote: sshBlock, profiles: existing.profiles || {} }
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8645:    // Per-profile scope: a remote/cloud entry pins this profile to its own
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8646:    // backend; a local entry clears the override so the profile inherits the
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8648:    const profiles = { ...(existing.profiles || {}) }
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8651:      profiles[key] = {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8656:      const localEntry = localProfileEntry(rawExistingBlock)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8659:        profiles[key] = localEntry
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8661:        delete profiles[key]
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8668:      profiles
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8678:  // Preserve per-profile overrides when saving the global connection.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8679:  return { mode, remote: nextRemote, profiles: existing.profiles || {} }
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8685:// normalizeSshConfig/profileSshOverride recognize it.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8696:    remoteProfile: input.sshRemoteProfile ?? existingBlock.remoteProfile
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8714:// and is shared by the per-profile, env, and global resolution paths. `token`
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8716:// for diagnostics ('profile' | 'env' | 'settings').
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8827:function sshScopeKey(profile) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8828:  return connectionScopeKey(profile) || ''
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8831:function sshOwnershipKey(profile) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8832:  return sshOwnershipId(desktopInstallationId, sshScopeKey(profile))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8855:async function teardownSshConnection(profile) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8856:  const scope = sshScopeKey(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8887:// any cached SSH state. A per-profile token/OAuth override wins over a global
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8888:// SSH connection — so if the active profile resolves to a NON-SSH backend, the
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8891:  const profile = primaryProfileKey()
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8894:  if (profileSshOverride(config, profile)) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8895:    const scope = sshScopeKey(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8901:  if (profileRemoteOverride(config, profile)) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8995:async function bootstrapSshConnection(profile, sshConfig, reuseToken, source) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8996:  const scope = sshScopeKey(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:9002:    bootstrapSshConnectionInner(profile, resolvedConfig, reuseToken, source, fingerprint, lease)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:9006:async function bootstrapSshConnectionInner(profile, sshConfig, reuseToken, source, fingerprint, lease) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:9007:  const scope = sshScopeKey(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:9012:    await teardownSshConnection(profile)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:9037:        ownershipId: sshOwnershipKey(profile),
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:9053:      profile: resolveRemoteSshDashboardProfile(sshConfig.remoteProfile, profile),
+
+=== 3. HERMES PROFILE DIRECTORIES ===
+/Users/mostafa/.hermes/hermes-agent/ui-tui/scripts/profile-tui.mjs
+/Users/mostafa/.hermes/hermes-agent/docker/cont-init.d/02-reconcile-profiles
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_routers/__pycache__/profiles.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_routers/profiles.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/subcommands/profile.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/subcommands/__pycache__/profile.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_dist/assets/ProfileBuilderPage-DsdwS39T.js
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_dist/assets/useProfileScope-D4PhX9DW.js
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_dist/assets/ProfilesPage-B5rwhwyA.js
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/profile_describer.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/profile_distribution.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/__pycache__/profiles.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/profiles.py
+/Users/mostafa/.hermes/hermes-agent/web/src/contexts/useProfileScope.ts
+/Users/mostafa/.hermes/hermes-agent/web/src/contexts/ProfileProvider.tsx
+/Users/mostafa/.hermes/hermes-agent/web/src/contexts/profile-context.ts
+/Users/mostafa/.hermes/hermes-agent/web/src/components/ProfileScopeBanner.tsx
+/Users/mostafa/.hermes/hermes-agent/web/src/components/ProfileSwitcher.tsx
+/Users/mostafa/.hermes/hermes-agent/web/src/pages/ProfileBuilderPage.tsx
+/Users/mostafa/.hermes/hermes-agent/web/src/pages/ProfilesPage.tsx
+/Users/mostafa/.hermes/hermes-agent/website/docs/user-guide/profiles.md
+/Users/mostafa/.hermes/hermes-agent/website/docs/user-guide/profile-distributions.md
+/Users/mostafa/.hermes/hermes-agent/website/docs/user-guide/multi-profile-gateways.md
+/Users/mostafa/.hermes/hermes-agent/website/docs/reference/profile-commands.md
+/Users/mostafa/.hermes/hermes-agent/node_modules/iconv-lite/.idea/inspectionProfiles
+/Users/mostafa/.hermes/hermes-agent/tests/honcho_plugin/test_empty_profile_hint.py
+/Users/mostafa/.hermes/hermes-agent/tests/tools/test_cross_profile_guard.py
+/Users/mostafa/.hermes/hermes-agent/tests/tools/test_skills_tool_profile_scope.py
+/Users/mostafa/.hermes/hermes-agent/tests/tools/test_file_tools_tilde_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/tools/test_mcp_loop_profile_override.py
+/Users/mostafa/.hermes/hermes-agent/tests/docker/test_profile_gateway.py
+/Users/mostafa/.hermes/hermes-agent/tests/docker/test_s6_profile_gateway_integration.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profiles_s6_hooks.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_web_server_skills_profiles.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_apply_profile_override.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_subcommands_profile_gateway.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_dashboard_profiles_nav_label.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profiles_sidebar_cache.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profile_export_credentials.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_cron_profile_enumeration_lightweight.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profile_install_env_encoding.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_xai_oauth_profile_auth.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_web_server_profile_unification.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profiles.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_web_profile_soul_writes.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_web_server_cron_profiles.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profile_distribution.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profile_describer.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_kanban_per_profile_cap.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profile_display_name.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_web_server_messaging_profiles.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_auth_profile_fallback.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profiles_sidebar_scope.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_gemini_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_upstage_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_copilot_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_zai_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_deepseek_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_commandcode_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_custom_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_fireworks_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_kimi_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_minimax_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_opencode_go_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_ollama_cloud_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/secret_sources/test_profile_secrets.py
+/Users/mostafa/.hermes/hermes-agent/tests/providers/test_meta_ai_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/providers/test_provider_profiles.py
+/Users/mostafa/.hermes/hermes-agent/tests/providers/test_profile_wiring.py
+/Users/mostafa/.hermes/hermes-agent/tests/test_profile_isolation_runtime.py
+/Users/mostafa/.hermes/hermes-agent/tests/agent/test_profile_home_override_precedence.py
+/Users/mostafa/.hermes/hermes-agent/tests/agent/test_soul_md_profile_isolation.py
+/Users/mostafa/.hermes/hermes-agent/tests/agent/test_bot_profile_prompt_isolation.py
+/Users/mostafa/.hermes/hermes-agent/tests/agent/test_file_safety_cross_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/tui_gateway/test_mcp_profile_rpcs.py
+/Users/mostafa/.hermes/hermes-agent/tests/tui_gateway/test_profiles_list_preferred_session.py
+/Users/mostafa/.hermes/hermes-agent/tests/tui_gateway/test_slash_worker_profile_home.py
+/Users/mostafa/.hermes/hermes-agent/tests/tui_gateway/test_ephemeral_profile_override.py
+/Users/mostafa/.hermes/hermes-agent/tests/test_plugins_manage_profile_scope.py
+/Users/mostafa/.hermes/hermes-agent/tests/test_cron_manage_profile_scope.py
+/Users/mostafa/.hermes/hermes-agent/tests/test_hermes_home_profile_warning.py
+/Users/mostafa/.hermes/hermes-agent/tests/gateway/test_profile_resolution.py
+/Users/mostafa/.hermes/hermes-agent/tests/gateway/test_multiplex_session_db_profile_scope.py
+/Users/mostafa/.hermes/hermes-agent/tests/gateway/test_multiplex_profile_authz.py
+/Users/mostafa/.hermes/hermes-agent/tests/gateway/test_whatsapp_media_path_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/gateway/test_profile_routing.py
+/Users/mostafa/.hermes/hermes-agent/tests/gateway/test_model_command_profile_config.py
+/Users/mostafa/.hermes/hermes-agent/tests/cron/test_cron_profile_isolation.py
+/Users/mostafa/.hermes/hermes-agent/docs/design/profile-builder.md
+/Users/mostafa/.hermes/hermes-agent/docs/profile-routing.md
+/Users/mostafa/.hermes/hermes-agent/tui_gateway/__pycache__/methods_profiles.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/tui_gateway/methods_profiles.py
+/Users/mostafa/.hermes/hermes-agent/scripts/profile-tui.py
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/scripts/profile-typing-lag.md
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/scripts/profile-model-picker.mjs
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-rename-routing.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-rename-routing.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-delete-routing.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-delete-routing.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/plugin-profile-routes.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/plugin-profile-routes.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-session-routing.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-session-routing.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/hermes-profile-scope.test.ts
+/Users/mostafa/.hermes/hermes-agent/gateway/profile_routing.py
+/Users/mostafa/.hermes/hermes-agent/gateway/__pycache__/profile_routing.cpython-311.pyc
+/Users/mostafa/.hermes/profiles
+
+=== 4. PROFILE CONFIG FILES ===
+/Users/mostafa/.hermes/plugins/hermes-labyrinth/.github/ISSUE_TEMPLATE/config.yml
+/Users/mostafa/.hermes/config.yaml
+/Users/mostafa/.hermes/state-snapshots/20260819-072604-pre-update/config.yaml
+/Users/mostafa/.hermes/hermes-agent/docker/SOUL.md
+/Users/mostafa/.hermes/hermes-agent/node_modules/tmp-promise/.circleci/config.yml
+/Users/mostafa/.hermes/hermes-agent/.github/ISSUE_TEMPLATE/config.yml
+/Users/mostafa/.hermes/SOUL.md
+/Users/mostafa/.hermes/profiles/default/config.yaml
+/Users/mostafa/.hermes/profiles/default/SOUL.md
+
+=== 5. SCHOLAR REFERENCES IN HERMES STATE ===
+
+
+number 5 still tryin to load....seems stuck...^X^X^X^C
+mostafa@MMostafa Hermes % 
+mostafa@MMostafa Hermes % 
+mostafa@MMostafa Hermes % 
+mostafa@MMostafa Hermes % 
+mostafa@MMostafa Hermes % 
+mostafa@MMostafa Hermes % 
+mostafa@MMostafa Hermes % 
+mostafa@MMostafa Hermes % >....                                                                                    
+  | head -250
+echo
+
+echo "=== 8. ELECTRON STORAGE / IPC CLUES ==="
+grep -RniE \
+  'localStorage|sessionStorage|electron-store|safeStorage|ipcMain|ipcRenderer|BrowserWindow|store\.get|store\.set' \
+  "$APP/electron" \
+  "$APP/src" \
+  "$APP/renderer" \
+  "$APP" \
+  --include='*.ts' \
+  --include='*.tsx' \
+  --include='*.js' \
+  --include='*.jsx' \
+  2>/dev/null \
+  | head -250
+echo
+
+echo "=== 9. CURRENT HERMES PROCESSES ==="
+ps aux | grep -iE \
+  'hermes|electron' \
+  | grep -v grep
+echo
+
+echo "=== 10. LAUNCH AGENTS / SERVICES REFERENCING HERMES ==="
+grep -RniE \
+  'hermes|scholar|profile' \
+  "$HOME/Library/LaunchAgents" \
+  "$HOME/Library/LaunchDaemons" \
+  2>/dev/null \
+  | head -200
+echo
+
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo " END — NO FILES MODIFIED"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ HERMES DESKTOP — SCHOLAR PROFILE FORENSIC INSPECTION
+ READ-ONLY / NO CHANGES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+=== 1. DESKTOP APP PATH ===
+APP=/Users/mostafa/.hermes/hermes-agent/apps/desktop
+exists: YES
+
+{reducted}
+
+
+ts to validate an idea before build.\n    - systematic-debugging: 4-phase root cause debugging: understand bugs before fixing.\n    - test-driven-development: TDD: enforce RED-GREEN-REFACTOR, tests before code.\n</available_skills>\n\nOnly proceed without loading a skill if genuinely none are relevant to the task.\n\n# Hindsight Memory\nActive. Bank: Hermes-Core, budget: low.\nRelevant memories are automatically injected into context. Use hindsight_recall to search, hindsight_reflect for synthesis, hindsight_retain to store facts.\n\nConversation started: Tuesday, August 18, 2026 (+0330, UTC+03:30)\nModel: deepseek-ai/DeepSeek-V4-Flash-0731\nProvider: huggingface\nPlatform: desktop"
+
+=== 5. PROFILE DIRECTORIES ===
+/Users/mostafa/.hermes/profiles/default/.env
+/Users/mostafa/.hermes/profiles/default/SOUL.md
+/Users/mostafa/.hermes/profiles/default/config.yaml
+
+=== 6. SCHOLAR-NAMED FILES ANYWHERE UNDER ~/.hermes ===
+/Users/mostafa/.hermes/freedom-stack-final-backups/20260818-145902/scholar-config.yaml
+/Users/mostafa/.hermes/freedom-stack-backups/20260818-145638/scholar-config.yaml
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/mps/__pycache__/profiler.cpython-314.pyc
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/mps/profiler.py
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/distributed/rpc/__pycache__/server_process_global_profiler.cpython-314.pyc
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/distributed/rpc/server_process_global_profiler.py
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/autograd/__pycache__/profiler_util.cpython-314.pyc
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/autograd/__pycache__/profiler.cpython-314.pyc
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/autograd/__pycache__/profiler_legacy.cpython-314.pyc
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/autograd/profiler_util.py
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/autograd/profiler_legacy.py
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/autograd/profiler.py
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/cuda/__pycache__/profiler.cpython-314.pyc
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/cuda/profiler.py
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/include/torch/csrc/distributed/rpc/profiler
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/include/torch/csrc/distributed/rpc/profiler/remote_profiler_manager.h
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/include/torch/csrc/distributed/rpc/profiler/server_process_global_profiler.h
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/include/torch/csrc/autograd/profiler_python.h
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/include/torch/csrc/autograd/profiler_kineto.h
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/include/torch/csrc/autograd/profiler_legacy.h
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/include/torch/csrc/autograd/profiler.h
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/include/torch/csrc/jit/runtime/script_profile.h
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/include/torch/csrc/jit/passes/remove_redundant_profiles.h
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/include/torch/csrc/jit/mobile/profiler_edge.h
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/include/torch/csrc/mtia/profiler
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/include/torch/csrc/mtia/profiler/MTIAMemoryProfiler.h
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/include/torch/csrc/profiler
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/include/torch/csrc/profiler/standalone/privateuse1_profiler.h
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/include/kineto/IActivityProfiler.h
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/include/kineto/ActivityProfilerInterface.h
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/include/ATen/mps/MPSProfiler.h
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/_inductor/analysis/__pycache__/profile_analysis.cpython-314.pyc
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/_inductor/analysis/profile_analysis.py
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/_inductor/fx_passes/profile_guided_estimation.py
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/_inductor/fx_passes/__pycache__/profile_guided_estimation.cpython-314.pyc
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/utils/_strobelight/cli_function_profiler.py
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/utils/_strobelight/__pycache__/cli_function_profiler.cpython-314.pyc
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/_C/_profiler.pyi
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/_library/fake_profile.py
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/_library/__pycache__/fake_profile.cpython-314.pyc
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/_dynamo/__pycache__/dynamo_profiler.cpython-314.pyc
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/_dynamo/__pycache__/profiler.cpython-314.pyc
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/_dynamo/profiler.py
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/_dynamo/dynamo_profiler.py
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/profiler
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/profiler/_memory_profiler.py
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/profiler/__pycache__/profiler.cpython-314.pyc
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/profiler/__pycache__/_memory_profiler.cpython-314.pyc
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/profiler/profiler.py
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/_strobelight/cli_function_profiler.py
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/_strobelight/__pycache__/cli_function_profiler.cpython-314.pyc
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/_strobelight/__pycache__/compile_time_profiler.cpython-314.pyc
+/Users/mostafa/.hermes/model-dev-venv/lib/python3.14/site-packages/torch/_strobelight/compile_time_profiler.py
+/Users/mostafa/.hermes/hermes-agent/ui-tui/scripts/profile-tui.mjs
+/Users/mostafa/.hermes/hermes-agent/docker/cont-init.d/02-reconcile-profiles
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_routers/__pycache__/profiles.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_routers/profiles.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/subcommands/profile.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/subcommands/__pycache__/profile.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_dist/assets/ProfileBuilderPage-DsdwS39T.js
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_dist/assets/useProfileScope-D4PhX9DW.js
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_dist/assets/ProfilesPage-B5rwhwyA.js
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/profile_describer.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/profile_distribution.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/__pycache__/profiles.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/profiles.py
+/Users/mostafa/.hermes/hermes-agent/web/src/contexts/useProfileScope.ts
+/Users/mostafa/.hermes/hermes-agent/web/src/contexts/ProfileProvider.tsx
+/Users/mostafa/.hermes/hermes-agent/web/src/contexts/profile-context.ts
+/Users/mostafa/.hermes/hermes-agent/web/src/components/ProfileScopeBanner.tsx
+/Users/mostafa/.hermes/hermes-agent/web/src/components/ProfileSwitcher.tsx
+/Users/mostafa/.hermes/hermes-agent/web/src/pages/ProfileBuilderPage.tsx
+/Users/mostafa/.hermes/hermes-agent/web/src/pages/ProfilesPage.tsx
+/Users/mostafa/.hermes/hermes-agent/website/docs/user-guide/profiles.md
+/Users/mostafa/.hermes/hermes-agent/website/docs/user-guide/profile-distributions.md
+/Users/mostafa/.hermes/hermes-agent/website/docs/user-guide/multi-profile-gateways.md
+/Users/mostafa/.hermes/hermes-agent/website/docs/reference/profile-commands.md
+/Users/mostafa/.hermes/hermes-agent/website/i18n/zh-Hans/docusaurus-plugin-content-docs/current/user-guide/profiles.md
+/Users/mostafa/.hermes/hermes-agent/website/i18n/zh-Hans/docusaurus-plugin-content-docs/current/user-guide/profile-distributions.md
+/Users/mostafa/.hermes/hermes-agent/website/i18n/zh-Hans/docusaurus-plugin-content-docs/current/reference/profile-commands.md
+/Users/mostafa/.hermes/hermes-agent/node_modules/playwright-core/lib/server/utils/profiler.js
+/Users/mostafa/.hermes/hermes-agent/node_modules/app-builder-lib/templates/linux/apparmor-profile.tpl
+/Users/mostafa/.hermes/hermes-agent/node_modules/iconv-lite/.idea/inspectionProfiles
+/Users/mostafa/.hermes/hermes-agent/node_modules/@icons-pack/react-simple-icons/icons/SiSemanticscholar.cjs
+/Users/mostafa/.hermes/hermes-agent/node_modules/@icons-pack/react-simple-icons/icons/SiSemanticscholar.mjs
+/Users/mostafa/.hermes/hermes-agent/node_modules/@icons-pack/react-simple-icons/icons/SiSemanticscholar.d.ts
+/Users/mostafa/.hermes/hermes-agent/node_modules/@icons-pack/react-simple-icons/icons/SiGooglescholar.d.ts
+/Users/mostafa/.hermes/hermes-agent/node_modules/@icons-pack/react-simple-icons/icons/SiGooglescholar.mjs
+/Users/mostafa/.hermes/hermes-agent/node_modules/@icons-pack/react-simple-icons/icons/SiGooglescholar.cjs
+/Users/mostafa/.hermes/hermes-agent/node_modules/@icons-pack/react-simple-icons/src/icons/SiGooglescholar.tsx
+/Users/mostafa/.hermes/hermes-agent/node_modules/@icons-pack/react-simple-icons/src/icons/SiSemanticscholar.tsx
+/Users/mostafa/.hermes/hermes-agent/node_modules/@electron/osx-sign/dist/esm/util-provisioning-profiles.js
+/Users/mostafa/.hermes/hermes-agent/node_modules/@electron/osx-sign/dist/esm/util-provisioning-profiles.js.map
+/Users/mostafa/.hermes/hermes-agent/node_modules/@electron/osx-sign/dist/esm/util-provisioning-profiles.d.ts
+/Users/mostafa/.hermes/hermes-agent/node_modules/@electron/osx-sign/dist/cjs/util-provisioning-profiles.js
+/Users/mostafa/.hermes/hermes-agent/node_modules/@electron/osx-sign/dist/cjs/util-provisioning-profiles.js.map
+/Users/mostafa/.hermes/hermes-agent/node_modules/@electron/osx-sign/dist/cjs/util-provisioning-profiles.d.ts
+/Users/mostafa/.hermes/hermes-agent/tests/honcho_plugin/test_empty_profile_hint.py
+/Users/mostafa/.hermes/hermes-agent/tests/tools/test_cross_profile_guard.py
+/Users/mostafa/.hermes/hermes-agent/tests/tools/test_skills_tool_profile_scope.py
+/Users/mostafa/.hermes/hermes-agent/tests/tools/test_file_tools_tilde_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/tools/test_mcp_loop_profile_override.py
+/Users/mostafa/.hermes/hermes-agent/tests/docker/test_profile_gateway.py
+/Users/mostafa/.hermes/hermes-agent/tests/docker/test_s6_profile_gateway_integration.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profiles_s6_hooks.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_web_server_skills_profiles.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_apply_profile_override.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_subcommands_profile_gateway.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_dashboard_profiles_nav_label.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profiles_sidebar_cache.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profile_export_credentials.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_cron_profile_enumeration_lightweight.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profile_install_env_encoding.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_xai_oauth_profile_auth.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_web_server_profile_unification.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profiles.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_web_profile_soul_writes.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_web_server_cron_profiles.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profile_distribution.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profile_describer.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_kanban_per_profile_cap.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profile_display_name.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_web_server_messaging_profiles.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_auth_profile_fallback.py
+/Users/mostafa/.hermes/hermes-agent/tests/hermes_cli/test_profiles_sidebar_scope.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_gemini_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_upstage_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_copilot_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_zai_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_deepseek_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_commandcode_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_custom_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_fireworks_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_kimi_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_minimax_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_opencode_go_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/plugins/model_providers/test_ollama_cloud_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/secret_sources/test_profile_secrets.py
+/Users/mostafa/.hermes/hermes-agent/tests/providers/test_meta_ai_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/providers/test_provider_profiles.py
+/Users/mostafa/.hermes/hermes-agent/tests/providers/test_profile_wiring.py
+/Users/mostafa/.hermes/hermes-agent/tests/test_profile_isolation_runtime.py
+/Users/mostafa/.hermes/hermes-agent/tests/agent/test_profile_home_override_precedence.py
+/Users/mostafa/.hermes/hermes-agent/tests/agent/test_soul_md_profile_isolation.py
+/Users/mostafa/.hermes/hermes-agent/tests/agent/test_bot_profile_prompt_isolation.py
+/Users/mostafa/.hermes/hermes-agent/tests/agent/test_file_safety_cross_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/tui_gateway/test_mcp_profile_rpcs.py
+/Users/mostafa/.hermes/hermes-agent/tests/tui_gateway/test_profiles_list_preferred_session.py
+/Users/mostafa/.hermes/hermes-agent/tests/tui_gateway/test_slash_worker_profile_home.py
+/Users/mostafa/.hermes/hermes-agent/tests/tui_gateway/test_ephemeral_profile_override.py
+/Users/mostafa/.hermes/hermes-agent/tests/test_plugins_manage_profile_scope.py
+/Users/mostafa/.hermes/hermes-agent/tests/test_cron_manage_profile_scope.py
+/Users/mostafa/.hermes/hermes-agent/tests/test_hermes_home_profile_warning.py
+/Users/mostafa/.hermes/hermes-agent/tests/gateway/test_profile_resolution.py
+/Users/mostafa/.hermes/hermes-agent/tests/gateway/test_multiplex_session_db_profile_scope.py
+/Users/mostafa/.hermes/hermes-agent/tests/gateway/test_multiplex_profile_authz.py
+/Users/mostafa/.hermes/hermes-agent/tests/gateway/test_whatsapp_media_path_profile.py
+/Users/mostafa/.hermes/hermes-agent/tests/gateway/test_profile_routing.py
+/Users/mostafa/.hermes/hermes-agent/tests/gateway/test_model_command_profile_config.py
+/Users/mostafa/.hermes/hermes-agent/tests/cron/test_cron_profile_isolation.py
+/Users/mostafa/.hermes/hermes-agent/docs/design/profile-builder.md
+/Users/mostafa/.hermes/hermes-agent/docs/profile-routing.md
+/Users/mostafa/.hermes/hermes-agent/tui_gateway/__pycache__/methods_profiles.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/tui_gateway/methods_profiles.py
+/Users/mostafa/.hermes/hermes-agent/scripts/profile-tui.py
+/Users/mostafa/.hermes/hermes-agent/venv/lib/python3.11/site-packages/hindsight_client_api/models/bank_profile_response.py
+/Users/mostafa/.hermes/hermes-agent/venv/lib/python3.11/site-packages/hindsight_client_api/models/__pycache__/bank_profile_response.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/venv/lib/python3.11/site-packages/googleapiclient/discovery_cache/documents/businessprofileperformance.v1.json
+/Users/mostafa/.hermes/hermes-agent/venv/lib/python3.11/site-packages/googleapiclient/discovery_cache/documents/cloudprofiler.v2.json
+/Users/mostafa/.hermes/hermes-agent/venv/lib/python3.11/site-packages/onnxruntime/transformers/profile_result_processor.py
+/Users/mostafa/.hermes/hermes-agent/venv/lib/python3.11/site-packages/onnxruntime/transformers/profiler.py
+/Users/mostafa/.hermes/hermes-agent/venv/lib/python3.11/site-packages/botocore/data/codeguruprofiler
+/Users/mostafa/.hermes/hermes-agent/venv/lib/python3.11/site-packages/botocore/data/customer-profiles
+/Users/mostafa/.hermes/hermes-agent/venv/lib/python3.11/site-packages/botocore/data/route53profiles
+/Users/mostafa/.hermes/hermes-agent/venv/lib/python3.11/site-packages/botocore/data/applicationcostprofiler
+/Users/mostafa/.hermes/hermes-agent/venv/lib/python3.11/site-packages/telegram/_userprofileaudios.py
+/Users/mostafa/.hermes/hermes-agent/venv/lib/python3.11/site-packages/telegram/_userprofilephotos.py
+/Users/mostafa/.hermes/hermes-agent/venv/lib/python3.11/site-packages/telegram/__pycache__/_userprofileaudios.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/venv/lib/python3.11/site-packages/telegram/__pycache__/_userprofilephotos.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/venv/lib/python3.11/site-packages/telegram/_files/inputprofilephoto.py
+/Users/mostafa/.hermes/hermes-agent/venv/lib/python3.11/site-packages/telegram/_files/__pycache__/inputprofilephoto.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/dist/assets/profile-scope-CfVxFX-L.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/dist/assets/use-on-profile-switch-B5zWPFOh.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/dist/assets/profile-2QkBok09.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/dist/assets/profiles-BUn-cROR.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/release/mac-arm64/Hermes.app/Contents/Resources/app.asar.unpacked/dist/assets/profile-scope-CfVxFX-L.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/release/mac-arm64/Hermes.app/Contents/Resources/app.asar.unpacked/dist/assets/use-on-profile-switch-B5zWPFOh.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/release/mac-arm64/Hermes.app/Contents/Resources/app.asar.unpacked/dist/assets/profile-2QkBok09.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/release/mac-arm64/Hermes.app/Contents/Resources/app.asar.unpacked/dist/assets/profiles-BUn-cROR.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/scripts/profile-typing-lag.md
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/scripts/perf/scenarios/profile-switch.mjs
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/scripts/profile-model-picker.mjs
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-rename-routing.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-rename-routing.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-delete-routing.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-delete-routing.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/plugin-profile-routes.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/plugin-profile-routes.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-session-routing.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-session-routing.ts
+
+=== 7. DESKTOP PERSISTENCE / STATE FILES ===
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/tsconfig.electron.json
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/dist/node_modules/node-pty/lib/windowsConoutConnection.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/dist/assets/connection-display-YGOdYmke.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/dist/assets/profile-scope-CfVxFX-L.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/dist/assets/store-DijEAnDa.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/dist/assets/session-states-CVm4JYFI.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/dist/assets/error-state-DcMnKePq.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/dist/assets/use-on-profile-switch-B5zWPFOh.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/dist/assets/store-B67Q0jD0.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/dist/assets/profile-2QkBok09.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/dist/assets/job-state-Bs-tmr6E.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/dist/assets/profiles-BUn-cROR.js
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/tsconfig.e2e.json
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/scripts/profile-typing-lag.md
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/scripts/diag-live-state.mjs
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/scripts/perf/scenarios/profile-switch.mjs
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/scripts/profile-model-picker.mjs
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/tsconfig.json
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/playwright.config.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/vite.config.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/vitest.config.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/ssh-config.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/backend-connection-state.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/window-state.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-rename-routing.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/ssh-config.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/primary-connection-rehome.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/connection-config.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-rename-routing.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/connection-config.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/backend-connection-state.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/connection-apply.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/ssh-connection.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-delete-routing.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-delete-routing.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/native-token-store.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/plugin-profile-routes.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/plugin-profile-routes.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/window-state.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/active-runtime-state.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/connection-apply.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-session-routing.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/ssh-connection.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/connection-registry.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/connection-registry.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/active-runtime-state.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/profile-session-routing.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/native-token-store.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/e2e/at-rest-connection-token.spec.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/e2e/sidebar-states.spec.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/eslint.config.mjs
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/settings/toolset-config-panel.test.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/settings/memory/provider-config-panel.test.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/settings/memory/provider-config-modal.test.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/settings/memory/provider-config-modal.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/settings/memory/provider-config-panel.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/settings/config-settings.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/settings/profile-scope.test.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/settings/profile-scope.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/settings/config-field.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/settings/connections-registry.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/settings/connections-registry.test.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/settings/billing/use-billing-state.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/settings/billing/use-billing-state.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/settings/toolset-config-panel.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/chat/sidebar/profile-scope.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/chat/sidebar/use-profile-rail-refresh-on-active.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/chat/sidebar/section-states.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/chat/sidebar/profile-rail-connect.test.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/chat/sidebar/use-profile-prewarm.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/chat/sidebar/profile-switcher.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/chat/sidebar/connection-switcher.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/chat/sidebar/profile-scope.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/chat/sidebar/connection-switcher.test.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/chat/sidebar/use-profile-rail-refresh-on-active.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/chat/profile-tag.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/chat/route-session-state.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/chat/right-rail/preview-console-state.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/chat/right-rail/preview-console-store.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/chat/profile-tag.test.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/chat/route-session-state.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/context-menu/store.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/hooks/use-config-record.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/hooks/use-on-profile-switch.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/right-sidebar/store.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/skills/store.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/profiles/rename-profile-dialog.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/profiles/create-profile-dialog.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/profiles/delete-profile-dialog.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/profiles/rename-profile-dialog.test.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/cron/job-state.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/session/session-state-cache.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/session/hooks/use-session-state-cache.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/session/hooks/use-hermes-config.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/session/hooks/use-session-state-cache.test.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/session/hooks/use-hermes-config.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/app/session/session-state-cache.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/plugins/hermes-bots/tests/profile-prewarm.test.mjs
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/plugins/hermes-bots/tests/cross-connection-bots.test.mjs
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/plugins/hermes-bots/tests/routines-profile-scope.test.mjs
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/contrib/plugins-store.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/components/pane-shell/tree/store.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/components/ui/empty-state.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/components/ui/profile-glyph.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/components/ui/error-state.tsx
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/sdk/host-state.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/sdk/profile-routing.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/lib/connection-display.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/lib/connection-scoped.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/lib/incremental-external-store-runtime.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/lib/profile-color.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/lib/incremental-external-store-runtime.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/lib/connection-display.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/hermes-profile-scope.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/themes/profile-theme.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/profile.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/nanostores-batch-guard.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/session-dot-state.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/session-states.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/profile-agent-activation.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/session-states.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/working-ids-stored-id.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/session-states-eviction.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/gateway-connection-scope.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/session-dot-state.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/gateway-connection-lifecycle.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/session-states-scopes.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/profile-share.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/connections.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/connections.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/profile.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/layout-connection-scope.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/gateway-profile-request.test.ts
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/src/store/profile-share.ts
+/Users/mostafa/.hermes/config.yaml.bak.before-research-mcp.20260815-132149
+/Users/mostafa/.hermes/freedom-stack-final-backups/20260818-145902/scholar-config.yaml
+/Users/mostafa/.hermes/freedom-stack-final-backups/20260818-145902/global-config.yaml
+/Users/mostafa/.hermes/config.yaml.backup-context-20260818-231521
+/Users/mostafa/.hermes/state.db.pre-update-emergency-2026-08-19T07-25-59-771Z.bak
+/Users/mostafa/.hermes/hindsight/config.json
+/Users/mostafa/.hermes/config.yaml.bak.before-filesystem-mcp.20260816-091636
+/Users/mostafa/.hermes/freedom-stack-backups/20260818-145638/scholar-config.yaml
+/Users/mostafa/.hermes/freedom-stack-backups/20260818-145638/global-config.yaml
+/Users/mostafa/.hermes/config.yaml.bak.before-ha-env.20260816-094103
+/Users/mostafa/.hermes/config.yaml.bak.before-core-mcps.20260816-090441
+/Users/mostafa/.hermes/.DS_Store
+/Users/mostafa/.hermes/config.yaml.bak.before-playwright-mcp.20260816-093011
+/Users/mostafa/.hermes/config.yaml.bak.20260816_084445
+/Users/mostafa/.hermes/config.yaml.bak.20260814-140327
+/Users/mostafa/.hermes/model-dev-venv/bin/numpy-config
+/Users/mostafa/.hermes/model-dev-venv/bin/accelerate-config
+/Users/mostafa/.hermes/config.yaml.before-ollama-reset-20260816
+/Users/mostafa/.hermes/config.yaml.bak
+/Users/mostafa/.hermes/state.db.pre-update-emergency-2026-08-18T15-57-13-255Z.bak
+/Users/mostafa/.hermes/plugins/hermes-labyrinth/.github/ISSUE_TEMPLATE/config.yml
+/Users/mostafa/.hermes/plugins/hermes-labyrinth/.git/config
+/Users/mostafa/.hermes/plugins/hermes-achievements/state.json
+/Users/mostafa/.hermes/config.yaml.bak.20260814-135705
+/Users/mostafa/.hermes/config.yaml.bak.naming-20260818-145008
+/Users/mostafa/.hermes/config.yaml.backup-before-merge
+/Users/mostafa/.hermes/state.db
+/Users/mostafa/.hermes/gateway_state.json
+/Users/mostafa/.hermes/config.yaml.bak.20260816_084630
+/Users/mostafa/.hermes/config.yaml
+/Users/mostafa/.hermes/config.yaml.bak.20260816_082627
+/Users/mostafa/.hermes/models/Qwen3-0.6B/tokenizer_config.json
+/Users/mostafa/.hermes/models/Qwen3-0.6B/config.json
+/Users/mostafa/.hermes/models/Qwen3-0.6B/generation_config.json
+/Users/mostafa/.hermes/config.yaml.bak.20260816_082447
+/Users/mostafa/.hermes/config.yaml.bak.before-homeassistant-mcp.20260816-093812
+/Users/mostafa/.hermes/config.yaml.bak.before-zotero-mcp.20260816-090810
+/Users/mostafa/.hermes/state-snapshots/20260819-072604-pre-update/state.db
+/Users/mostafa/.hermes/state-snapshots/20260819-072604-pre-update/gateway_state.json
+/Users/mostafa/.hermes/state-snapshots/20260819-072604-pre-update/config.yaml
+/Users/mostafa/.hermes/config.yaml.bak.20260816_084532
+/Users/mostafa/.hermes/config.yaml.bak.20260816_084700
+/Users/mostafa/.hermes/config.yaml.bak.20260816_082435
+/Users/mostafa/.hermes/config.yaml.bak.20260816_082853
+/Users/mostafa/.hermes/config.yaml.bak.20260814-140912
+/Users/mostafa/.hermes/state.db.pre-update-emergency-2026-08-17T21-40-48-369Z.bak
+/Users/mostafa/.hermes/config.yaml.backup-before-final-fix
+/Users/mostafa/.hermes/config.yaml.bak.before-zotero-mcp.20260816-090752
+/Users/mostafa/.hermes/config.yaml.bak.before-obsidian-mcp.20260815-133734
+/Users/mostafa/.hermes/config.yaml.bak.20260818-125712
+/Users/mostafa/.hermes/config.yaml.backup.20260816-233252
+/Users/mostafa/.hermes/hermes-agent/ui-tui/tsconfig.build.json
+/Users/mostafa/.hermes/hermes-agent/ui-tui/scripts/profile-tui.mjs
+/Users/mostafa/.hermes/hermes-agent/ui-tui/packages/hermes-ink/tsconfig.json
+/Users/mostafa/.hermes/hermes-agent/ui-tui/tsconfig.json
+/Users/mostafa/.hermes/hermes-agent/ui-tui/vitest.config.ts
+/Users/mostafa/.hermes/hermes-agent/ui-tui/eslint.config.mjs
+/Users/mostafa/.hermes/hermes-agent/ui-tui/src/app/wakeState.ts
+/Users/mostafa/.hermes/hermes-agent/ui-tui/src/app/spawnHistoryStore.ts
+/Users/mostafa/.hermes/hermes-agent/ui-tui/src/app/inputSelectionStore.ts
+/Users/mostafa/.hermes/hermes-agent/ui-tui/src/app/overlayStore.ts
+/Users/mostafa/.hermes/hermes-agent/ui-tui/src/app/turnStore.ts
+/Users/mostafa/.hermes/hermes-agent/ui-tui/src/app/uiStore.ts
+/Users/mostafa/.hermes/hermes-agent/ui-tui/src/app/useConfigSync.ts
+/Users/mostafa/.hermes/hermes-agent/ui-tui/src/app/useComposerState.ts
+/Users/mostafa/.hermes/hermes-agent/ui-tui/src/app/delegationStore.ts
+/Users/mostafa/.hermes/hermes-agent/ui-tui/src/app/petFlashStore.ts
+/Users/mostafa/.hermes/hermes-agent/ui-tui/src/__tests__/spawnHistoryStore.test.ts
+/Users/mostafa/.hermes/hermes-agent/ui-tui/src/__tests__/turnStore.test.ts
+/Users/mostafa/.hermes/hermes-agent/ui-tui/src/__tests__/useConfigSync.test.ts
+/Users/mostafa/.hermes/hermes-agent/ui-tui/src/__tests__/useComposerState.test.ts
+/Users/mostafa/.hermes/hermes-agent/ui-tui/src/__tests__/stateIsolation.test.ts
+/Users/mostafa/.hermes/hermes-agent/ui-tui/src/__tests__/viewportStore.test.ts
+/Users/mostafa/.hermes/hermes-agent/ui-tui/src/lib/fpsStore.ts
+/Users/mostafa/.hermes/hermes-agent/ui-tui/src/lib/viewportStore.ts
+/Users/mostafa/.hermes/hermes-agent/tools/budget_config.py
+/Users/mostafa/.hermes/hermes-agent/tools/__pycache__/browser_camofox_state.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/tools/__pycache__/file_state.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/tools/file_state.py
+/Users/mostafa/.hermes/hermes-agent/tools/browser_camofox_state.py
+/Users/mostafa/.hermes/hermes-agent/docker/cont-init.d/02-reconcile-profiles
+/Users/mostafa/.hermes/hermes-agent/nix/configMergeScript.nix
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/config.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/skills_config.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_routers/__pycache__/profiles.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_routers/profiles.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/subcommands/config.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/subcommands/profile.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/subcommands/__pycache__/config.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/subcommands/__pycache__/profile.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/config_migrations.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_dist/assets/ConfigPage-C-z7kjKT.js
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_dist/assets/ProfileBuilderPage-DsdwS39T.js
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_dist/assets/useProfileScope-D4PhX9DW.js
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/web_dist/assets/ProfilesPage-B5rwhwyA.js
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/profile_describer.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/fallback_config.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/profile_distribution.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/__pycache__/mcp_config.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/__pycache__/config_migrations.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/__pycache__/config.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/__pycache__/tools_config.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/__pycache__/moa_config.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/__pycache__/config_defaults.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/__pycache__/profiles.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/__pycache__/fallback_config.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/config_defaults.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/tools_config.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/mcp_config.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/moa_config.py
+/Users/mostafa/.hermes/hermes-agent/hermes_cli/profiles.py
+/Users/mostafa/.hermes/hermes-agent/plugins/memory/hindsight/config_schema.py
+/Users/mostafa/.hermes/hermes-agent/plugins/memory/holographic/store.py
+/Users/mostafa/.hermes/hermes-agent/plugins/memory/config_schema.py
+/Users/mostafa/.hermes/hermes-agent/plugins/memory/__pycache__/config_schema.cpython-311.pyc
+/Users/mostafa/.hermes/hermes-agent/plugins/memory/honcho/config_schema.py
+
+=== 8. ELECTRON STORAGE / IPC CLUES ===
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/link-title-window.ts:1:// Hidden BrowserWindow used by tier-2 link-title resolution: when curl can't
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/link-title-window.ts:32:export function createLinkTitleWindow(BrowserWindow, partitionSession) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/link-title-window.ts:33:  const window = new BrowserWindow(linkTitleWindowOptions(partitionSession))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/find-in-page.ts:9: * unit-tested without booting a BrowserWindow.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/find-in-page.ts:12: * requesting window via `BrowserWindow.fromWebContents(event.sender)` so a
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/find-in-page.ts:191:export function installFindShortcut(window: Electron.BrowserWindow, isMac: () => boolean = IS_MAC): () => void {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/hardening.ts:51:const SAFE_STORAGE_ENCODING = 'safeStorage'
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/hardening.ts:164:function encryptDesktopSecret(value, safeStorageApi, options: { allowPlainText?: boolean } = {}) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/hardening.ts:179:    encryptionAvailable = Boolean(safeStorageApi?.isEncryptionAvailable?.())
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/hardening.ts:186:    // decryptDesktopSecret returns the raw value for any non-'safeStorage'
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/hardening.ts:203:      value: safeStorageApi.encryptString(raw).toString('base64')
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/hardening.ts:218:// that could touch safeStorage, so the switch takes effect for the whole run.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/hardening.ts:222:// method exists (older/mocked safeStorage may lack it) and does not throw.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/hardening.ts:228:function enableBasicPasswordStoreEncryption({ platform, passwordStoreSwitch, safeStorageApi }: any = {}) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/hardening.ts:234:    if (typeof safeStorageApi?.setUsePlainTextEncryption === 'function') {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/hardening.ts:235:      safeStorageApi.setUsePlainTextEncryption(true)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/find-in-page.test.ts:10:import type { BrowserWindow } from 'electron'
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/find-in-page.test.ts:270:  // Minimal BrowserWindow stub: only `webContents` is touched.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/find-in-page.test.ts:272:    return { webContents: asWC(wc) } as unknown as BrowserWindow
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13:  BrowserWindow,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:19:  ipcMain,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:26:  safeStorage,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:465:// Linux: point Chromium at the session's keychain backend so safeStorage can
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:582:ipcMain.handle('hermes:get-remote-display-reason', () => REMOTE_DISPLAY_REASON)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:2619:// Zoom's primary store is a main-process JSON file. The renderer localStorage
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:2622:// recovered from a crash (#56726). JSON survives; localStorage is kept as a
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:2700:  for (const window of BrowserWindow.getAllWindows()) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:5066:// Link title resolution — curl (tier 1) → hidden BrowserWindow (tier 2).
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:5268:        // BrowserWindow may already be torn down; ignore.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:5275:      window = createLinkTitleWindow(BrowserWindow, partitionSession)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:5984:ipcMain.handle('hermes:power-battery:get', () => onBatteryPower === true)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:5993:  for (const win of BrowserWindow.getAllWindows()) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:6157:        click: (_menuItem, browserWindow) => toggleDevTools(browserWindow || mainWindow)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:6276:// Zoom level is persisted in the renderer's own localStorage (per-origin,
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:6278:// process owns setZoomLevel, so we mirror each change into localStorage and
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:6302:  // Secondary mirror: renderer localStorage (legacy store; kept in sync so a
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:6306:      `try { localStorage.setItem(${JSON.stringify(ZOOM_STORAGE_KEY)}, ${JSON.stringify(String(next))}) } catch {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:6330:  // doesn't flash Chromium 100%, then try localStorage for pre-JSON installs
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:6336:      `(() => { try { return localStorage.getItem(${JSON.stringify(ZOOM_STORAGE_KEY)}) } catch { return null } })()`
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:6414:function installContextMenuBridge(window: BrowserWindow) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:6522://     in JS — instead we let an Electron BrowserWindow complete the round
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:6786:      win = new BrowserWindow({
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:6986:// involved. Tokens are persisted encrypted at rest via Electron ``safeStorage``
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:6998:  // baseUrl → { encoding, value } safeStorage payloads.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7002:// The electron-coupled half of the token store: safeStorage encryption plus the
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7607:        win = new BrowserWindow({
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7713:      win = new BrowserWindow({
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7943:  return encryptDesktopSecretStrict(value, safeStorage, options)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:7959:      return safeStorage.decryptString(Buffer.from(value, 'base64'))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8217:    // NOT done here: migrating a legacy non-safeStorage token payload to
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8255:  // safeStorage-encrypted gateway token plus its URL and SSH host/user/keyPath.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8256:  // safeStorage keeps the token opaque; 0600 keeps the whole record — and the
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8326:  // safeStorage-encrypted tokens plus URLs and SSH host/user/keyPath.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8363:    secureTokenStorage = Boolean(safeStorage.isEncryptionAvailable())
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8488:  // Whether the OS keyring (safeStorage) can encrypt the saved token. When
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8490:  // Gateway. safeStorage.isEncryptionAvailable can throw on some platforms, so
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:8495:    secureTokenStorage = Boolean(safeStorage.isEncryptionAvailable())
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:9589:  for (const win of BrowserWindow.getAllWindows()) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:10788:  const win = new BrowserWindow({
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:10875:  const source = BrowserWindow.getFocusedWindow() || mainWindow
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:10891:  const win = new BrowserWindow({
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:10980:  const win = new BrowserWindow({
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:11244:function startHudCursorFeed(win: BrowserWindow) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:11334:  for (const win of BrowserWindow.getAllWindows()) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:11342:  const win = new BrowserWindow({
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:11581:  const win = new BrowserWindow({
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:11747:  mainWindow = new BrowserWindow({
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:11792:        for (const win of BrowserWindow.getAllWindows()) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:11949:ipcMain.handle('hermes:connection', async (_event, profile) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:11960:ipcMain.handle('hermes:connection:for', async (_event, payload) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:11976:ipcMain.handle('hermes:connection:revalidate', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12031:ipcMain.handle('hermes:backend:touch', async (_event, profile) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12036:ipcMain.handle('hermes:gateway:ws-url', async (_event, profile) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12039:ipcMain.handle('hermes:window:openSession', async (_event, sessionId, opts) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12048:ipcMain.handle('hermes:window:openInstance', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12064:ipcMain.handle('hermes:window:openInTerminal', async (_event, sessionId, opts) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12117:ipcMain.handle('hermes:wake-indicator:get', () => wakeIndicatorController.getState())
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12118:ipcMain.on('hermes:wake-indicator:set', (_event, state) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12125:ipcMain.handle('hermes:zoom:get', event => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12126:  const window = BrowserWindow.fromWebContents(event.sender)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12132:ipcMain.on('hermes:zoom:set-percent', (event, percent) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12133:  const window = BrowserWindow.fromWebContents(event.sender)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12148:ipcMain.handle('hermes:pet-overlay:open', async (_event, request) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12171:ipcMain.handle('hermes:pet-overlay:close', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12182:ipcMain.on('hermes:pet-overlay:set-bounds', (_event, bounds) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12206:ipcMain.on('hermes:pet-overlay:ignore-mouse', (_event, ignore) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12215:ipcMain.on('hermes:pet-overlay:set-focusable', (_event, focusable) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12227:ipcMain.on('hermes:pet-overlay:state', (_event, payload) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12233:ipcMain.on('hermes:pet-overlay:control', (_event, payload) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12267:ipcMain.handle('hermes:hud:open', async (_event, request) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12282:ipcMain.handle('hermes:hud:vibrancy', (_event, on) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12295:ipcMain.on('hermes:hud:ignore-mouse', (_event, ignore) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12301:ipcMain.on('hermes:hud:move-by', (event, delta) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12334:ipcMain.on('hermes:hud:set-bounds', (event, bounds) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12358:ipcMain.on('hermes:hud:session', (event, sessionId) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12364:ipcMain.handle('hermes:hud:close', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12369:ipcMain.handle('hermes:bootstrap:reset', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12383:ipcMain.handle('hermes:bootstrap:repair', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12435:ipcMain.handle('hermes:bootstrap:continue-local', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12441:ipcMain.handle('hermes:bootstrap:cancel', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12457:ipcMain.handle('hermes:boot-progress:get', async () => bootProgressState)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12458:ipcMain.handle('hermes:bootstrap:get', async () => getBootstrapState())
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12459:ipcMain.handle('hermes:connection-config:get', async (_event, profile) =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12462:ipcMain.handle('hermes:plugin-profile-routes', async (_event, rawProfileNames) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12525:ipcMain.handle('hermes:ssh-config:hosts', async () => ({ hosts: collectSshConfigHosts() }))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12526:ipcMain.handle('hermes:ssh-config:resolve', async (_event, host) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12569:ipcMain.handle('hermes:connection-config:test', async (_event, payload) => testDesktopConnectionConfig(payload))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12575:ipcMain.handle('hermes:connections:list', async () => sanitizeConnectionsRegistry())
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12576:ipcMain.handle('hermes:connections:save', async (_event, payload) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12581:ipcMain.handle('hermes:connections:remove', async (_event, id) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12595:ipcMain.handle('hermes:connections:set-primary', async (_event, id) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12601:ipcMain.handle('hermes:connections:set-launch-mode', async (_event, mode) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12607:ipcMain.handle('hermes:connections:set-last-used', async (_event, id) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12613:ipcMain.handle('hermes:connections:test', async (_event, id) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12874:ipcMain.handle('hermes:agents:roster', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12899:ipcMain.handle('hermes:gateway:ws-url-for', async (_event, payload) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:12926:ipcMain.handle('hermes:connections:update-all', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13026:ipcMain.handle('hermes:connection-config:probe', async (_event, rawUrl) => probeRemoteAuthMode(rawUrl))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13027:ipcMain.handle('hermes:connection-config:oauth-login', async (_event, rawUrl) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13033:  //     BrowserWindow cookie flow, preserving compatibility.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13088:ipcMain.handle('hermes:connection-config:oauth-logout', async (_event, rawUrl) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13109:ipcMain.handle('hermes:cloud:status', async () => ({
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13113:ipcMain.handle('hermes:cloud:login', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13118:ipcMain.handle('hermes:cloud:logout', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13123:ipcMain.handle('hermes:cloud:discover', async (_event, org) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13128:ipcMain.handle('hermes:cloud:agent-sign-in', async (_event, dashboardUrl) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13134:ipcMain.handle('hermes:connection-config:save', async (_event, payload) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13140:ipcMain.handle('hermes:connection-config:apply', async (_event, payload) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13172:ipcMain.handle('hermes:profile:get', async () => ({ profile: readActiveDesktopProfile() }))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13173:ipcMain.handle('hermes:profile:set', async (_event, name) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13185:ipcMain.on('hermes:previewShortcutActive', (_event, active) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13189:ipcMain.handle('hermes:requestMicrophoneAccess', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13201:ipcMain.handle('hermes:window:readBelow', async event => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13202:  const win = BrowserWindow.fromWebContents(event.sender)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13638:ipcMain.handle('hermes:api', async (_event, request) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13661:ipcMain.handle('hermes:ambient:claim', (_event, key) => !claimedAmbientCue(String(key ?? '')))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13663:ipcMain.handle('hermes:notify', (_event, payload) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13771:ipcMain.handle('hermes:data-url-read-max:get', () => ({
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13778:ipcMain.handle('hermes:data-url-read-max:set', (_event, maxMb) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13788:ipcMain.handle('hermes:readFileDataUrl', async (_event, filePath) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13800:ipcMain.handle('hermes:readFileDataUrlForAttach', async (_event, filePath) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13808:ipcMain.handle('hermes:readFileText', async (_event, filePath) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13836:ipcMain.handle('hermes:selectPaths', async (_event, options: any = {}) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13870:ipcMain.handle('hermes:writeClipboard', (_event, text) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13878:ipcMain.handle('hermes:selectSavePath', async (_event, options: any = {}) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13896:ipcMain.handle('hermes:readClipboard', () => clipboard.readText())
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13898:ipcMain.handle('hermes:saveGatewayFile', (_event, payload) => saveGatewayFile(payload))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13900:ipcMain.handle('hermes:saveImageFromUrl', (_event, url) => saveImageFromUrl(String(url || '')))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13904:ipcMain.handle('hermes:context-menu:edit', (event, command) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13920:ipcMain.handle('hermes:context-menu:copy-image', event => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13928:ipcMain.handle('hermes:context-menu:spellcheck', (event, action) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13945:ipcMain.handle('hermes:context-menu:guest-add-word', (_event, payload) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13954:ipcMain.handle('hermes:saveImageBuffer', async (_event, payload) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13966:ipcMain.handle('hermes:saveClipboardImage', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13987:ipcMain.handle('hermes:normalizePreviewTarget', (_event, target, baseDir) =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13991:ipcMain.handle('hermes:watchPreviewFile', (_event, url) => watchPreviewFile(String(url || '')))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13993:ipcMain.handle('hermes:watchDirectory', (_event, dir) => watchDirectory(String(dir || '')))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:13995:ipcMain.handle('hermes:stopPreviewFileWatch', (_event, id) => stopPreviewFileWatch(String(id || '')))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14010:ipcMain.on('hermes:active-work', (event, payload) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14024:ipcMain.on('hermes:titlebar-theme', (_event, payload) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14037:  for (const win of BrowserWindow.getAllWindows()) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14043:ipcMain.on('hermes:native-theme', (_event, mode) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14087:ipcMain.on('hermes:translucency', (_event, payload) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14114:    for (const win of BrowserWindow.getAllWindows()) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14135:ipcMain.on('hermes:keep-awake', (_event, on) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14152:ipcMain.handle('hermes:quick-entry:settings:get', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14166:ipcMain.handle('hermes:quick-entry:settings:set', async (_event, patch) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14183:ipcMain.on('hermes:quick-entry:submit', (_event, payload) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14209:ipcMain.on('hermes:quick-entry:state', (_event, payload) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14217:ipcMain.on('hermes:quick-entry:dismiss', () => hideQuickEntryWindow())
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14232:ipcMain.on('hermes:devtools:disable-f12', (_event, on) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14243:ipcMain.handle('hermes:openExternal', (_event, url) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14250:// The desktop supports multiple BrowserWindows (one primary plus any
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14255:// the sender through `BrowserWindow.fromWebContents(event.sender)` and
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14278:ipcMain.handle('hermes:find-in-page', async (event, query, options) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14279:  const win = BrowserWindow.fromWebContents(event.sender)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14293:ipcMain.handle('hermes:stop-find-in-page', event => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14294:  const win = BrowserWindow.fromWebContents(event.sender)
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14305:ipcMain.handle('hermes:preview:reach', async (_event, url) => reachablePreviewUrl(String(url || '')))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14307:ipcMain.handle('hermes:openPreviewInBrowser', async (_event, url) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14317:ipcMain.handle('hermes:setting:defaultProjectDir:get', async () => ({
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14323:ipcMain.handle('hermes:workspace:sanitize', async (_event, cwd) => sanitizeWorkspaceCwd(cwd))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14325:ipcMain.handle('hermes:setting:defaultProjectDir:set', async (_event, dir) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14341:ipcMain.handle('hermes:setting:defaultProjectDir:pick', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14355:ipcMain.handle('hermes:fetchLinkTitle', (_event, url) => fetchLinkTitle(url))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14357:ipcMain.handle('hermes:logs:reveal', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14373:ipcMain.handle('hermes:logs:recent', async () => ({ path: DESKTOP_LOG_PATH, lines: hermesLog.slice(-200) }))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14380:ipcMain.on('hermes:logs:renderer-error', (_event, report) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14581:ipcMain.handle('hermes:fs:readDir', async (_event, dirPath) => readDirForIpc(dirPath))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14583:ipcMain.handle('hermes:fs:gitRoot', async (_event, startPath) => gitRootForIpc(startPath))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14586:ipcMain.handle('hermes:fs:reveal', async (_event, targetPath) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14607:ipcMain.handle('hermes:fs:openDir', async (_event, dirPath) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14649:ipcMain.handle('hermes:fs:desktopPluginsRoot', async () => localPluginsRoot('desktop-plugins'))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14656:ipcMain.handle('hermes:fs:agentPluginsRoot', async () => localPluginsRoot('plugins'))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14658:ipcMain.handle('hermes:plugin:probe', async (_event, payload) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14668:ipcMain.handle('hermes:plugin:installDesktop', async (_event, payload) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14683:ipcMain.handle('hermes:fs:rename', async (_event, targetPath, newName) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14710:ipcMain.handle('hermes:fs:writeText', async (_event, filePath, content) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14736:ipcMain.handle('hermes:fs:trash', async (_event, targetPath) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14750:ipcMain.handle('hermes:git:worktreeList', async (_event, repoPath) => listWorktrees(repoPath, resolveGitBinary()))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14752:ipcMain.handle('hermes:git:worktreeAdd', async (_event, repoPath, options) =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14756:ipcMain.handle('hermes:git:worktreeRemove', async (_event, repoPath, worktreePath, options) =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14760:ipcMain.handle('hermes:git:branchSwitch', async (_event, repoPath, branch) =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14764:ipcMain.handle('hermes:git:branchList', async (_event, repoPath) => listBranches(repoPath, resolveGitBinary()))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14766:ipcMain.handle('hermes:git:baseBranchList', async (_event, repoPath) => listBaseBranches(repoPath, resolveGitBinary()))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14771:ipcMain.handle('hermes:git:repoStatus', async (_event, repoPath) => repoStatus(repoPath, resolveGitBinary()))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14776:ipcMain.handle('hermes:git:review:list', async (_event, repoPath, scope, baseRef) =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14779:ipcMain.handle('hermes:git:review:diff', async (_event, repoPath, filePath, scope, baseRef, staged) =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14783:ipcMain.handle('hermes:git:fileDiff', async (_event, repoPath, filePath) =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14786:ipcMain.handle('hermes:git:review:stage', async (_event, repoPath, filePath) =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14789:ipcMain.handle('hermes:git:review:unstage', async (_event, repoPath, filePath) =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14792:ipcMain.handle('hermes:git:review:revert', async (_event, repoPath, filePath) =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14795:ipcMain.handle('hermes:git:review:revParse', async (_event, repoPath, ref) =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14798:ipcMain.handle('hermes:git:review:commit', async (_event, repoPath, message, push) =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14801:ipcMain.handle('hermes:git:review:commitContext', async (_event, repoPath) =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14804:ipcMain.handle('hermes:git:review:push', async (_event, repoPath) => reviewPush(repoPath, resolveGitBinary()))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14805:ipcMain.handle('hermes:git:review:shipInfo', async (_event, repoPath) => reviewShipInfo(repoPath, resolveGhBinary()))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14806:ipcMain.handle('hermes:git:review:prList', async (_event, repoPath, branches, numbers) =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14809:ipcMain.handle('hermes:git:review:fetchPrComment', async (_event, repoPath, url) =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14812:ipcMain.handle('hermes:git:review:createPr', async (_event, repoPath) =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14818:ipcMain.handle('hermes:git:scanRepos', async (_event, roots, options) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14856:ipcMain.handle('hermes:terminal:start', async (event, payload = {}) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14908:ipcMain.handle('hermes:terminal:write', (_event, id, data) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14920:ipcMain.handle('hermes:terminal:resize', (_event, id, size = {}) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14934:ipcMain.handle('hermes:terminal:cwd', async (_event, id) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14944:ipcMain.handle('hermes:terminal:dispose', (_event, id) => disposeTerminalSession(String(id || '')))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14946:ipcMain.handle('hermes:updates:check', async () =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14956:ipcMain.handle('hermes:updates:apply', async (_event, payload) =>
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14964:ipcMain.handle('hermes:updates:branch:get', async () => readDesktopUpdateConfig())
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:14966:ipcMain.handle('hermes:updates:branch:set', async (_event, name) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:15028:ipcMain.handle('hermes:version', async () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:15250:ipcMain.handle('hermes:uninstall:summary', async () => getUninstallSummary())
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:15251:ipcMain.handle('hermes:uninstall:run', async (_event, payload) => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:15259:ipcMain.handle('hermes:vscode-theme:fetch', async (_event, id) => fetchMarketplaceThemes(String(id || '')))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:15262:ipcMain.handle('hermes:vscode-theme:search', async (_event, query) => searchMarketplaceThemes(String(query || ''), 20))
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:15343:ipcMain.handle('hermes:deep-link-ready', () => {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:15432:  // createWindow() and anything that could touch safeStorage; the narrow
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:15437:    safeStorageApi: safeStorage
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/main.ts:15526:  const parent = BrowserWindow.getFocusedWindow() ?? BrowserWindow.getAllWindows()[0]
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/translucency.ts:6: * adds only what needs a BrowserWindow to mean anything.
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/translucency.ts:39: * BrowserWindow constructor options for a chat window's backing, given the
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/connection-config.ts:290:      if (value && (encoding === 'safeStorage' || encoding === 'plain' || !encoding)) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/power-save.ts:6: * owns the preference (persisted in localStorage) and mirrors it here over
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/connection-config.test.ts:178:          'CF-Access-Client-Id': { encoding: 'safeStorage', value: 'encrypted-id' },
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/connection-config.test.ts:190:      'CF-Access-Client-Id': { encoding: 'safeStorage', value: 'encrypted-id' }
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/session-windows.test.ts:12:// A minimal fake BrowserWindow: tracks listeners + destroyed state and lets a
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/link-title-window.test.ts:12:function makeFakeBrowserWindow() {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/link-title-window.test.ts:15:  const FakeBrowserWindow = function (options) {
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/link-title-window.test.ts:24:  return { FakeBrowserWindow, calls }
+/Users/mostafa/.hermes/hermes-agent/apps/desktop/electron/link-title-window.test.ts:42:  const { FakeBrowserWindow, calls } = makeFakeBrowserWindow()
+
+=== 9. CURRENT HERMES PROCESSES ===
+
+=== 10. LAUNCH AGENTS / SERVICES REFERENCING HERMES ===
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ END — NO FILES MODIFIED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+mostafa@MMostafa Hermes % 
