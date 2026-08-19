@@ -1,0 +1,2 @@
+# Logs
+output logs
