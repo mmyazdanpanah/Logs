@@ -1,0 +1,1792 @@
+
+============================================================
+HERMES SCHOLAR OS FULL ARCHITECTURE INSPECTION
+============================================================
+Date:
+Thu Aug 20 22:15:37 +0330 2026
+
+User:
+mostafa
+
+Machine:
+MMostafa.local
+
+Home:
+/Users/mostafa
+
+============================================================
+1. SYSTEM INFORMATION
+============================================================
+ProductName:		macOS
+ProductVersion:		15.7.9
+BuildVersion:		24G830
+
+Darwin MMostafa.local 24.6.0 Darwin Kernel Version 24.6.0: Tue Jul 21 20:49:22 PDT 2026; root:xnu-11417.140.69.711.44~1/RELEASE_ARM64_T8103 arm64
+
+Architecture:
+arm64
+
+Memory:
+8.00 GB
+
+============================================================
+2. INSTALLED COMMANDS
+============================================================
+
+---- openclaw ----
+PATH:
+/Users/mostafa/.local/bin/openclaw
+VERSION:
+OpenClaw 2026.7.1-2 (0790d9f)
+
+---- hermes ----
+PATH:
+/Users/mostafa/.local/bin/hermes
+VERSION:
+Hermes Agent v0.20.4 (2026.8.18)
+Install directory: /Users/mostafa/.hermes/hermes-agent
+Python: 3.11.15
+OpenAI SDK: 2.24.0
+Run 'hermes version' for update status.
+
+---- pi ----
+PATH:
+/Users/mostafa/.local/bin/pi
+VERSION:
+0.84.2
+
+---- dsh ----
+PATH:
+/Users/mostafa/.local/bin/dsh
+VERSION:
+0.1.0-rc.7
+
+---- omp ----
+PATH:
+/Users/mostafa/.local/bin/omp
+VERSION:
+omp/17.4.0
+
+---- ollama ----
+PATH:
+/opt/homebrew/bin/ollama
+VERSION:
+Warning: could not connect to a running Ollama instance
+Warning: client version is 0.32.14
+
+---- node ----
+PATH:
+/Users/mostafa/.local/bin/node
+VERSION:
+v26.7.0
+
+---- npm ----
+PATH:
+/Users/mostafa/.local/bin/npm
+VERSION:
+11.19.0
+
+---- bun ----
+PATH:
+/Users/mostafa/.bun/bin/bun
+VERSION:
+1.3.14
+
+---- python3 ----
+PATH:
+/opt/homebrew/bin/python3
+VERSION:
+Python 3.14.7
+
+---- git ----
+PATH:
+/opt/homebrew/bin/git
+VERSION:
+git version 2.55.0
+
+============================================================
+3. OPENCLAW / HERMES COMMAND SURVEY
+============================================================
+OPENCLAW HELP
+
+OpenClaw 2026.7.1-2 (0790d9f) — All your chats, one OpenClaw.
+
+Usage: openclaw [options] [command]
+
+Options:
+  --container <name>   Run the CLI inside a running Podman/Docker container
+                       named <name> (default: env OPENCLAW_CONTAINER)
+  --dev                Dev profile: isolate state under ~/.openclaw-dev, default
+                       gateway port 19001, and shift derived ports
+                       (browser/canvas)
+  -h, --help           Display help for command
+  --log-level <level>  Global log level override for file + console
+                       (silent|fatal|error|warn|info|debug|trace)
+  --no-color           Disable ANSI colors
+  --profile <name>     Use a named profile (isolates
+                       OPENCLAW_STATE_DIR/OPENCLAW_CONFIG_PATH under
+                       ~/.openclaw-<name>)
+  -V, --version        output the version number
+
+Commands:
+  Hint: commands suffixed with * have subcommands. Run <command> --help for details.
+  acp *                Run an ACP bridge backed by the Gateway
+  agent                Run an agent turn via the Gateway (use --local for
+                       embedded)
+  agents *             Manage isolated agents (workspaces + auth + routing)
+  approvals *          Manage exec approvals (gateway or node host)
+  attach               Attach Claude Code to a gateway session with scoped MCP
+                       tools
+  audit                Inspect metadata-only agent run and tool action records
+  backup *             Create and verify local backup archives for OpenClaw
+                       state
+  capability *         Run provider capability commands (fallback alias: infer)
+  channels *           Manage connected chat channels and accounts
+  chat                 Open a local terminal UI (alias for tui --local)
+  clawbot *            Legacy clawbot command aliases
+  commitments *        List and manage inferred follow-up commitments
+  completion           Generate shell completion script
+  config *             Non-interactive config helpers
+                       (get/set/patch/unset/file/schema/validate). Run without
+                       subcommand for guided setup.
+  configure            Interactive configuration for credentials, channels,
+                       gateway, and agent defaults
+  crestodian           Open the ring-zero setup and repair helper
+  cron *               Manage cron jobs (via Gateway)
+  daemon *             Manage the Gateway service (launchd/systemd/schtasks)
+  dashboard            Open the Control UI with your current token
+  devices *            Device pairing and auth tokens
+  directory *          Lookup contact and group IDs (self, peers, groups) for
+                       supported chat channels
+  dns *                DNS helpers for wide-area discovery (Tailscale + CoreDNS)
+  docs                 Search the live OpenClaw docs
+  doctor               Health checks + quick fixes for the gateway and channels
+  exec-approvals *     Manage exec approvals (alias for approvals)
+  exec-policy *        Show or synchronize requested exec policy with host
+                       approvals
+  gateway *            Run, inspect, and query the WebSocket Gateway
+  health               Fetch health from the running gateway
+  help                 Display help for command
+  hooks *              Manage internal agent hooks
+  infer *              Run provider-backed inference commands through a stable
+                       CLI surface
+  logs                 Tail gateway file logs via RPC
+  mcp *                Manage OpenClaw mcp.servers config and channel bridge
+  memory *             Search, inspect, and reindex memory files
+  message *            Send, read, and manage messages and channel actions
+  migrate *            Import state from another agent system
+  models *             Model discovery, scanning, and configuration
+  node *               Run and manage the headless node host service
+  nodes *              Manage gateway-owned nodes (pairing, status, invoke, and
+                       media)
+  onboard              Guided setup for auth, models, Gateway, workspace,
+                       channels, and skills
+  pairing *            Secure DM pairing (approve inbound requests)
+  plugins *            Manage OpenClaw plugins and extensions
+  promos *             Discover and claim promotional model offers from ClawHub
+  proxy *              Run the OpenClaw debug proxy and inspect captured traffic
+  qr                   Generate a mobile pairing QR code and setup code
+  reset                Reset local config/state (keeps the CLI installed)
+  sandbox *            Manage sandbox containers (Docker-based agent isolation)
+  secrets *            Secrets runtime controls
+  security *           Audit local config and state for common security
+                       foot-guns
+  sessions *           List stored conversation sessions
+  setup                Alias for openclaw onboard
+  skills *             List and inspect available skills
+  status               Show channel health and recent session recipients
+  system *             System tools (events, heartbeat, presence)
+  tasks *              Inspect durable background tasks and TaskFlow state
+  terminal             Open a local terminal UI (alias for tui --local)
+  transcripts *        Inspect stored transcripts
+  tui                  Open a terminal UI connected to the Gateway
+  uninstall            Uninstall the gateway service + local data (CLI remains)
+  update *             Update OpenClaw and inspect update channel status
+  webhooks *           Webhook helpers and integrations
+  worktrees *          Create, inspect, restore, and clean up managed worktrees
+
+Examples:
+  openclaw onboard
+    Run guided setup for a local Gateway, workspace, auth, and channels.
+  openclaw setup
+    Create the baseline config, workspace, and session folders.
+  openclaw configure
+    Change models, Gateway, channels, plugins, skills, and health checks.
+  openclaw status
+    Check Gateway, channel, model, and recent-session status.
+  openclaw doctor --fix
+    Repair common config, service, plugin, and channel problems.
+  openclaw channels add
+    Add or update a chat channel account with guided prompts.
+  openclaw channels status
+    See connected messaging accounts and login state.
+  openclaw --dev gateway
+    Run a dev Gateway (isolated state/config) on ws://127.0.0.1:19001.
+  openclaw gateway run --force
+    Start the Gateway and replace anything bound to its port.
+  openclaw models status
+    Show model/provider auth health before running agents.
+  openclaw plugins list
+    Inspect enabled, disabled, and installed plugins.
+  openclaw agent --to +15555550123 --message "Run summary" --deliver
+    Run one agent turn through the Gateway and optionally deliver the reply.
+  openclaw message send --channel telegram --target @mychat --message "Hi"
+    Send via your Telegram bot.
+
+Docs: https://docs.openclaw.ai/cli
+
+
+OPENCLAW COMMANDS
+
+--- openclaw config ---
+
+OpenClaw 2026.7.1-2 (0790d9f) — All your chats, one OpenClaw.
+
+Usage: openclaw config [options] [command]
+
+Non-interactive config helpers (get/set/patch/unset/file/schema/validate). Run
+without subcommand for guided setup.
+
+Options:
+  -h, --help           Display help for command
+  --section <section>  Configuration sections for guided setup (repeatable). Use
+                       with no subcommand. (default: [])
+
+Commands:
+  file                 Print the active config file path
+  get                  Get a config value by dot path
+  patch                Patch config from a JSON5 object in one validated write.
+                       Objects merge recursively, arrays/scalars replace, and
+                       null deletes a path.
+                       Examples:
+                       openclaw config patch --file ./openclaw.patch.json5
+                       --dry-run
+                       openclaw config patch --stdin
+  schema               Print the JSON schema for openclaw.json
+  set                  Set config values by path (value mode, ref/provider
+                       builder mode, or batch JSON mode).
+                       Examples:
+                       openclaw config set gateway.port 19001 --strict-json
+                       openclaw config set channels.discord.token --ref-provider
+                       default --ref-source env --ref-id DISCORD_BOT_TOKEN
+                       openclaw config set secrets.providers.vault
+                       --provider-source file --provider-path
+                       /etc/openclaw/secrets.json --provider-mode json
+                       openclaw config set --batch-file ./config-set.batch.json
+                       --dry-run
+  unset                Remove a config value by dot path
+  validate             Validate the current config against the schema without
+                       starting the gateway
+
+Docs: https://docs.openclaw.ai/cli/config
+
+
+--- openclaw status ---
+
+OpenClaw 2026.7.1-2 (0790d9f) — All your chats, one OpenClaw.
+
+Usage: openclaw status [options]
+
+Show channel health and recent session recipients
+
+Options:
+  --all           Full diagnosis (read-only, pasteable) (default: false)
+  --debug         Alias for --verbose (default: false)
+  --deep          Probe channels (WhatsApp Web + Telegram + Discord + Slack +
+                  Signal) (default: false)
+  -h, --help      Display help for command
+  --json          Output JSON instead of text (default: false)
+  --timeout <ms>  Probe timeout in milliseconds (default: "10000")
+  --usage         Show model provider usage/quota snapshots (default: false)
+  --verbose       Verbose logging (default: false)
+
+Examples:
+  openclaw status
+    Show channel health + session summary.
+  openclaw status --all
+    Full diagnosis (read-only).
+  openclaw status --json
+    Machine-readable output.
+  openclaw status --usage
+    Show model provider usage/quota snapshots.
+  openclaw status --deep
+    Run channel probes (WA + Telegram + Discord + Slack + Signal).
+  openclaw status --deep --timeout 5000
+    Tighten probe timeout.
+
+Docs: https://docs.openclaw.ai/cli/status
+
+
+--- openclaw plugin ---
+[openclaw] Could not start the CLI.
+[openclaw] Reason: Unknown command: openclaw plugin. No built-in command or plugin CLI metadata owns "plugin".
+Did you mean this?
+  openclaw plugins
+[openclaw] Debug: set OPENCLAW_DEBUG=1 to include the stack trace.
+[openclaw] Try: openclaw doctor
+[openclaw] Help: openclaw --help
+
+--- openclaw plugins ---
+
+OpenClaw 2026.7.1-2 (0790d9f) — All your chats, one OpenClaw.
+
+Usage: openclaw plugins [options] [command]
+
+Manage OpenClaw plugins and extensions
+
+Options:
+  -h, --help   Display help for command
+
+Commands:
+  build        Generate simple tool plugin metadata
+  disable      Disable a plugin in config
+  doctor       Report plugin load issues
+  enable       Enable a plugin in config
+  init         Create a plugin project
+  inspect      Inspect plugin details
+  install      Install a plugin or hook pack (path, archive, npm spec, git repo,
+               clawhub:package, or marketplace entry)
+  list         List discovered plugins
+  marketplace  Inspect Claude-compatible plugin marketplaces
+  registry     Inspect or rebuild the persisted plugin registry
+  search       Search ClawHub plugin packages
+  uninstall    Uninstall a plugin
+  update       Update installed plugins and tracked hook packs
+  validate     Validate simple tool plugin metadata
+
+Docs: https://docs.openclaw.ai/cli/plugins
+
+
+--- openclaw mcp ---
+
+OpenClaw 2026.7.1-2 (0790d9f) — All your chats, one OpenClaw.
+
+Usage: openclaw mcp [options] [command]
+
+Manage OpenClaw mcp.servers config and channel bridge
+
+Options:
+  -h, --help  Display help for command
+
+Commands:
+  add         Add one MCP server from flags and probe it before saving
+  configure   Update MCP server operator controls without replacing the server
+  doctor      Check configured MCP servers for static setup problems
+  list        List OpenClaw-managed MCP servers from mcp.servers
+  login       Authorize an OAuth MCP server
+  logout      Clear stored OAuth credentials for an MCP server
+  probe       Connect to configured MCP servers and list available capabilities
+  reload      Dispose cached MCP runtimes so new config is used on the next turn
+  serve       Expose OpenClaw channels over MCP stdio
+  set         Set one OpenClaw-managed MCP server from a JSON object
+  show        Show one OpenClaw-managed MCP server or the full mcp.servers
+              config
+  status      Show configured MCP server transport status without connecting
+  tools       Update per-server MCP tool include/exclude filters
+  unset       Remove one OpenClaw-managed MCP server
+
+--- openclaw model ---
+[openclaw] Could not start the CLI.
+[openclaw] Reason: Unknown command: openclaw model. No built-in command or plugin CLI metadata owns "model".
+Did you mean this?
+  openclaw models
+  openclaw node
+  openclaw nodes
+[openclaw] Debug: set OPENCLAW_DEBUG=1 to include the stack trace.
+[openclaw] Try: openclaw doctor
+[openclaw] Help: openclaw --help
+
+--- openclaw models ---
+
+OpenClaw 2026.7.1-2 (0790d9f) — All your chats, one OpenClaw.
+
+Usage: openclaw models [options] [command]
+
+Model discovery, scanning, and configuration
+
+Options:
+  --agent <id>     Agent id to inspect (overrides OPENCLAW_AGENT_DIR)
+  -h, --help       Display help for command
+  --status-json    Output JSON (alias for `models status --json`) (default:
+                   false)
+  --status-plain   Plain output (alias for `models status --plain`) (default:
+                   false)
+
+Commands:
+  aliases          Manage model aliases
+  auth             Manage model auth profiles
+  fallbacks        Manage model fallback list
+  image-fallbacks  Manage image model fallback list
+  list             List models (configured by default)
+  scan             Scan OpenRouter free models for tools + images
+  set              Set the default model
+  set-image        Set the image model
+  status           Show configured model state
+
+Docs: https://docs.openclaw.ai/cli/models
+
+
+--- openclaw provider ---
+[openclaw] Could not start the CLI.
+[openclaw] Reason: Unknown command: openclaw provider. No built-in command or plugin CLI metadata owns "provider".
+[openclaw] Debug: set OPENCLAW_DEBUG=1 to include the stack trace.
+[openclaw] Try: openclaw doctor
+[openclaw] Help: openclaw --help
+
+--- openclaw providers ---
+[openclaw] Could not start the CLI.
+[openclaw] Reason: Unknown command: openclaw providers. No built-in command or plugin CLI metadata owns "providers".
+[openclaw] Debug: set OPENCLAW_DEBUG=1 to include the stack trace.
+[openclaw] Try: openclaw doctor
+[openclaw] Help: openclaw --help
+
+============================================================
+4. HERMES RUNTIME
+============================================================
+~/.hermes
+2.8G	/Users/mostafa/.hermes
+
+~/.hermes
+~/.hermes/config.yaml.corrupt.20260820-044115.bak
+~/.hermes/config.yaml.backup.20260820-044110
+~/.hermes/pairing
+~/.hermes/.update_exit_code
+~/.hermes/sandboxes
+~/.hermes/sandboxes/singularity
+~/.hermes/platforms
+~/.hermes/platforms/pairing
+~/.hermes/cache
+~/.hermes/cache/model_catalog.json
+~/.hermes/cache/schema_columns.json
+~/.hermes/cache/banner_snapshot.json
+~/.hermes/cache/tool_discovery_cache.json
+~/.hermes/cache/plugin_toolset_keys.json
+~/.hermes/auth.lock
+~/.hermes/desktop-plugins
+~/.hermes/bin
+~/.hermes/bin/uvx
+~/.hermes/bin/uv
+~/.hermes/models_dev_cache.etag
+~/.hermes/plugins
+~/.hermes/pets
+~/.hermes/pets/.thumbs
+~/.hermes/pets/.thumbs/scoop.png
+~/.hermes/pets/.thumbs/batmeme.png
+~/.hermes/pets/.thumbs/linen-catalog-foot.png
+~/.hermes/pets/.thumbs/pearl-index-bridge.png
+~/.hermes/pets/.thumbs/skipper.png
+~/.hermes/pets/.thumbs/kebo.png
+~/.hermes/pets/.thumbs/prompt-penguin.png
+~/.hermes/pets/.thumbs/paper-ledger-spacer.png
+~/.hermes/pets/.thumbs/cash-cuy.png
+~/.hermes/pets/.thumbs/homelander.png
+~/.hermes/pets/.thumbs/mecha-xiaobai.png
+~/.hermes/pets/.thumbs/humboldt.png
+~/.hermes/pets/.thumbs/lulu-capybara-2.png
+~/.hermes/pets/.thumbs/shuangsheng-linger.png
+~/.hermes/pets/.thumbs/cosmo.png
+~/.hermes/pets/.thumbs/opal-file-ledger.png
+~/.hermes/pets/.thumbs/cache-capy.png
+~/.hermes/pets/.thumbs/socksy.png
+~/.hermes/pets/.thumbs/pewter-catalog-foot.png
+~/.hermes/pets/.thumbs/boxcat.png
+~/.hermes/pets/.thumbs/glass-index-bridge.png
+~/.hermes/pets/.thumbs/glass-label-runner.png
+~/.hermes/pets/.thumbs/noir-webling.png
+~/.hermes/pets/.thumbs/jill-stingray.png
+~/.hermes/pets/.thumbs/dalek.png
+~/.hermes/pets/.thumbs/captain-quack.png
+~/.hermes/pets/.thumbs/nukey.png
+~/.hermes/pets/.thumbs/cotton-index-bridge.png
+~/.hermes/pets/.thumbs/creamware-archive-wedge.png
+~/.hermes/pets/.thumbs/pixel-panda.png
+~/.hermes/pets/.thumbs/alder-catalog-foot.png
+~/.hermes/pets/.thumbs/daemon-dumpling.png
+~/.hermes/pets/.thumbs/boba.png
+~/.hermes/pets/.thumbs/alder-divider-block.png
+~/.hermes/pets/.thumbs/hyein.png
+~/.hermes/pets/.thumbs/byte-bunny.png
+~/.hermes/image_cache
+~/.hermes/.update_check
+~/.hermes/state.db
+~/.hermes/provider_models_cache.json
+~/.hermes/config.yaml
+~/.hermes/models_dev_cache.json
+~/.hermes/projects.db
+~/.hermes/terminal-sessions
+~/.hermes/terminal-sessions/tty-dev-ttys001
+~/.hermes/hermes-setup
+~/.hermes/.npm_lock_hash_fcdad8330cd1
+~/.hermes/sessions
+~/.hermes/logs
+~/.hermes/logs/desktop-update-handoff.log
+~/.hermes/logs/curator
+~/.hermes/logs/gui.log
+~/.hermes/logs/errors.log
+~/.hermes/logs/bootstrap-installer.log
+~/.hermes/logs/desktop.log
+~/.hermes/logs/agent.log
+~/.hermes/ollama_cloud_models_cache.json
+~/.hermes/.env
+~/.hermes/hooks
+~/.hermes/desktop-build-stamp.json
+~/.hermes/install_id
+~/.hermes/hermes-agent
+~/.hermes/hermes-agent/batch_runner.py
+~/.hermes/hermes-agent/ui-tui
+~/.hermes/hermes-agent/ui-tui/node_modules
+~/.hermes/hermes-agent/ui-tui/README.md
+~/.hermes/hermes-agent/ui-tui/.gitignore
+~/.hermes/hermes-agent/ui-tui/package.json
+~/.hermes/hermes-agent/ui-tui/tsconfig.build.json
+~/.hermes/hermes-agent/ui-tui/scripts
+~/.hermes/hermes-agent/ui-tui/scripts/profile-tui.mjs
+~/.hermes/hermes-agent/ui-tui/scripts/billing-fixtures.tsx
+~/.hermes/hermes-agent/ui-tui/scripts/bench-streaming-md.tsx
+~/.hermes/hermes-agent/ui-tui/scripts/visual
+~/.hermes/hermes-agent/ui-tui/scripts/build.mjs
+~/.hermes/hermes-agent/ui-tui/scripts/bench-history-scroll.tsx
+~/.hermes/hermes-agent/ui-tui/packages
+~/.hermes/hermes-agent/ui-tui/packages/hermes-ink
+~/.hermes/hermes-agent/ui-tui/tsconfig.json
+~/.hermes/hermes-agent/ui-tui/vitest.config.ts
+~/.hermes/hermes-agent/ui-tui/eslint.config.mjs
+~/.hermes/hermes-agent/ui-tui/src
+~/.hermes/hermes-agent/ui-tui/src/app.tsx
+~/.hermes/hermes-agent/ui-tui/src/banner.ts
+~/.hermes/hermes-agent/ui-tui/src/types
+~/.hermes/hermes-agent/ui-tui/src/app
+~/.hermes/hermes-agent/ui-tui/src/config
+~/.hermes/hermes-agent/ui-tui/src/content
+~/.hermes/hermes-agent/ui-tui/src/protocol
+~/.hermes/hermes-agent/ui-tui/src/types.ts
+~/.hermes/hermes-agent/ui-tui/src/components
+~/.hermes/hermes-agent/ui-tui/src/gatewayTypes.ts
+~/.hermes/hermes-agent/ui-tui/src/__tests__
+~/.hermes/hermes-agent/ui-tui/src/sdk
+~/.hermes/hermes-agent/ui-tui/src/hooks
+~/.hermes/hermes-agent/ui-tui/src/entry.tsx
+~/.hermes/hermes-agent/ui-tui/src/gatewayClient.ts
+~/.hermes/hermes-agent/ui-tui/src/lib
+~/.hermes/hermes-agent/ui-tui/src/theme.ts
+~/.hermes/hermes-agent/ui-tui/src/domain
+~/.hermes/hermes-agent/hermes_constants.py
+~/.hermes/hermes-agent/.envrc
+~/.hermes/hermes-agent/evals
+~/.hermes/hermes-agent/evals/readtool
+~/.hermes/hermes-agent/evals/readtool/runner.py
+~/.hermes/hermes-agent/evals/readtool/tasks.py
+~/.hermes/hermes-agent/evals/readtool/README.md
+~/.hermes/hermes-agent/evals/readtool/results
+~/.hermes/hermes-agent/evals/readtool/report.py
+~/.hermes/hermes-agent/evals/readtool/fixtures.py
+~/.hermes/hermes-agent/evals/compaction
+~/.hermes/hermes-agent/evals/compaction/runner.py
+~/.hermes/hermes-agent/evals/compaction/README.md
+~/.hermes/hermes-agent/evals/compaction/results
+~/.hermes/hermes-agent/evals/compaction/test_region_scoping.py
+~/.hermes/hermes-agent/evals/compaction/scripts
+~/.hermes/hermes-agent/evals/compaction/policies.py
+~/.hermes/hermes-agent/evals/compaction/report.py
+~/.hermes/hermes-agent/evals/compaction/fixtures.py
+~/.hermes/hermes-agent/evals/browser_use
+~/.hermes/hermes-agent/evals/browser_use/orchestrate_cloud.py
+~/.hermes/hermes-agent/evals/browser_use/tasks
+~/.hermes/hermes-agent/evals/browser_use/single_run.py
+~/.hermes/hermes-agent/evals/browser_use/orchestrate.py
+~/.hermes/hermes-agent/evals/browser_use/README.md
+~/.hermes/hermes-agent/evals/browser_use/results
+~/.hermes/hermes-agent/evals/browser_use/report.py
+~/.hermes/hermes-agent/flake.lock
+~/.hermes/hermes-agent/tools
+~/.hermes/hermes-agent/tools/open_preview_tool.py
+~/.hermes/hermes-agent/tools/wake_word.py
+~/.hermes/hermes-agent/tools/schema_sanitizer.py
+~/.hermes/hermes-agent/tools/voice_mode.py
+~/.hermes/hermes-agent/tools/tool_search.py
+~/.hermes/hermes-agent/tools/vision_tools.py
+~/.hermes/hermes-agent/tools/process_registry.py
+~/.hermes/hermes-agent/tools/web_tools.py
+~/.hermes/hermes-agent/tools/lazy_deps.py
+~/.hermes/hermes-agent/tools/daemon_pool.py
+~/.hermes/hermes-agent/tools/skill_ledger.py
+~/.hermes/hermes-agent/tools/skills_ast_audit.py
+~/.hermes/hermes-agent/tools/tts_tool.py
+~/.hermes/hermes-agent/tools/tirith_security.py
+~/.hermes/hermes-agent/tools/tts_text_normalize.py
+~/.hermes/hermes-agent/tools/shell_heredoc.py
+~/.hermes/hermes-agent/tools/browser_dialog_tool.py
+~/.hermes/hermes-agent/tools/path_security.py
+~/.hermes/hermes-agent/tools/url_safety.py
+~/.hermes/hermes-agent/tools/skills_hub.py
+~/.hermes/hermes-agent/tools/openrouter_client.py
+~/.hermes/hermes-agent/tools/write_approval.py
+~/.hermes/hermes-agent/tools/browser_use_cli.py
+~/.hermes/hermes-agent/tools/working_diff.py
+~/.hermes/hermes-agent/tools/clarify_gateway.py
+~/.hermes/hermes-agent/tools/delegation_live_log.py
+~/.hermes/hermes-agent/tools/session_search_tool.py
+~/.hermes/hermes-agent/tools/registry.py
+~/.hermes/hermes-agent/tools/mcp_oauth.py
+~/.hermes/hermes-agent/tools/transcription_tools.py
+~/.hermes/hermes-agent/tools/env_probe.py
+~/.hermes/hermes-agent/tools/environments
+~/.hermes/hermes-agent/tools/environments/singularity.py
+~/.hermes/hermes-agent/tools/environments/managed_modal.py
+~/.hermes/hermes-agent/tools/environments/daytona.py
+~/.hermes/hermes-agent/tools/environments/file_sync.py
+~/.hermes/hermes-agent/tools/environments/local.py
+~/.hermes/hermes-agent/tools/environments/vercel_sandbox.py
+~/.hermes/hermes-agent/tools/environments/__init__.py
+~/.hermes/hermes-agent/tools/environments/__pycache__
+~/.hermes/hermes-agent/tools/environments/docker.py
+~/.hermes/hermes-agent/tools/environments/modal_utils.py
+~/.hermes/hermes-agent/tools/environments/modal.py
+~/.hermes/hermes-agent/tools/environments/ssh.py
+~/.hermes/hermes-agent/tools/environments/base.py
+~/.hermes/hermes-agent/tools/interrupt.py
+~/.hermes/hermes-agent/tools/async_delegation.py
+~/.hermes/hermes-agent/tools/plugin_guard.py
+~/.hermes/hermes-agent/tools/terminal_hints.py
+~/.hermes/hermes-agent/tools/thread_context.py
+~/.hermes/hermes-agent/tools/fal_common.py
+~/.hermes/hermes-agent/tools/spill_safety.py
+~/.hermes/hermes-agent/tools/read_terminal_tool.py
+~/.hermes/hermes-agent/tools/react_to_message_tool.py
+~/.hermes/hermes-agent/tools/osv_check.py
+~/.hermes/hermes-agent/tools/skill_provenance.py
+~/.hermes/hermes-agent/tools/fuzzy_match.py
+~/.hermes/hermes-agent/tools/tour_tool.py
+~/.hermes/hermes-agent/tools/memory_tool.py
+~/.hermes/hermes-agent/tools/__init__.py
+~/.hermes/hermes-agent/tools/wakewords
+~/.hermes/hermes-agent/tools/wakewords/hey_hermes.tflite
+~/.hermes/hermes-agent/tools/wakewords/hey_hermes.onnx
+~/.hermes/hermes-agent/tools/wakewords/README.md
+~/.hermes/hermes-agent/tools/skill_usage.py
+~/.hermes/hermes-agent/tools/credential_files.py
+~/.hermes/hermes-agent/tools/cronjob_tools.py
+~/.hermes/hermes-agent/tools/ansi_strip.py
+~/.hermes/hermes-agent/tools/file_tools.py
+~/.hermes/hermes-agent/tools/budget_config.py
+~/.hermes/hermes-agent/tools/__pycache__
+~/.hermes/hermes-agent/tools/__pycache__/kanban_tools.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/open_preview_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/browser_camofox.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/flux3_video_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/tool_backend_helpers.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/wake_word.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/feishu_drive_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/feishu_doc_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/tirith_security.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/vision_tools.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/memory_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/image_generation_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/debug_helpers.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/browser_camofox_state.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/homeassistant_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/todo_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/managed_tool_gateway.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/browser_use_cli.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/file_operations.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/skill_manager_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/setup_mcp_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/checkpoint_manager.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/threat_patterns.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/skill_usage.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/schema_sanitizer.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/desktop_ui.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/discord_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/browser_cdp_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/session_search_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/apply_layout_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/registry.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/file_state.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/close_terminal_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/voice_mode.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/thread_context.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/delegate_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/skills_sync.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/env_passthrough.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/cronjob_tools.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/process_registry.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/skills_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/lazy_deps.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/file_tools.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/skills_sync_client.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/ansi_strip.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/skills_guard.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/read_window_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/binary_extensions.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/clarify_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/read_terminal_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/skill_provenance.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/tool_search.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/tts_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/x_search_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/focus_pane_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/web_tools.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/project_tools.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/yuanbao_tools.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/react_to_message_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/browser_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/mcp_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/transcription_tools.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/xai_http.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/read_preview_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/async_delegation.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/xai_video_tools.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/video_generation_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/approval.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/fal_common.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/tour_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/website_policy.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/terminal_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/code_execution_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/url_safety.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/computer_use_tool.cpython-311.pyc
+~/.hermes/hermes-agent/tools/__pycache__/browser_supervisor.cpython-311.pyc
+
+============================================================
+5. OPENCLAW CONFIGURATION LOCATIONS
+============================================================
+
+--- /Users/mostafa/.openclaw ---
+4.0M	/Users/mostafa/.openclaw
+~/.openclaw
+~/.openclaw/skill-workshop
+~/.openclaw/skill-workshop/proposals.json
+~/.openclaw/skill-workshop/proposals
+~/.openclaw/openclaw.json.last-good
+~/.openclaw/openclaw.json
+~/.openclaw/identity
+~/.openclaw/identity/device.json
+~/.openclaw/openclaw.json.bak
+~/.openclaw/tui
+~/.openclaw/tui/last-session.json
+~/.openclaw/completions
+~/.openclaw/completions/openclaw.fish
+~/.openclaw/completions/openclaw.ps1
+~/.openclaw/completions/openclaw.zsh
+~/.openclaw/completions/openclaw.bash
+~/.openclaw/workspace
+~/.openclaw/workspace/IDENTITY.md
+~/.openclaw/workspace/HEARTBEAT.md
+~/.openclaw/workspace/BOOTSTRAP.md
+~/.openclaw/workspace/openclaw-workspace-state.json
+~/.openclaw/workspace/USER.md
+~/.openclaw/workspace/SOUL.md
+~/.openclaw/workspace/AGENTS.md
+~/.openclaw/workspace/.git
+~/.openclaw/workspace/TOOLS.md
+~/.openclaw/service-env
+~/.openclaw/service-env/ai.openclaw.gateway-env-wrapper.sh
+~/.openclaw/service-env/ai.openclaw.gateway.env
+~/.openclaw/workspace-attestations
+~/.openclaw/workspace-attestations/76ebf1ba0a65a49d94c6750c15f010240081a7de681e28669e1a32d4df1d997a.attested
+~/.openclaw/openclaw.json.bak.3
+~/.openclaw/agents
+~/.openclaw/agents/main
+~/.openclaw/agents/main/agent
+~/.openclaw/agents/main/sessions
+~/.openclaw/openclaw.json.bak.2
+~/.openclaw/state
+~/.openclaw/state/openclaw.sqlite
+~/.openclaw/state/openclaw.sqlite-shm
+~/.openclaw/state/openclaw.sqlite-wal
+~/.openclaw/logs
+~/.openclaw/logs/config-audit.jsonl
+~/.openclaw/logs/stability
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-05-28-608Z-62569-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-07-22-420Z-68049-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-08-35-232Z-71392-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-06-09-212Z-64483-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-05-48-557Z-63524-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-08-03-964Z-69958-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-08-14-468Z-70438-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-05-17-533Z-62091-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-05-38-070Z-63047-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-06-30-328Z-65438-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-07-53-464Z-69480-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-07-01-332Z-66870-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-07-32-816Z-68526-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-06-40-567Z-65915-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-08-24-863Z-70915-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-06-50-933Z-66392-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-05-58-868Z-64004-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-07-43-108Z-69003-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-07-11-764Z-67347-gateway.startup_failed.json
+~/.openclaw/logs/stability/openclaw-stability-2026-08-20T03-06-19-980Z-64960-gateway.startup_failed.json
+~/.openclaw/.env
+~/.openclaw/skills
+~/.openclaw/skills/qwencloud-audio-tts
+~/.openclaw/skills/find-skills
+~/.openclaw/skills/qwencloud-text
+~/.openclaw/skills/qwencloud-vision
+~/.openclaw/skills/qwencloud-deploy
+~/.openclaw/tmp
+~/.openclaw/tmp/openclaw-501
+~/.openclaw/tmp/openclaw-501/gateway.be25f88f.lock
+~/.openclaw/openclaw.json.bak.1
+
+--- /Users/mostafa/.config/openclaw ---
+NOT FOUND
+
+--- /Users/mostafa/.hermes ---
+2.8G	/Users/mostafa/.hermes
+~/.hermes
+~/.hermes/config.yaml.corrupt.20260820-044115.bak
+~/.hermes/config.yaml.backup.20260820-044110
+~/.hermes/pairing
+~/.hermes/.update_exit_code
+~/.hermes/sandboxes
+~/.hermes/sandboxes/singularity
+~/.hermes/platforms
+~/.hermes/platforms/pairing
+~/.hermes/cache
+~/.hermes/cache/model_catalog.json
+~/.hermes/cache/schema_columns.json
+~/.hermes/cache/banner_snapshot.json
+~/.hermes/cache/tool_discovery_cache.json
+~/.hermes/cache/plugin_toolset_keys.json
+~/.hermes/auth.lock
+~/.hermes/desktop-plugins
+~/.hermes/bin
+~/.hermes/bin/uvx
+~/.hermes/bin/uv
+~/.hermes/models_dev_cache.etag
+~/.hermes/plugins
+~/.hermes/pets
+~/.hermes/pets/.thumbs
+~/.hermes/pets/.thumbs/scoop.png
+~/.hermes/pets/.thumbs/batmeme.png
+~/.hermes/pets/.thumbs/linen-catalog-foot.png
+~/.hermes/pets/.thumbs/pearl-index-bridge.png
+~/.hermes/pets/.thumbs/skipper.png
+~/.hermes/pets/.thumbs/kebo.png
+~/.hermes/pets/.thumbs/prompt-penguin.png
+~/.hermes/pets/.thumbs/paper-ledger-spacer.png
+~/.hermes/pets/.thumbs/cash-cuy.png
+~/.hermes/pets/.thumbs/homelander.png
+~/.hermes/pets/.thumbs/mecha-xiaobai.png
+~/.hermes/pets/.thumbs/humboldt.png
+~/.hermes/pets/.thumbs/lulu-capybara-2.png
+~/.hermes/pets/.thumbs/shuangsheng-linger.png
+~/.hermes/pets/.thumbs/cosmo.png
+~/.hermes/pets/.thumbs/opal-file-ledger.png
+~/.hermes/pets/.thumbs/cache-capy.png
+~/.hermes/pets/.thumbs/socksy.png
+~/.hermes/pets/.thumbs/pewter-catalog-foot.png
+~/.hermes/pets/.thumbs/boxcat.png
+~/.hermes/pets/.thumbs/glass-index-bridge.png
+~/.hermes/pets/.thumbs/glass-label-runner.png
+~/.hermes/pets/.thumbs/noir-webling.png
+~/.hermes/pets/.thumbs/jill-stingray.png
+~/.hermes/pets/.thumbs/dalek.png
+~/.hermes/pets/.thumbs/captain-quack.png
+~/.hermes/pets/.thumbs/nukey.png
+~/.hermes/pets/.thumbs/cotton-index-bridge.png
+~/.hermes/pets/.thumbs/creamware-archive-wedge.png
+~/.hermes/pets/.thumbs/pixel-panda.png
+~/.hermes/pets/.thumbs/alder-catalog-foot.png
+~/.hermes/pets/.thumbs/daemon-dumpling.png
+~/.hermes/pets/.thumbs/boba.png
+~/.hermes/pets/.thumbs/alder-divider-block.png
+~/.hermes/pets/.thumbs/hyein.png
+~/.hermes/pets/.thumbs/byte-bunny.png
+~/.hermes/image_cache
+~/.hermes/.update_check
+~/.hermes/state.db
+~/.hermes/provider_models_cache.json
+~/.hermes/config.yaml
+~/.hermes/models_dev_cache.json
+~/.hermes/projects.db
+~/.hermes/terminal-sessions
+~/.hermes/terminal-sessions/tty-dev-ttys001
+~/.hermes/hermes-setup
+~/.hermes/.npm_lock_hash_fcdad8330cd1
+~/.hermes/sessions
+~/.hermes/logs
+~/.hermes/logs/desktop-update-handoff.log
+~/.hermes/logs/curator
+~/.hermes/logs/gui.log
+~/.hermes/logs/errors.log
+~/.hermes/logs/bootstrap-installer.log
+~/.hermes/logs/desktop.log
+~/.hermes/logs/agent.log
+~/.hermes/ollama_cloud_models_cache.json
+~/.hermes/.env
+~/.hermes/hooks
+~/.hermes/desktop-build-stamp.json
+~/.hermes/install_id
+~/.hermes/hermes-agent
+~/.hermes/hermes-agent/batch_runner.py
+~/.hermes/hermes-agent/ui-tui
+~/.hermes/hermes-agent/ui-tui/node_modules
+~/.hermes/hermes-agent/ui-tui/README.md
+~/.hermes/hermes-agent/ui-tui/.gitignore
+~/.hermes/hermes-agent/ui-tui/package.json
+~/.hermes/hermes-agent/ui-tui/tsconfig.build.json
+~/.hermes/hermes-agent/ui-tui/scripts
+~/.hermes/hermes-agent/ui-tui/packages
+~/.hermes/hermes-agent/ui-tui/tsconfig.json
+~/.hermes/hermes-agent/ui-tui/vitest.config.ts
+~/.hermes/hermes-agent/ui-tui/eslint.config.mjs
+~/.hermes/hermes-agent/ui-tui/src
+~/.hermes/hermes-agent/hermes_constants.py
+~/.hermes/hermes-agent/.envrc
+~/.hermes/hermes-agent/evals
+~/.hermes/hermes-agent/evals/readtool
+~/.hermes/hermes-agent/evals/compaction
+~/.hermes/hermes-agent/evals/browser_use
+~/.hermes/hermes-agent/flake.lock
+~/.hermes/hermes-agent/tools
+~/.hermes/hermes-agent/tools/open_preview_tool.py
+~/.hermes/hermes-agent/tools/wake_word.py
+~/.hermes/hermes-agent/tools/schema_sanitizer.py
+~/.hermes/hermes-agent/tools/voice_mode.py
+~/.hermes/hermes-agent/tools/tool_search.py
+~/.hermes/hermes-agent/tools/vision_tools.py
+~/.hermes/hermes-agent/tools/process_registry.py
+~/.hermes/hermes-agent/tools/web_tools.py
+~/.hermes/hermes-agent/tools/lazy_deps.py
+~/.hermes/hermes-agent/tools/daemon_pool.py
+~/.hermes/hermes-agent/tools/skill_ledger.py
+~/.hermes/hermes-agent/tools/skills_ast_audit.py
+~/.hermes/hermes-agent/tools/tts_tool.py
+~/.hermes/hermes-agent/tools/tirith_security.py
+~/.hermes/hermes-agent/tools/tts_text_normalize.py
+~/.hermes/hermes-agent/tools/shell_heredoc.py
+~/.hermes/hermes-agent/tools/browser_dialog_tool.py
+~/.hermes/hermes-agent/tools/path_security.py
+~/.hermes/hermes-agent/tools/url_safety.py
+~/.hermes/hermes-agent/tools/skills_hub.py
+~/.hermes/hermes-agent/tools/openrouter_client.py
+~/.hermes/hermes-agent/tools/write_approval.py
+~/.hermes/hermes-agent/tools/browser_use_cli.py
+~/.hermes/hermes-agent/tools/working_diff.py
+~/.hermes/hermes-agent/tools/clarify_gateway.py
+~/.hermes/hermes-agent/tools/delegation_live_log.py
+~/.hermes/hermes-agent/tools/session_search_tool.py
+~/.hermes/hermes-agent/tools/registry.py
+~/.hermes/hermes-agent/tools/mcp_oauth.py
+~/.hermes/hermes-agent/tools/transcription_tools.py
+~/.hermes/hermes-agent/tools/env_probe.py
+~/.hermes/hermes-agent/tools/environments
+~/.hermes/hermes-agent/tools/interrupt.py
+~/.hermes/hermes-agent/tools/async_delegation.py
+~/.hermes/hermes-agent/tools/plugin_guard.py
+~/.hermes/hermes-agent/tools/terminal_hints.py
+~/.hermes/hermes-agent/tools/thread_context.py
+~/.hermes/hermes-agent/tools/fal_common.py
+~/.hermes/hermes-agent/tools/spill_safety.py
+~/.hermes/hermes-agent/tools/read_terminal_tool.py
+~/.hermes/hermes-agent/tools/react_to_message_tool.py
+~/.hermes/hermes-agent/tools/osv_check.py
+~/.hermes/hermes-agent/tools/skill_provenance.py
+~/.hermes/hermes-agent/tools/fuzzy_match.py
+~/.hermes/hermes-agent/tools/tour_tool.py
+~/.hermes/hermes-agent/tools/memory_tool.py
+~/.hermes/hermes-agent/tools/__init__.py
+~/.hermes/hermes-agent/tools/wakewords
+~/.hermes/hermes-agent/tools/skill_usage.py
+~/.hermes/hermes-agent/tools/credential_files.py
+~/.hermes/hermes-agent/tools/cronjob_tools.py
+~/.hermes/hermes-agent/tools/ansi_strip.py
+~/.hermes/hermes-agent/tools/file_tools.py
+~/.hermes/hermes-agent/tools/budget_config.py
+~/.hermes/hermes-agent/tools/__pycache__
+~/.hermes/hermes-agent/tools/blueprints.py
+~/.hermes/hermes-agent/tools/read_extract.py
+~/.hermes/hermes-agent/tools/skills_sync.py
+~/.hermes/hermes-agent/tools/microsoft_graph_client.py
+~/.hermes/hermes-agent/tools/browser_cdp_tool.py
+~/.hermes/hermes-agent/tools/bot_mode_probe.py
+~/.hermes/hermes-agent/tools/skills_sync_client.py
+~/.hermes/hermes-agent/tools/debug_helpers.py
+~/.hermes/hermes-agent/tools/xai_video_tools.py
+~/.hermes/hermes-agent/tools/browser_tool.py
+~/.hermes/hermes-agent/tools/terminal_tool.py
+~/.hermes/hermes-agent/tools/threat_patterns.py
+~/.hermes/hermes-agent/tools/mcp_dashboard_oauth.py
+~/.hermes/hermes-agent/tools/mcp_oauth_manager.py
+~/.hermes/hermes-agent/tools/audio_container.py
+~/.hermes/hermes-agent/tools/project_tools.py
+~/.hermes/hermes-agent/tools/skills_tool.py
+~/.hermes/hermes-agent/tools/microsoft_graph_auth.py
+~/.hermes/hermes-agent/tools/env_passthrough.py
+~/.hermes/hermes-agent/tools/close_terminal_tool.py
+~/.hermes/hermes-agent/tools/xai_http.py
+~/.hermes/hermes-agent/tools/skill_linter.py
+~/.hermes/hermes-agent/tools/skills_guard.py
+~/.hermes/hermes-agent/tools/neutts_synth.py
+~/.hermes/hermes-agent/tools/approval.py
+~/.hermes/hermes-agent/tools/binary_extensions.py
+~/.hermes/hermes-agent/tools/mcp_stdio_watchdog.py
+~/.hermes/hermes-agent/tools/slash_confirm.py
+~/.hermes/hermes-agent/tools/mcp_tool.py
+~/.hermes/hermes-agent/tools/yuanbao_tools.py
+~/.hermes/hermes-agent/tools/todo_tool.py
+~/.hermes/hermes-agent/tools/skillevaluator_scan.py
+~/.hermes/hermes-agent/tools/patch_parser.py
+~/.hermes/hermes-agent/tools/subagent_worktree.py
+~/.hermes/hermes-agent/tools/tts_streaming.py
+~/.hermes/hermes-agent/tools/mcp_schema_cache.py
+~/.hermes/hermes-agent/tools/apply_layout_tool.py
+~/.hermes/hermes-agent/tools/x_search_tool.py
+~/.hermes/hermes-agent/tools/tool_result_storage.py
+~/.hermes/hermes-agent/tools/read_window_tool.py
+~/.hermes/hermes-agent/tools/video_generation_tool.py
+~/.hermes/hermes-agent/tools/feishu_doc_tool.py
+~/.hermes/hermes-agent/tools/computer_use
+~/.hermes/hermes-agent/tools/tool_output_limits.py
+~/.hermes/hermes-agent/tools/focus_pane_tool.py
+~/.hermes/hermes-agent/tools/clarify_tool.py
+~/.hermes/hermes-agent/tools/desktop_ui.py
+~/.hermes/hermes-agent/tools/hook_output_spill.py
+~/.hermes/hermes-agent/tools/browser_supervisor.py
+~/.hermes/hermes-agent/tools/file_state.py
+~/.hermes/hermes-agent/tools/homeassistant_tool.py
+~/.hermes/hermes-agent/tools/browser_camofox.py
+~/.hermes/hermes-agent/tools/skill_manager_tool.py
+~/.hermes/hermes-agent/tools/flux3_video_tool.py
+~/.hermes/hermes-agent/tools/image_source.py
+~/.hermes/hermes-agent/tools/image_generation_tool.py
+~/.hermes/hermes-agent/tools/website_policy.py
+~/.hermes/hermes-agent/tools/delegation_output_schema.py
+~/.hermes/hermes-agent/tools/neutts_samples
+~/.hermes/hermes-agent/tools/setup_mcp_tool.py
+~/.hermes/hermes-agent/tools/file_operations.py
+~/.hermes/hermes-agent/tools/delegate_tool.py
+~/.hermes/hermes-agent/tools/computer_use_tool.py
+~/.hermes/hermes-agent/tools/tool_backend_helpers.py
+~/.hermes/hermes-agent/tools/feishu_drive_tool.py
+~/.hermes/hermes-agent/tools/managed_tool_gateway.py
+~/.hermes/hermes-agent/tools/checkpoint_manager.py
+~/.hermes/hermes-agent/tools/discord_tool.py
+~/.hermes/hermes-agent/tools/kanban_tools.py
+~/.hermes/hermes-agent/tools/send_message_tool.py
+~/.hermes/hermes-agent/tools/code_execution_tool.py
+~/.hermes/hermes-agent/tools/read_preview_tool.py
+~/.hermes/hermes-agent/tools/self_repo_guard.py
+~/.hermes/hermes-agent/tools/browser_camofox_state.py
+~/.hermes/hermes-agent/docker
+~/.hermes/hermes-agent/docker/cont-init.d
+~/.hermes/hermes-agent/docker/entrypoint-dispatch.sh
+~/.hermes/hermes-agent/docker/main-wrapper.sh
+~/.hermes/hermes-agent/docker/stage2-hook.sh
+~/.hermes/hermes-agent/docker/SOUL.md
+~/.hermes/hermes-agent/docker/tini-shim.sh
+~/.hermes/hermes-agent/docker/entrypoint.sh
+~/.hermes/hermes-agent/docker/hermes-exec-shim.sh
+~/.hermes/hermes-agent/docker/s6-rc.d
+~/.hermes/hermes-agent/hermes_agent.egg-info
+~/.hermes/hermes-agent/hermes_agent.egg-info/PKG-INFO
+~/.hermes/hermes-agent/hermes_agent.egg-info/SOURCES.txt
+~/.hermes/hermes-agent/hermes_agent.egg-info/entry_points.txt
+~/.hermes/hermes-agent/hermes_agent.egg-info/requires.txt
+~/.hermes/hermes-agent/hermes_agent.egg-info/top_level.txt
+~/.hermes/hermes-agent/hermes_agent.egg-info/dependency_links.txt
+~/.hermes/hermes-agent/README.es.md
+~/.hermes/hermes-agent/.install_method
+~/.hermes/hermes-agent/nix
+~/.hermes/hermes-agent/nix/moduleCommon.nix
+~/.hermes/hermes-agent/nix/hermes-agent.nix
+~/.hermes/hermes-agent/nix/configMergeScript.nix
+~/.hermes/hermes-agent/nix/node-gyp-11-4-0-package-lock.json
+~/.hermes/hermes-agent/nix/node-gyp-11-4-0.nix
+~/.hermes/hermes-agent/nix/python.nix
+~/.hermes/hermes-agent/nix/overlays.nix
+~/.hermes/hermes-agent/nix/devShell.nix
+~/.hermes/hermes-agent/nix/desktop.nix
+~/.hermes/hermes-agent/nix/npm-12-0-2.nix
+~/.hermes/hermes-agent/nix/sandbox.nix
+~/.hermes/hermes-agent/nix/homeManagerModules.nix
+~/.hermes/hermes-agent/nix/checks.nix
+~/.hermes/hermes-agent/nix/packages.nix
+~/.hermes/hermes-agent/nix/tui.nix
+~/.hermes/hermes-agent/nix/web.nix
+~/.hermes/hermes-agent/nix/nixosModules.nix
+~/.hermes/hermes-agent/nix/lib.nix
+~/.hermes/hermes-agent/locales
+~/.hermes/hermes-agent/locales/ja.yaml
+~/.hermes/hermes-agent/locales/tr.yaml
+~/.hermes/hermes-agent/locales/zh.yaml
+~/.hermes/hermes-agent/locales/hu.yaml
+~/.hermes/hermes-agent/locales/en.yaml
+~/.hermes/hermes-agent/locales/pt.yaml
+~/.hermes/hermes-agent/locales/it.yaml
+~/.hermes/hermes-agent/locales/uk.yaml
+~/.hermes/hermes-agent/locales/ru.yaml
+~/.hermes/hermes-agent/locales/de.yaml
+~/.hermes/hermes-agent/locales/ko.yaml
+~/.hermes/hermes-agent/locales/fr.yaml
+~/.hermes/hermes-agent/locales/ga.yaml
+~/.hermes/hermes-agent/locales/ar.yaml
+~/.hermes/hermes-agent/locales/es.yaml
+~/.hermes/hermes-agent/locales/zh-hant.yaml
+~/.hermes/hermes-agent/locales/af.yaml
+~/.hermes/hermes-agent/docker-compose.windows.yml
+~/.hermes/hermes-agent/toolset_distributions.py
+~/.hermes/hermes-agent/LICENSE
+~/.hermes/hermes-agent/native
+~/.hermes/hermes-agent/native/fts5_cjk
+~/.hermes/hermes-agent/uv.lock
+~/.hermes/hermes-agent/setup-hermes.sh
+~/.hermes/hermes-agent/hermes_cli
+
+============================================================
+6. WORKSPACE STRUCTURE
+============================================================
+/Users/mostafa/Workspace
+324K	/Users/mostafa/Workspace
+
+Top level:
+~/Workspace
+~/Workspace/04_Knowledge
+~/Workspace/04_Knowledge/Reading
+~/Workspace/04_Knowledge/Art_Theory
+~/Workspace/04_Knowledge/.DS_Store
+~/Workspace/04_Knowledge/Literature
+~/Workspace/04_Knowledge/Methodology
+~/Workspace/04_Knowledge/.obsidian
+~/Workspace/04_Knowledge/Research_Log
+~/Workspace/04_Knowledge/Synthesis
+~/Workspace/04_Knowledge/Notes
+~/Workspace/04_Knowledge/AI
+~/Workspace/04_Knowledge/Philosophy
+~/Workspace/04_Knowledge/Concepts
+~/Workspace/ARCHITECTURE.md
+~/Workspace/.DS_Store
+~/Workspace/RESEARCH_OS_STATUS.md
+~/Workspace/99_Sandbox
+~/Workspace/99_Sandbox/.DS_Store
+~/Workspace/99_Sandbox/Testing
+~/Workspace/99_Sandbox/Temporary
+~/Workspace/99_Sandbox/Dangerous
+~/Workspace/WORKSPACE_COMMANDS.md
+~/Workspace/03_Engineering
+~/Workspace/03_Engineering/Tools
+~/Workspace/03_Engineering/.DS_Store
+~/Workspace/03_Engineering/Experiments
+~/Workspace/03_Engineering/Projects
+~/Workspace/03_Engineering/Scripts
+~/Workspace/03_Engineering/Automation
+~/Workspace/WORKSPACE.md
+~/Workspace/00_Inbox
+~/Workspace/00_Inbox/.DS_Store
+~/Workspace/00_Inbox/To_Sort
+~/Workspace/00_Inbox/README.md
+~/Workspace/00_Inbox/Temporary
+~/Workspace/00_Inbox/Incoming
+~/Workspace/02_AI_Lab
+~/Workspace/02_AI_Lab/Agent_Experiments
+~/Workspace/02_AI_Lab/.DS_Store
+~/Workspace/02_AI_Lab/Fine_Tuning
+~/Workspace/02_AI_Lab/MCP
+~/Workspace/02_AI_Lab/Models
+~/Workspace/02_AI_Lab/Prompt_Engineering
+~/Workspace/02_AI_Lab/Hermes
+~/Workspace/.research_os
+~/Workspace/05_Archives
+~/Workspace/05_Archives/Old_Projects
+~/Workspace/05_Archives/.DS_Store
+~/Workspace/05_Archives/Snapshots
+~/Workspace/05_Archives/Old_Hermes
+~/Workspace/05_Archives/Backups
+~/Workspace/README.md
+~/Workspace/INDEX.md
+~/Workspace/06_System
+~/Workspace/06_System/Configuration
+~/Workspace/06_System/Documentation
+~/Workspace/06_System/.DS_Store
+~/Workspace/06_System/Policies
+~/Workspace/06_System/Logs
+~/Workspace/06_System/Diagnostics
+~/Workspace/06_System/Governance
+~/Workspace/06_System/Environment
+~/Workspace/06_System/Templates
+~/Workspace/06_System/Automation
+~/Workspace/01_Research
+~/Workspace/01_Research/.DS_Store
+~/Workspace/01_Research/Publications
+~/Workspace/01_Research/PhD
+~/Workspace/01_Research/Teaching
+~/Workspace/01_Research/Conferences
+~/Workspace/.research_os_frozen
+
+============================================================
+7. AI RELATED DIRECTORIES
+============================================================
+
+Searching:
+/Users/mostafa/Workspace
+~/Workspace/04_Knowledge/AI
+~/Workspace/04_Knowledge/Concepts/AI
+~/Workspace/02_AI_Lab
+~/Workspace/02_AI_Lab/Agent_Experiments
+~/Workspace/02_AI_Lab/Agent_Experiments/DSH
+~/Workspace/02_AI_Lab/Agent_Experiments/OMP
+~/Workspace/02_AI_Lab/Agent_Experiments/Pi
+~/Workspace/02_AI_Lab/Fine_Tuning/Training
+~/Workspace/02_AI_Lab/Fine_Tuning/Models
+~/Workspace/02_AI_Lab/Fine_Tuning/Data/Training
+~/Workspace/02_AI_Lab/MCP
+~/Workspace/02_AI_Lab/Models
+~/Workspace/02_AI_Lab/Prompt_Engineering
+~/Workspace/02_AI_Lab/Hermes
+~/Workspace/05_Archives/Old_Hermes
+~/Workspace/05_Archives/Old_Hermes/research_os_pre_install_design/Agents
+~/Workspace/05_Archives/Old_Hermes/research_os_pre_install_design/MCP
+~/Workspace/05_Archives/Old_Hermes/research_os_pre_install_design/Brain
+
+Searching:
+/Users/mostafa/.config
+~/.config/kilo/node_modules/kubernetes-types/apiserverinternal
+~/.config/kilo/node_modules/kubernetes-types/api
+~/.config/kilo/node_modules/kubernetes-types/apiextensions
+~/.config/kilo/node_modules/yaml/dist/compose
+~/.config/cagent
+~/.config/raycast/ai
+~/.config/spicetify
+~/.config/opencode/node_modules/@opencode-ai
+~/.config/opencode/node_modules/@ai-sdk
+~/.config/opencode/node_modules/kubernetes-types/apiserverinternal
+~/.config/opencode/node_modules/kubernetes-types/api
+~/.config/opencode/node_modules/kubernetes-types/apiextensions
+~/.config/opencode/node_modules/yaml/dist/compose
+
+Searching:
+/Users/mostafa
+~/.config/kilo/node_modules/kubernetes-types/apiserverinternal
+~/.config/kilo/node_modules/kubernetes-types/api
+~/.config/kilo/node_modules/kubernetes-types/apiextensions
+~/.config/cagent
+~/.config/raycast/ai
+~/.config/spicetify
+~/.config/opencode/node_modules/@opencode-ai
+~/.config/opencode/node_modules/@ai-sdk
+~/.config/opencode/node_modules/kubernetes-types/apiserverinternal
+~/.config/opencode/node_modules/kubernetes-types/api
+~/.config/opencode/node_modules/kubernetes-types/apiextensions
+~/Music/Audio Music Apps/Plug-In Settings/Vintage Electric Piano
+~/Music/Audio Music Apps/Plug-In Settings/Compressor
+~/Music/Audio Music Apps/Plug-In Settings/Auto Gain Control
+~/Music/Audio Music Apps/Plug-In Settings/Gain
+~/Music/Audio Music Apps/Plug-In Settings/Pitch Shifter
+~/Music/Audio Music Apps/Plug-In Settings/Pitch Correction
+~/.docker/models
+~/.copilot
+~/.dsh
+~/.dsh/node_modules/@gausszhou/dsh-web-search-local
+~/.dsh/node_modules/@deepseek-ai
+~/.dsh/node_modules/@deepseek-ai/dsh-invariants
+~/.dsh/node_modules/@deepseek-ai/dsh-attachment
+~/.dsh/node_modules/@deepseek-ai/dsh-web
+~/.dsh/node_modules/@deepseek-ai/dsh-brand
+~/.dsh/node_modules/@deepseek-ai/dsh-llm
+~/.dsh/node_modules/@deepseek-ai/dsh-timeout
+~/.dsh/profiles/web/node_modules/@zhuyh-sai7n
+~/.dsh/profiles/web/node_modules/unpipe
+~/.dsh/profiles/web/node_modules/@modelcontextprotocol
+~/.dsh/profiles/web/node_modules/@deepseek-ai
+~/.dsh/profiles/web/node_modules/dsh-bridges
+~/.dsh/profiles/node_modules/@anthropic-ai
+~/.dsh/profiles/node_modules/@modelcontextprotocol
+~/.dsh/profiles/node_modules/@deepseek-ai
+~/.dsh/profiles/node_modules/@mistralai
+~/.dsh/profiles/default/node_modules/@anthropic-ai
+~/.dsh/profiles/default/node_modules/agent-base
+~/.dsh/profiles/default/node_modules/node-addon-api
+~/.dsh/profiles/default/node_modules/picomatch
+~/.dsh/profiles/default/node_modules/unpipe
+~/.dsh/profiles/default/node_modules/picocolors
+~/.dsh/profiles/default/node_modules/@modelcontextprotocol
+~/.dsh/profiles/default/node_modules/@deepseek-ai
+~/.dsh/profiles/default/node_modules/https-proxy-agent
+~/.dsh/profiles/default/node_modules/http-proxy-agent
+~/.dsh/profiles/default/node_modules/openai
+~/.local/state/spicetify
+~/.local/lib/node_modules/openclaw
+~/.local/lib/node_modules/dsh
+~/.local/lib/node_modules/@earendil-works/pi-coding-agent
+~/.local/lib/node_modules/@deepseek-ai
+~/.local/lib/node_modules/@deepseek-ai/dsh
+~/Pictures
+~/Pictures/Photo Booth Library/Pictures
+~/Pictures/Photos Library.photoslibrary/resources/caches/compute
+~/Pictures/Photos Library.photoslibrary/private/com.apple.mobileslideshow.photospicker
+~/Pictures/Photos Library.photoslibrary/private/com.apple.intelligenceplatform.IntelligencePlatformComputeService
+~/Pictures/Photos Library.photoslibrary/external/com.apple.mobileslideshow.photospicker
+~/Pictures/Photos Library.photoslibrary/external/com.apple.intelligenceplatform.IntelligencePlatformComputeService
+~/Pictures/Photos Library.photoslibrary/scopes/cloudsharing
+~/.bun/install/cache/semver-compare@1.0.0@@@1
+~/.bun/install/cache/pi-dsh-minimal@0.4.2@@@1
+~/.bun/install/cache/@emnapi
+~/.bun/install/cache/picocolors@1.1.1@@@1
+~/.bun/install/cache/@anthropic-ai
+~/.bun/install/cache/simple-xml-to-json@1.2.3@@@1/typings
+~/.bun/install/cache/agent-base
+~/.bun/install/cache/@dimforge/rapier2d-simd-compat
+~/.bun/install/cache/@dimforge/rapier2d-simd-compat@0.17.3@@@1
+~/.bun/install/cache/@oh-my-pi
+~/.bun/install/cache/@oh-my-pi/omp-stats
+~/.bun/install/cache/@oh-my-pi/pi-utils
+~/.bun/install/cache/@oh-my-pi/snapcompact
+~/.bun/install/cache/@oh-my-pi/pi-agent-core@17.4.0@@@1
+~/.bun/install/cache/@oh-my-pi/snapcompact@17.4.0@@@1
+~/.bun/install/cache/@oh-my-pi/pi-mnemopi@17.4.0@@@1
+~/.bun/install/cache/@oh-my-pi/pi-agent-core
+~/.bun/install/cache/@oh-my-pi/omp-stats@17.4.0@@@1
+~/.bun/install/cache/@oh-my-pi/pi-catalog@17.4.0@@@1
+~/.bun/install/cache/@oh-my-pi/pi-wire
+~/.bun/install/cache/@oh-my-pi/pi-catalog
+~/.bun/install/cache/@oh-my-pi/pi-utils@17.4.0@@@1
+~/.bun/install/cache/@oh-my-pi/pi-ai
+~/.bun/install/cache/@oh-my-pi/omptype
+~/.bun/install/cache/@oh-my-pi/pi-natives@17.4.0@@@1
+~/.bun/install/cache/@oh-my-pi/pi-coding-agent
+~/.bun/install/cache/@oh-my-pi/pi-tui
+~/.bun/install/cache/@oh-my-pi/pi-tui@17.4.0@@@1
+~/.bun/install/cache/@oh-my-pi/omptype@17.4.0@@@1
+~/.bun/install/cache/@oh-my-pi/pi-mnemopi
+~/.bun/install/cache/@oh-my-pi/pi-ai@17.4.0@@@1
+~/.bun/install/cache/@oh-my-pi/pi-coding-agent@17.4.0@@@1
+~/.bun/install/cache/@oh-my-pi/pi-natives
+~/.bun/install/cache/@oh-my-pi/pi-wire@17.4.0@@@1
+~/.bun/install/cache/global-agent
+~/.bun/install/cache/tailwindcss@4.3.3@@@1
+~/.bun/install/cache/@opentelemetry/api@1.9.0@@@1
+~/.bun/install/cache/@opentelemetry/api@1.9.1@@@1
+~/.bun/install/cache/@opentelemetry/api-logs
+~/.bun/install/cache/@opentelemetry/api
+~/.bun/install/cache/@opentelemetry/api-logs@0.220.0@@@1
+~/.bun/install/cache/omp-deepseek-anchor
+~/.bun/install/cache/@tailwindcss
+~/.bun/install/cache/@ampproject/remapping@2.3.0@@@1
+~/.bun/install/cache/@ampproject/remapping
+~/.bun/install/cache/baseline-browser-mapping
+~/.bun/install/cache/await-to-js
+~/.bun/install/cache/@earendil-works/pi-client
+~/.bun/install/cache/@earendil-works/pi-telemetry
+~/.bun/install/cache/@earendil-works/pi-client@0.84.2@@@1
+~/.bun/install/cache/@earendil-works/pi-ai@0.84.2@@@1
+~/.bun/install/cache/@earendil-works/pi-coding-agent@0.84.2@@@1
+~/.bun/install/cache/@earendil-works/pi-protocol@0.84.2@@@1
+~/.bun/install/cache/@earendil-works/pi-tui@0.84.2@@@1
+~/.bun/install/cache/@earendil-works/pi-ai
+~/.bun/install/cache/@earendil-works/pi-coding-agent
+~/.bun/install/cache/@earendil-works/pi-tui
+~/.bun/install/cache/@earendil-works/pi-telemetry@0.84.2@@@1
+~/.bun/install/cache/@earendil-works/pi-protocol
+~/.bun/install/cache/openai@6.40.0@@@1
+~/.bun/install/cache/agent-base@7.1.4@@@1
+~/.bun/install/cache/grok-mermaid@0.2.2@@@1
+~/.bun/install/cache/picocolors
+~/.bun/install/cache/http-proxy-agent@7.0.2@@@1
+~/.bun/install/cache/omp-deepseek-anchor@1.0.3@@@1
+~/.bun/install/cache/@jimp/plugin-contain@1.6.0@@@1
+~/.bun/install/cache/@jimp/plugin-contain
+~/.bun/install/cache/es6-error@4.1.1@@@1/typings
+~/.bun/install/cache/@babel/helper-compilation-targets@7.27.2@@@1
+~/.bun/install/cache/@babel/helper-compilation-targets
+~/.bun/install/cache/@babel/compat-data
+~/.bun/install/cache/@babel/compat-data@7.28.5@@@1
+~/.bun/install/cache/pixelmatch@5.3.0@@@1
+~/.bun/install/cache/@google/genai@1.52.0@@@1
+~/.bun/install/cache/@google/genai
+~/.bun/install/cache/pi-dsh-minimal
+~/.bun/install/cache/grok-mermaid
+~/.bun/install/cache/omp-pi-anchored-standard@0.14.1@@@1
+~/.bun/install/cache/https-proxy-agent@7.0.6@@@1
+~/.bun/install/cache/https-proxy-agent
+~/.bun/install/cache/await-to-js@3.0.0@@@1
+~/.bun/install/cache/omp-pi-anchored-standard
+~/.bun/install/cache/@jridgewell/trace-mapping
+~/.bun/install/cache/@jridgewell/gen-mapping@0.3.13@@@1
+~/.bun/install/cache/@jridgewell/gen-mapping
+~/.bun/install/cache/@jridgewell/remapping@2.3.5@@@1
+~/.bun/install/cache/@jridgewell/remapping
+~/.bun/install/cache/@jridgewell/trace-mapping@0.3.31@@@1
+~/.bun/install/cache/baseline-browser-mapping@2.9.11@@@1
+~/.bun/install/cache/http-proxy-agent
+~/.bun/install/cache/semver-compare
+~/.bun/install/cache/tailwindcss
+~/.bun/install/cache/xmlbuilder@11.0.1@@@1/typings
+~/.bun/install/cache/global-agent@3.0.0@@@1
+~/.bun/install/cache/openai
+~/.bun/install/cache/pixelmatch
+~/Workspace/04_Knowledge/AI
+~/Workspace/04_Knowledge/Concepts/AI
+~/Workspace/02_AI_Lab
+~/Workspace/02_AI_Lab/Agent_Experiments
+~/Workspace/02_AI_Lab/Agent_Experiments/DSH
+~/Workspace/02_AI_Lab/Agent_Experiments/OMP
+~/Workspace/02_AI_Lab/Agent_Experiments/Pi
+~/Workspace/02_AI_Lab/Fine_Tuning/Training
+~/Workspace/02_AI_Lab/Fine_Tuning/Models
+~/Workspace/02_AI_Lab/Fine_Tuning/Data/Training
+~/Workspace/02_AI_Lab/MCP
+~/Workspace/02_AI_Lab/Models
+~/Workspace/02_AI_Lab/Prompt_Engineering
+~/Workspace/02_AI_Lab/Hermes
+~/Workspace/05_Archives/Old_Hermes
+~/Workspace/05_Archives/Old_Hermes/research_os_pre_install_design/Agents
+~/Workspace/05_Archives/Old_Hermes/research_os_pre_install_design/MCP
+~/Workspace/05_Archives/Old_Hermes/research_os_pre_install_design/Brain
+~/.opencode/node_modules/@opencode-ai
+~/.opencode/node_modules/@ai-sdk
+~/.opencode/node_modules/kubernetes-types/apiserverinternal
+~/.opencode/node_modules/kubernetes-types/api
+~/.opencode/node_modules/kubernetes-types/apiextensions
+~/.opencode/node_modules/yaml/dist/compose
+~/.pipx
+~/.agents
+~/Library/Application Support/Apple/AirPort
+~/Library/Application Support/com.gravitycurrent.synesthesia/Thumbnails
+~/Library/Application Support/com.gravitycurrent.synesthesia/Thumbnails/terrain_lattice.synScene
+~/Library/Application Support/com.gravitycurrent.synesthesia/Thumbnails/stained_glass.synScene
+~/Library/Application Support/com.gravitycurrent.synesthesia/Thumbnails/compound_iris.synScene
+~/Library/Application Support/com.gravitycurrent.synesthesia/Thumbnails/midi_mapping.synScene
+~/Library/Application Support/com.apple.backgroundtaskmanagementagent
+~/Library/Application Support/Bionic/Crashpad/completed
+~/Library/Application Support/com.openai.chat
+~/Library/Application Support/com.openai.chat/app_pairing_extensions
+~/Library/Application Support/com.openai.atlas
+~/Library/Application Support/com.openai.atlas/Crashpad/completed
+~/Library/Application Support/Aiseesoft Studio
+~/Library/Application Support/Aiseesoft Studio/Aiseesoft Mac Data Recovery
+~/Library/Application Support/uk.co.hellogames.thelastcompass
+~/Library/Application Support/audacity/crashreports/completed
+~/Library/Application Support/Cursor/Crashpad/completed
+~/Library/Application Support/pipx
+~/Library/Application Support/Mail
+~/Library/Application Support/Google/Chrome/OptGuideOnDeviceClassifierModel
+~/Library/Application Support/Google/Chrome/OnDeviceHeadSuggestModel
+~/Library/Application Support/Google/Chrome/OptimizationGuideModelsManifest
+~/Library/Application Support/Google/Chrome/component_crx_cache
+~/Library/Application Support/Google/Chrome/OptGuideOnDeviceModel
+~/Library/Application Support/Google/Chrome/optimization_guide_model_store
+~/Library/Application Support/Claude/IndexedDB/https_claude.ai_0.indexeddb.leveldb
+~/Library/Application Support/Claude/IndexedDB/https_claude.ai_0.indexeddb.blob
+~/Library/Application Support/Claude/Claude Extensions/ant.dir.gh.anthropic.pdf-server-mcp
+~/Library/Application Support/Claude/Claude Extensions/ant.dir.ant.anthropic.filesystem
+~/Library/Application Support/Claude/Crashpad/completed
+~/Library/Application Support/Claude/local-agent-mode-sessions
+~/Library/Application Support/Airfoil
+~/Library/Application Support/segment/oai
+~/Library/Application Support/Codex/Crashpad/completed
+~/Library/Application Support/Codex/OnDeviceHeadSuggestModel
+~/Library/Application Support/Codex/Default/AutofillAiModelCache
+~/Library/Application Support/Codex/codex-browser-app/AutofillAiModelCache
+~/Library/Application Support/Codex/component_crx_cache
+~/Library/Application Support/icloudmailagent
+~/Library/Application Support/DecentralandLauncher/completed
+~/Library/Application Support/Code/CachedProfilesData/agents
+~/Library/Application Support/Code/Crashpad/completed
+~/Library/Application Support/Code/agentSessionData
+~/Library/Application Support/Code/agent-host
+~/Library/Application Support/com.apple.NewDeviceOutreach/caches/coverageDetails
+~/Library/Application Support/AirBeamTV
+~/Library/Application Support/Notion/Crashpad/completed
+~/Library/Application Support/Bitcoin/chainstate
+~/Library/Application Support/Adobe/CameraRaw/ModelSupport
+~/Library/Application Support/Adobe/CameraRaw/ModelZoo
+~/Library/Application Support/Adobe/PII
+~/Library/Application Support/com.thevoxelagents.thegardensbetween.mac
+~/Library/Application Support/CloudDocs/session/containers
+~/Library/Application Support/com.openai.codex
+~/Library/Application Support/com.apple.ContextStoreAgent
+~/Library/Application Support/FileProvider/com.apple.Photos.PhotosFileProvider/photospicker
+~/Library/Application Support/FileProvider/com.apple.CloudDocs.MobileDocumentsFileProvider/NSFileProviderDomainDefaultIdentifier
+~/Library/Application Support/Hermes
+~/Library/Application Support/Hermes/Partitions/hermes-embed
+~/Library/Application Support/Chrome-TFG-Debug/OnDeviceHeadSuggestModel
+~/Library/Application Support/Chrome-TFG-Debug/Default/AutofillAiModelCache
+~/Library/Application Support/Chrome-TFG-Debug/component_crx_cache
+~/Library/Application Support/Chrome-TFG-Debug/optimization_guide_model_store
+~/Library/Application Support/WebTorrent/Crashpad/completed
+~/Library/Application Support/com.academmedialabs.MasterOfTypingAdvancedVersioninapp
+~/Library/Application Support/com.apple.RemoteManagementAgent
+~/Library/Application Support/CorePatch/Keychain
+~/Library/Application Support/OpenAI
+~/Library/Daemon Containers
+~/Library/Daemon Containers/E3D04822-4449-4988-90ED-2C1175F909F6/Data/SpinTracer
+~/Library/Saved Application State/com.aiseesoft.aiseesoft-mac-data-recovery.savedState
+~/Library/WebKit/com.rogueamoeba.AirfoilSpeakers
+~/Library/WebKit/com.rogueamoeba.Airfoil
+~/Library/WebKit/com.nousresearch.hermes.setup
+~/Library/CloudStorage/GoogleDrive-mostafaayazdanpanah@gmail.com
+~/Library/PrivateCloudCompute
+~/Library/Keychains
+~/Library/Sharing/AirDropHashDB
+~/Library/ColorPickers
+~/Library/Application Scripts/com.cloudbric.vpnagent.network-extension
+~/Library/Application Scripts/com.isaacmarovitz.Whisky.WhiskyThumbnail
+~/Library/Application Scripts/com.apple.stocks.detailintents
+~/Library/Application Scripts/com.cloudbric.vpnagent
+~/Library/Application Scripts/com.apple.mobileslideshow.photo-picker
+~/Library/Application Scripts/com.apple.CoreDevice.remotepairingd
+~/Library/Application Scripts/com.apple.share.System.set-account-picture
+~/Library/Application Scripts/com.apple.priml.PRIMLCKPreemptivePing
+~/Library/Application Scripts/com.apple.ScreenTimeAgent
+~/Library/Application Scripts/com.apple.RAQLThumbnailExtension
+~/Library/Application Scripts/com.apple.DiagnosticExtensions.PICSDiagnosticExtension
+~/Library/Application Scripts/com.apple.weather.WeatherAppIntents
+~/Library/Application Scripts/com.apple.SSMenuAgent
+~/Library/Application Scripts/com.apple.FaceTime.RemotePeoplePicker
+~/Library/Application Scripts/com.apple.iBooks.BooksThumbnail
+~/Library/Application Scripts/com.apple.osx-tailspin
+~/Library/Application Scripts/com.apple.CloudSharing.SPIHelper
+~/Library/Application Scripts/com.apple.mail.MailQuickLookExtension
+~/Library/Application Scripts/group.com.apple.ArchiveUtility.PKSignedContainer
+~/Library/Application Scripts/com.apple.contacts.donation-agent
+~/Library/Application Scripts/com.apple.AvatarUI.AvatarPickerMemojiEditor
+~/Library/Application Scripts/com.apple.HydraQLThumbnailExtension
+~/Library/Application Scripts/com.joeallen.teleprompter.mac
+~/Library/Application Scripts/com.apple.MailServiceAgent
+~/Library/Application Scripts/com.apple.BKAgentService
+~/Library/Application Scripts/com.apple.AMPDeviceDiscoveryAgent
+~/Library/Application Scripts/io.nekohasekai.sfa.extension
+~/Library/Application Scripts/io.nekohasekai.sfa
+~/Library/Application Scripts/com.apple.quicklook.thumbnail.OfficeExtension
+~/Library/Application Scripts/com.apple.MailPersonaStorage
+~/Library/Application Scripts/com.apple.aiml.mlpt.FedStats.MLHostPluginClassB
+~/Library/Application Scripts/group.com.apple.appstoreagent
+~/Library/Application Scripts/com.apple.Safari.BrowserDataImportingService
+~/Library/Application Scripts/group.com.apple.portrait.BackgroundReplacement
+~/Library/Application Scripts/com.apple.quicklook.thumbnail.ClippingsExtension
+~/Library/Application Scripts/com.apple.quicklook.thumbnail.AudiovisualExtension
+~/Library/Application Scripts/com.apple.AMPSystemPlayerAgent
+
+============================================================
+8. PI CONFIGURATION
+============================================================
+
+--- /Users/mostafa/.pi ---
+~/.pi
+~/.pi/agent
+~/.pi/agent/pi-dsh-minimal.json
+~/.pi/agent/settings.json
+~/.pi/agent/models-store.json
+~/.pi/agent/auth.json
+~/.pi/agent/npm
+~/.pi/agent/npm/node_modules
+~/.pi/agent/npm/.gitignore
+~/.pi/agent/npm/package-lock.json
+~/.pi/agent/npm/package.json
+
+--- /Users/mostafa/.config/pi ---
+NOT FOUND
+
+============================================================
+9. DSH CONFIGURATION
+============================================================
+
+--- /Users/mostafa/.dsh ---
+322M	/Users/mostafa/.dsh
+~/.dsh
+~/.dsh/settings.yaml
+~/.dsh/storages
+~/.dsh/storages/workspace.json
+~/.dsh/storages/session_projcache.json
+~/.dsh/node_modules
+~/.dsh/.anonymous-user-id
+~/.dsh/sessions
+~/.dsh/sessions/--Users-mostafa-Workspace--
+~/.dsh/sessions/--Users-mostafa-Workspace--/session-abf73088-939b-4923-85f0-c0b8acf710d5
+~/.dsh/sessions/--Users-mostafa-Workspace--/session-abf73088-939b-4923-85f0-c0b8acf710d5/session.jsonl.zstd
+~/.dsh/sessions/--Users-mostafa-Workspace--/session-cfc508e2-b930-4119-80f8-01be8ab382c5
+~/.dsh/sessions/--Users-mostafa-Workspace--/session-cfc508e2-b930-4119-80f8-01be8ab382c5/session.jsonl.zstd
+~/.dsh/sessions/--Users-mostafa-Workspace--/session-0035ef0e-8f7c-481e-ad15-090183cee65b
+~/.dsh/sessions/--Users-mostafa-Workspace--/session-0035ef0e-8f7c-481e-ad15-090183cee65b/session.jsonl.zstd
+~/.dsh/sessions/--Users-mostafa-Workspace--/session-f308c9c1-ec07-4582-abc2-dca16028fcb9
+~/.dsh/sessions/--Users-mostafa-Workspace--/session-f308c9c1-ec07-4582-abc2-dca16028fcb9/session.jsonl.zstd
+~/.dsh/sessions/--Users-mostafa-Workspace--/session-178c45f2-8c9d-4cfe-8780-49a716077ed4
+~/.dsh/sessions/--Users-mostafa-Workspace--/session-178c45f2-8c9d-4cfe-8780-49a716077ed4/session.jsonl.zstd
+~/.dsh/package-lock.json
+~/.dsh/package.json
+~/.dsh/.credentials.yaml
+~/.dsh/profiles
+~/.dsh/profiles/web
+~/.dsh/profiles/web/pnpm-lock.yaml
+~/.dsh/profiles/web/cordis.patch.yml
+~/.dsh/profiles/web/node_modules
+~/.dsh/profiles/web/package.json
+~/.dsh/profiles/web/cordis.yml
+~/.dsh/profiles/web/pnpm-workspace.yaml
+~/.dsh/profiles/node_modules
+~/.dsh/profiles/default
+~/.dsh/profiles/default/pnpm-lock.yaml
+~/.dsh/profiles/default/cordis.patch.yml
+~/.dsh/profiles/default/node_modules
+~/.dsh/profiles/default/package.json
+~/.dsh/profiles/default/cordis.yml
+~/.dsh/profiles/default/pnpm-workspace.yaml
+
+--- /Users/mostafa/.config/dsh ---
+NOT FOUND
+
+============================================================
+10. OMP CONFIGURATION
+============================================================
+
+--- /Users/mostafa/.omp ---
+141M	/Users/mostafa/.omp
+~/.omp
+~/.omp/cache
+~/.omp/cache/legacy-pi-extension-cache.db
+~/.omp/plugins
+~/.omp/plugins/node_modules
+~/.omp/plugins/omp-plugins.lock.json
+~/.omp/plugins/bun.lock
+~/.omp/plugins/package.json
+~/.omp/agent
+~/.omp/agent/models.db-shm
+~/.omp/agent/agent.db
+~/.omp/agent/models.db-wal
+~/.omp/agent/history.db-wal
+~/.omp/agent/history.db-shm
+~/.omp/agent/history.db
+~/.omp/agent/last-changelog-version
+~/.omp/agent/terminal-sessions
+~/.omp/agent/terminal-sessions/ttys003
+~/.omp/agent/terminal-sessions/ttys001
+~/.omp/agent/sessions
+~/.omp/agent/sessions/-Downloads
+~/.omp/agent/sessions/--private-tmp--
+~/.omp/agent/models.db
+~/.omp/agent/config.yml
+~/.omp/agent/config.yml.lock
+~/.omp/agent/agent.db-wal
+~/.omp/agent/agent.db-shm
+~/.omp/logs
+~/.omp/logs/.omp.76899-audit.json
+~/.omp/logs/omp.2026-08-20.76899.log
+~/.omp/logs/omp.2026-08-20.76221.log
+~/.omp/logs/omp.2026-08-20.41265.log
+~/.omp/run
+~/.omp/run/daemons
+~/.omp/run/daemons/7f5735a3d9810677
+~/.omp/run/daemons/7f5735a3d9810677/clients
+~/.omp/run/daemons/6248c8647bf424ba
+~/.omp/run/daemons/6248c8647bf424ba/clients
+~/.omp/natives
+~/.omp/natives/17.4.0
+~/.omp/natives/17.4.0/pi_natives.darwin-arm64.node
+~/.omp/gpu_cache.json
+
+--- /Users/mostafa/.config/omp ---
+NOT FOUND
+
+============================================================
+11. MCP DISCOVERY
+============================================================
+Searching MCP related files
+~/.docker/config.json
+~/.copilot/settings.json
+~/.copilot/config.json
+~/.bun/install/cache/stage-js@1.0.0-67d929592c7c0e39@@@1/.changeset/config.json
+~/.bun/install/cache/planck@1.4.2@@@1/.changeset/config.json
+~/.tama96/mcp_config.json
+~/Desktop/cline-backup-1786369837/saoudrizwan.claude-dev/settings/cline_mcp_settings.json
+~/Desktop/cline-final-backup-1786375765/saoudrizwan.claude-dev/settings/cline_mcp_settings.json
+~/Desktop/cline-broken-backup-1786369056/settings/cline_mcp_settings.json
+~/Desktop/cline-broken-backup-1786368931/settings/cline_mcp_settings.json
+~/Desktop/cline-broken-backup-1786368931/cache/mcp_marketplace_catalog.json
+~/Desktop/cline-backup-now/saoudrizwan.claude-dev/settings/cline_mcp_settings.json
+~/Library/Application Support/OpenVPN Connect/config.json
+~/Library/Application Support/open-webui/config.json
+~/Library/Application Support/Claude/Claude Extensions Settings/ant.dir.gh.anthropic.pdf-server-mcp.json
+~/Library/Application Support/Claude/config.json
+~/Library/Application Support/Code/User/mcp.json
+~/Library/Application Support/v2raya/config.json
+~/Library/Application Support/WebTorrent/config.json
+~/Library/Application Support/Signal/config.json
+~/Library/Group Containers/group.hossin.asaadi.V2Box/config.json
+~/.cargo/registry/index/index.crates.io-1949cf8c6b5b557f/config.json
+~/Uncategorized/cline-backup/saoudrizwan.claude-dev/settings/cline_mcp_settings.json
+~/Uncategorized/cline-backup/saoudrizwan.claude-dev/cache/mcp_marketplace_catalog.json
+~/.cline/data/settings/cline_mcp_settings.json
+~/.token-free-gateway/config.json
+~/.vscode/agent-plugins/vscode-synced-customization-agent-host-copilotcli/467921786/.mcp.json
+~/.ollama/config.json
+~/.pi/agent/settings.json
+
+============================================================
+12. GLOBAL PACKAGES
+============================================================
+├── @deepseek-ai/dsh@0.1.0-rc.7
+├── @earendil-works/pi-coding-agent@0.84.2
+├── dsh@1.0.1
+└── openclaw@2026.7.1-2
+
+============================================================
+13. RUNNING PROCESSES
+============================================================
+mostafa          29887   2.3  6.2 1924349936 517936   ??  S     9:31PM   7:05.36 /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/151.0.7922.138/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --metrics-client-id=593ef6be-4465-4078-b758-ddbb521f7750 --origin-trial-disabled-features=CanvasTextNg|WebAssemblyCustomDescriptors --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=232 --time-ticks-at-unix-epoch=-1787197754729992 --launch-time-ticks=44963474854 --shared-files --metrics-shmem-handle=1752395122,r,5292637259150028944,107178850089696116,2097152 --field-trial-handle=1718379636,r,14131370289805819624,9061901786852865806,262144 --variations-seed-version=20260819-170051.031000-production --pseudonymization-salt-handle=1935764596,r,7194694217537647929,13260158582747440037,4 --trace-process-track-uuid=3190709203705580462 --seatbelt-client=58
+mostafa          75849   1.5  1.6 1866165888 134544   ??  S     6:52PM   6:07.30 /Applications/Spotify.app/Contents/Frameworks/Spotify Helper (Renderer).app/Contents/MacOS/Spotify Helper (Renderer) --type=renderer --start-stack-profiler --user-data-dir=/Users/mostafa/Library/Caches/com.spotify.client --log-severity=disable --user-agent-product=Chrome/146.0.7680.179 Spotify/1.2.96.518 --autoplay-policy=no-user-gesture-required --enable-blink-features=DocumentPictureInPictureCefOptions --lang=en --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=7 --time-ticks-at-unix-epoch=-1787197754706777 --launch-time-ticks=41577929849 --shared-files --metrics-shmem-handle=1752395122,r,11620043452953739751,16754763798666385411,2097152 --field-trial-handle=1718379636,r,18272994269658287283,6322274954441531417,262144 --disable-features=AutofillActorMode,BackForwardCache,FullscreenBubbleShowOrigin,GatherProcessRequirementMetrics,GlicActorUi,LensOverlay,MacAppCodeSignClone,PartitionAllocDanglingPtr,PartitionAllocUnretainedDanglingPtr,StorageNotificationService --variations-seed-version --pseudonymization-salt-handle=1935764596,r,10982427656671689818,5845958059902437865,4 --trace-process-track-uuid=3190708992871164437 --seatbelt-client=206
+root             18133   0.0  0.0 426953696   2832   ??  Ss    9:26PM   0:00.18 /System/Library/Frameworks/Metal.framework/Versions/A/XPCServices/MTLCompilerService.xpc/Contents/MacOS/MTLCompilerService
+mostafa          75840   0.0  0.1 461273728   5856   ??  S     6:52PM   0:00.04 /Applications/Spotify.app/Contents/Frameworks/Spotify Helper.app/Contents/MacOS/Spotify Helper --monitor-self-annotation=ptype=crashpad-handler --type=crashpad-handler --max-uploads=5 --max-db-size=20 --max-db-age=5 --database=/Users/mostafa/Library/Caches/com.spotify.client --url=https://crashdump.spotify.com:443/ --annotation=platform=macosarm64 --annotation=product=spotify --annotation=version=1.2.96.518 --handshake-fd=6
+mostafa          84416   0.0  0.3 411854336  22096   ??  S     5:41PM   0:00.92 /System/Library/Frameworks/LocalAuthentication.framework/Support/coreautha.bundle/Contents/MacOS/coreautha
+mostafa          89022   0.0  0.1 426964992  10864   ??  Ss    5:07PM   0:14.96 /System/Library/PrivateFrameworks/IntelligencePlatformCompute.framework/Versions/A/XPCServices/IntelligencePlatformComputeService.xpc/Contents/MacOS/IntelligencePlatformComputeService
+mostafa          73406   0.0  0.1 426963216   7392   ??  S     5:01PM   0:00.21 /System/Library/Frameworks/AudioToolbox.framework/AudioComponentRegistrar
+mostafa          48836   0.0  0.1 427129184   6768   ??  S     4:52PM   0:01.65 /System/Cryptexes/App/System/Library/CoreServices/SafariSupport.bundle/Contents/MacOS/SafariBookmarksSyncAgent
+mostafa          77868   0.0  0.9 1926092416  71424   ??  S     2:36PM   0:39.71 /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/151.0.7922.138/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --metrics-client-id=593ef6be-4465-4078-b758-ddbb521f7750 --extension-process --origin-trial-disabled-features=CanvasTextNg|WebAssemblyCustomDescriptors --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=52 --time-ticks-at-unix-epoch=-1787197754729992 --launch-time-ticks=26231039489 --shared-files --metrics-shmem-handle=1752395122,r,17249564867005201002,11331084459031990632,2097152 --field-trial-handle=1718379636,r,14131370289805819624,9061901786852865806,262144 --variations-seed-version=20260819-170051.031000-production --pseudonymization-salt-handle=1935764596,r,7194694217537647929,13260158582747440037,4 --trace-process-track-uuid=3190709035038047642 --seatbelt-client=57
+mostafa          63441   0.0  1.0 1924439280  85760   ??  S     2:31PM   7:28.05 /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/151.0.7922.138/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --metrics-client-id=593ef6be-4465-4078-b758-ddbb521f7750 --origin-trial-disabled-features=CanvasTextNg|WebAssemblyCustomDescriptors --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=50 --time-ticks-at-unix-epoch=-1787197754729992 --launch-time-ticks=25913590091 --shared-files --metrics-shmem-handle=1752395122,r,2601011432537614930,7536588223747668797,2097152 --field-trial-handle=1718379636,r,14131370289805819624,9061901786852865806,262144 --variations-seed-version=20260819-170051.031000-production --pseudonymization-salt-handle=1935764596,r,7194694217537647929,13260158582747440037,4 --trace-process-track-uuid=3190709033163963944 --seatbelt-client=269
+mostafa          17215   0.0  0.3 1924093072  22032   ??  S     2:14PM   0:01.25 /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/151.0.7922.138/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --metrics-client-id=593ef6be-4465-4078-b758-ddbb521f7750 --origin-trial-disabled-features=CanvasTextNg|WebAssemblyCustomDescriptors --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=29 --time-ticks-at-unix-epoch=-1787197754729992 --launch-time-ticks=24894431104 --shared-files --metrics-shmem-handle=1752395122,r,1051989690915848595,2922673464786616810,2097152 --field-trial-handle=1718379636,r,14131370289805819624,9061901786852865806,262144 --variations-seed-version=20260819-170051.031000-production --pseudonymization-salt-handle=1935764596,r,7194694217537647929,13260158582747440037,4 --trace-process-track-uuid=3190709013486085115 --seatbelt-client=203
+mostafa          15571   0.0  0.5 1924130736  41360   ??  S     2:13PM   0:03.90 /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/151.0.7922.138/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --metrics-client-id=593ef6be-4465-4078-b758-ddbb521f7750 --origin-trial-disabled-features=CanvasTextNg|WebAssemblyCustomDescriptors --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=17 --time-ticks-at-unix-epoch=-1787197754729992 --launch-time-ticks=24860302166 --shared-files --metrics-shmem-handle=1752395122,r,2859745046745993965,13592622857534162245,2097152 --field-trial-handle=1718379636,r,14131370289805819624,9061901786852865806,262144 --variations-seed-version=20260819-170051.031000-production --pseudonymization-salt-handle=1935764596,r,7194694217537647929,13260158582747440037,4 --trace-process-track-uuid=3190709002241582927 --seatbelt-client=199
+mostafa          15561   0.0  0.8 1924373216  67680   ??  S     2:13PM   0:06.04 /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/151.0.7922.138/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --metrics-client-id=593ef6be-4465-4078-b758-ddbb521f7750 --origin-trial-disabled-features=CanvasTextNg|WebAssemblyCustomDescriptors --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=10 --time-ticks-at-unix-epoch=-1787197754729992 --launch-time-ticks=24859543461 --shared-files --metrics-shmem-handle=1752395122,r,10728139367624653655,6080707415639349744,2097152 --field-trial-handle=1718379636,r,14131370289805819624,9061901786852865806,262144 --variations-seed-version=20260819-170051.031000-production --pseudonymization-salt-handle=1935764596,r,7194694217537647929,13260158582747440037,4 --trace-process-track-uuid=3190708995682289984 --seatbelt-client=155
+mostafa          15560   0.0  0.4 1926096128  30832   ??  S     2:13PM   0:15.29 /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/151.0.7922.138/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --metrics-client-id=593ef6be-4465-4078-b758-ddbb521f7750 --extension-process --origin-trial-disabled-features=CanvasTextNg|WebAssemblyCustomDescriptors --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=9 --time-ticks-at-unix-epoch=-1787197754729992 --launch-time-ticks=24859495552 --shared-files --metrics-shmem-handle=1752395122,r,4745078269131436325,4138175958515436311,2097152 --field-trial-handle=1718379636,r,14131370289805819624,9061901786852865806,262144 --variations-seed-version=20260819-170051.031000-production --pseudonymization-salt-handle=1935764596,r,7194694217537647929,13260158582747440037,4 --trace-process-track-uuid=3190708994745248135 --seatbelt-client=152
+mostafa          15559   0.0  0.6 1926111168  47648   ??  S     2:13PM   0:07.64 /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/151.0.7922.138/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --metrics-client-id=593ef6be-4465-4078-b758-ddbb521f7750 --extension-process --origin-trial-disabled-features=CanvasTextNg|WebAssemblyCustomDescriptors --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=8 --time-ticks-at-unix-epoch=-1787197754729992 --launch-time-ticks=24859492056 --shared-files --metrics-shmem-handle=1752395122,r,3775312497151759492,14045117339182887088,2097152 --field-trial-handle=1718379636,r,14131370289805819624,9061901786852865806,262144 --variations-seed-version=20260819-170051.031000-production --pseudonymization-salt-handle=1935764596,r,7194694217537647929,13260158582747440037,4 --trace-process-track-uuid=3190708993808206286 --seatbelt-client=138
+mostafa          15547   0.0  0.1 460531312   4448   ??  S     2:13PM   0:00.62 /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/151.0.7922.138/Helpers/chrome_crashpad_handler --monitor-self-annotation=ptype=crashpad-handler --database=/Users/mostafa/Library/Application Support/Google/Chrome/Crashpad --metrics-dir=/Users/mostafa/Library/Application Support/Google/Chrome --url=https://clients2.google.com/cr/report --annotation=channel= --annotation=plat=OS X --annotation=prod=Chrome_Mac --annotation=ver=151.0.7922.138 --handshake-fd=5
+mostafa          13034   0.0  0.6 413047104  46208   ??  S     2:12PM   0:56.22 /Users/mostafa/.hermes/node/bin/node /Users/mostafa/.local/lib/node_modules/openclaw/dist/index.js gateway --port 18789
+mostafa          13054   0.0  0.0 426916288   1824   ??  S     2:12PM   0:00.05 /System/Library/Frameworks/CryptoTokenKit.framework/ctkahp.bundle/Contents/MacOS/ctkahp
+mostafa            906   0.0  0.0 426965152   2672   ??  SN   11:06PM   0:11.86 /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdbulkimport -s mdworker-bundle -c MDSImporterBundleFinder -m com.apple.metadata.mdbulkimport
+root               788   0.0  0.0 426916256   1584   ??  Ss   11:06PM   0:00.14 /System/Library/Frameworks/CryptoTokenKit.framework/ctkahp.bundle/Contents/MacOS/ctkahp -d
+mostafa            655   0.0  0.0 426949312   2160   ??  S    11:06PM   0:11.63 /usr/libexec/containermanagerd --runmode=agent --user-container-mode=current --bundle-container-mode=proxy --system-container-mode=none
+root               356   0.0  0.1 426952736   6848   ??  Ss   11:06PM   0:48.92 /System/Library/CoreServices/powerd.bundle/powerd
+mostafa          51673   0.0  0.0 410724320   1456 s001  S+   10:15PM   0:00.00 grep -Ei [o]penclaw|[h]ermes|[p]i |[d]sh|[o]mp|[o]llama|node|bun
+mostafa          50629   0.0  0.0 410594224    528 s001  S+   10:15PM   0:00.01 tee /Users/mostafa/Workspace/02_AI_Lab/Agent_Experiments/_inspection/hermes_full_architecture_20260820_221537.txt
+mostafa          50627   0.0  0.0 410734944    928 s001  S+   10:15PM   0:00.00 bash /Users/mostafa/Downloads/hermes_full_architecture_inspection.sh
+mostafa          50624   0.0  0.0 410724704   2096 s001  S+   10:15PM   0:00.03 bash /Users/mostafa/Downloads/hermes_full_architecture_inspection.sh
+mostafa          50170   0.0  1.1 1926031296  93056   ??  S    10:15PM   0:00.11 /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/151.0.7922.138/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --metrics-client-id=593ef6be-4465-4078-b758-ddbb521f7750 --extension-process --origin-trial-disabled-features=CanvasTextNg|WebAssemblyCustomDescriptors --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=264 --time-ticks-at-unix-epoch=-1787197754729992 --launch-time-ticks=47616935480 --shared-files --metrics-shmem-handle=1752395122,r,5562080379150826980,8019087197909927726,2097152 --field-trial-handle=1718379636,r,14131370289805819624,9061901786852865806,262144 --variations-seed-version=20260819-170051.031000-production --pseudonymization-salt-handle=1935764596,r,7194694217537647929,13260158582747440037,4 --trace-process-track-uuid=3190709233690919630 --seatbelt-client=295
+mostafa          84224   0.0  0.7 1924069024  62304   ??  S     9:51PM   0:00.12 /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/151.0.7922.138/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --metrics-client-id=593ef6be-4465-4078-b758-ddbb521f7750 --origin-trial-disabled-features=CanvasTextNg|WebAssemblyCustomDescriptors --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=261 --time-ticks-at-unix-epoch=-1787197754729992 --launch-time-ticks=46161564706 --shared-files --metrics-shmem-handle=1752395122,r,16154669488784092923,5335863319584260971,2097152 --field-trial-handle=1718379636,r,14131370289805819624,9061901786852865806,262144 --variations-seed-version=20260819-170051.031000-production --pseudonymization-salt-handle=1935764596,r,7194694217537647929,13260158582747440037,4 --trace-process-track-uuid=3190709230879794083 --seatbelt-client=189
+mostafa          82646   0.0  1.1 1924131168  94752   ??  S     9:50PM   0:00.28 /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/151.0.7922.138/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --metrics-client-id=593ef6be-4465-4078-b758-ddbb521f7750 --origin-trial-disabled-features=CanvasTextNg|WebAssemblyCustomDescriptors --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=259 --time-ticks-at-unix-epoch=-1787197754729992 --launch-time-ticks=46126029304 --shared-files --metrics-shmem-handle=1752395122,r,1631955864450063317,5506428771441422428,2097152 --field-trial-handle=1718379636,r,14131370289805819624,9061901786852865806,262144 --variations-seed-version=20260819-170051.031000-production --pseudonymization-salt-handle=1935764596,r,7194694217537647929,13260158582747440037,4 --trace-process-track-uuid=3190709229005710385 --seatbelt-client=270
+mostafa          82645   0.0  2.1 1926113936 180208   ??  S     9:50PM   0:14.50 /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/151.0.7922.138/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --metrics-client-id=593ef6be-4465-4078-b758-ddbb521f7750 --origin-trial-disabled-features=CanvasTextNg|WebAssemblyCustomDescriptors --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=258 --time-ticks-at-unix-epoch=-1787197754729992 --launch-time-ticks=46125989069 --shared-files --metrics-shmem-handle=1752395122,r,18247609868477630145,16792278469569510200,2097152 --field-trial-handle=1718379636,r,14131370289805819624,9061901786852865806,262144 --variations-seed-version=20260819-170051.031000-production --pseudonymization-salt-handle=1935764596,r,7194694217537647929,13260158582747440037,4 --trace-process-track-uuid=3190709228068668536 --seatbelt-client=188
+mostafa          50590   0.0  1.6 1926106320 137120   ??  S     9:38PM   0:09.30 /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/151.0.7922.138/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --metrics-client-id=593ef6be-4465-4078-b758-ddbb521f7750 --origin-trial-disabled-features=CanvasTextNg|WebAssemblyCustomDescriptors --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=249 --time-ticks-at-unix-epoch=-1787197754729992 --launch-time-ticks=45417067543 --shared-files --metrics-shmem-handle=1752395122,r,15995114835525258408,2789790995180515882,2097152 --field-trial-handle=1718379636,r,14131370289805819624,9061901786852865806,262144 --variations-seed-version=20260819-170051.031000-production --pseudonymization-salt-handle=1935764596,r,7194694217537647929,13260158582747440037,4 --trace-process-track-uuid=3190709219635291895 --seatbelt-client=281
+root             35294   0.0  0.0 426916736   3264   ??  Ss    9:33PM   0:00.07 /System/Library/Frameworks/AudioToolbox.framework/AudioComponentRegistrar -daemon
+
+============================================================
+14. NETWORK SERVICES
+============================================================
+COMMAND     PID    USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+node      13034 mostafa   23u  IPv4 0x51d231de0c074d83      0t0  TCP 127.0.0.1:18789 (LISTEN)
+node      13034 mostafa   24u  IPv6 0x4d0238c3d49b3097      0t0  TCP [::1]:18789 (LISTEN)
+
+============================================================
+15. ENVIRONMENT VARIABLES (FILTERED)
+============================================================
+PATH=/Users/mostafa/.bun/bin:/Users/mostafa/.cargo/bin:/Users/mostafa/.actual/bin:/Users/mostafa/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/mostafa/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+__CFBundleIdentifier=com.apple.Terminal
+BUN_INSTALL=/Users/mostafa/.bun
+
+============================================================
+16. DISK USAGE SUMMARY
+============================================================
+2.8G	/Users/mostafa/.hermes
+4.0M	/Users/mostafa/.openclaw
+322M	/Users/mostafa/.dsh
+236K	/Users/mostafa/.pi
+141M	/Users/mostafa/.omp
+ 11G	/Users/mostafa/.ollama
+408K	/Users/mostafa/Workspace
+
+============================================================
+INSPECTION COMPLETE
+============================================================
+
+Report:
+/Users/mostafa/Workspace/02_AI_Lab/Agent_Experiments/_inspection/hermes_full_architecture_20260820_221537.txt
+
+No modifications were performed.
