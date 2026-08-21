@@ -1,0 +1,475 @@
+mostafa@MMostafa searxng % cat ~/.hermes/profiles/research-assistant/config.yaml | grep -i mcp -A20
+    - touchdesigner-mcp
+    - weekly-review-planning
+    - weights-and-biases
+    - xlsx
+    - xurl
+    - youtube-content
+kanban:
+  review_dispatch: true
+code_execution:
+  mode: project
+  max_tool_calls: 50
+  timeout: 300
+streaming:
+  enabled: false
+onboarding:
+  seen:
+    openclaw_residue_cleanup: true
+telemetry:
+  shared_metrics:
+    enabled: false
+updates:
+mostafa@MMostafa searxng % find ~/.hermes/profiles/research-assistant -iname "*mcp*" -print
+/Users/mostafa/.hermes/profiles/research-assistant/skills/creative/touchdesigner-mcp
+/Users/mostafa/.hermes/profiles/research-assistant/skills/creative/touchdesigner-mcp/references/mcp-tools.md
+/Users/mostafa/.hermes/profiles/research-assistant/skills/autonomous-ai-agents/hermes-agent/references/native-mcp.md
+mostafa@MMostafa searxng % sed -n '1,220p' ~/.hermes/hermes-agent/website/docs/user-guide/profiles.md
+---
+sidebar_position: 2
+---
+
+# Profiles: Running Multiple Agents
+
+Run multiple independent Hermes agents on the same machine — each with its own config, API keys, memory, sessions, skills, and gateway state.
+
+## What are profiles?
+
+A profile is a separate Hermes home directory. Each profile gets its own directory containing its own `config.yaml`, `.env`, `SOUL.md`, memories, sessions, skills, cron jobs, and state database. Profiles let you run separate agents for different purposes — a coding assistant, a personal bot, a research agent — without mixing up Hermes state.
+
+:::caution Give every agent its own profile
+Never point two agent processes at the same profile (the same Hermes home). Both write memory automatically, and each loads the other's writes into its system prompt at session start — so two writers on one home compound each other's state until it stops being anything you configured. Profiles exist exactly to prevent this; agents that need shared memory should use an [external memory provider](/user-guide/features/memory-providers) instead.
+:::
+
+When you create a profile, it automatically becomes its own command. Create a profile called `coder` and you immediately have `coder chat`, `coder setup`, `coder gateway start`, etc.
+
+## Quick start
+
+```bash
+hermes profile create coder       # creates profile + "coder" command alias
+coder setup                       # configure API keys and model
+coder chat                        # start chatting
+```
+
+That's it. `coder` is now its own Hermes profile with its own config, memory, and state.
+
+## Creating a profile
+
+:::tip
+Quickest setup: run `hermes setup --portal` inside the new profile to wire up models + tools at once. See [Nous Portal](/integrations/nous-portal).
+:::
+
+### Blank profile
+
+```bash
+hermes profile create mybot
+```
+
+Creates a fresh profile with bundled skills seeded. Run `mybot setup` to configure API keys, model, and gateway tokens.
+
+If you plan to use this profile as a kanban worker (or want the kanban orchestrator to route work to it), pass `--description "<role>"` at create time so the orchestrator knows what it's good at:
+
+```bash
+hermes profile create researcher --description "Reads source code and external docs, writes findings."
+```
+
+You can also set or auto-generate the description later with `hermes profile describe` — see the [Kanban guide](./features/kanban#auto-vs-manual-orchestration) for the full routing model.
+
+### Clone config only (`--clone`)
+
+```bash
+hermes profile create work --clone
+```
+
+Copies your current profile's `config.yaml`, `.env`, `SOUL.md`, and skills into the new profile. Same API keys, model, and capabilities, but fresh sessions and memory. Edit `~/.hermes/profiles/work/.env` for different API keys, or `~/.hermes/profiles/work/SOUL.md` for a different personality.
+
+### Clone everything (`--clone-all`)
+
+```bash
+hermes profile create backup --clone-all
+```
+
+Copies **everything** — config, API keys, personality, all memories, skills, cron jobs, plugins. A complete working snapshot. Per-profile history is excluded (session history, `state.db`, `backups/`, `state-snapshots/`, `checkpoints/`) — these belong to the source profile and can reach tens of GB. For a full backup including history, use `hermes profile export` or `hermes backup` instead.
+
+### Clone from a specific profile
+
+```bash
+hermes profile create work --clone-from coder
+```
+
+`--clone-from <source>` selects the source profile directly and implies a config/skills/SOUL clone. Combine it with `--clone-all` when you want a full copy of that source profile:
+
+```bash
+hermes profile create work-backup --clone-from coder --clone-all
+```
+
+:::tip Honcho memory + profiles
+When Honcho is enabled, clone operations automatically create a dedicated AI peer for the new profile while sharing the same user workspace. Each profile builds its own observations and identity. See [Honcho -- Multi-agent / Profiles](./features/memory-providers.md#honcho) for details.
+:::
+
+## Using profiles
+
+### Command aliases
+
+Every profile automatically gets a command alias at `~/.local/bin/<name>`:
+
+```bash
+coder chat                    # chat with the coder agent
+coder setup                   # configure coder's settings
+coder gateway start           # start coder's gateway
+coder doctor                  # check coder's health
+coder skills list             # list coder's skills
+coder config set model.default anthropic/claude-sonnet-4
+```
+
+The alias works with every hermes subcommand — it's just `hermes -p <name>` under the hood.
+
+### The `-p` flag
+
+You can also target a profile explicitly with any command:
+
+```bash
+hermes -p coder chat
+hermes --profile=coder doctor
+hermes chat -p coder -q "hello"    # works in any position
+```
+
+### Sticky default (`hermes profile use`)
+
+```bash
+hermes profile use coder
+hermes chat                   # now targets coder
+hermes tools                  # configures coder's tools
+hermes profile use default    # switch back
+```
+
+Sets a default so plain `hermes` commands target that profile. Like `kubectl config use-context`.
+
+### Knowing where you are
+
+The CLI always shows which profile is active:
+
+- **Prompt**: `coder ❯` instead of `❯`
+- **Banner**: Shows `Profile: coder` on startup
+- **`hermes profile`**: Shows current profile name, path, model, gateway status
+
+## Profiles vs workspaces vs sandboxing
+
+Profiles are often confused with workspaces or sandboxes, but they are different things:
+
+- A **profile** gives Hermes its own state directory: `config.yaml`, `.env`, `SOUL.md`, sessions, memory, logs, cron jobs, and gateway state.
+- A **workspace** or **working directory** is where terminal commands start. That is controlled separately by `terminal.cwd`.
+- A **sandbox** is what limits filesystem access. Profiles do **not** sandbox the agent.
+
+On the default `local` terminal backend, the agent still has the same filesystem access as your user account. A profile does not stop it from accessing folders outside the profile directory.
+
+If you want a profile to start in a specific project folder, set an explicit absolute `terminal.cwd` in that profile's `config.yaml`:
+
+```yaml
+terminal:
+  backend: local
+  cwd: /absolute/path/to/project
+```
+
+Using `cwd: "."` on the local backend means "the directory Hermes was launched from", not "the profile directory".
+
+Also note:
+
+- `SOUL.md` can guide the model, but it does not enforce a workspace boundary.
+- Changes to `SOUL.md` take effect cleanly on a new session. Existing sessions may still be using the old prompt state.
+- Asking the model "what directory are you in?" is not a reliable isolation test. If you need a predictable starting directory for tools, set `terminal.cwd` explicitly.
+
+## Running gateways
+
+Each profile runs its own gateway as a separate process with its own bot token:
+
+```bash
+coder gateway start           # starts coder's gateway
+assistant gateway start       # starts assistant's gateway (separate process)
+```
+
+### Different bot tokens
+
+Each profile has its own `.env` file. Configure a different Telegram/Discord/Slack bot token in each:
+
+```bash
+# Edit coder's tokens
+nano ~/.hermes/profiles/coder/.env
+
+# Edit assistant's tokens
+nano ~/.hermes/profiles/assistant/.env
+```
+
+### Safety: token locks
+
+If two profiles accidentally use the same bot token, the second gateway will be blocked with a clear error naming the conflicting profile. Supported for Telegram, Discord, Slack, WhatsApp, and Signal.
+
+### Persistent services
+
+```bash
+coder gateway install         # creates hermes-gateway-coder systemd/launchd service
+assistant gateway install     # creates hermes-gateway-assistant service
+```
+
+Each profile gets its own service name. They run independently.
+
+:::note Inside the official Docker image
+Per-profile gateways are supervised by [s6-overlay](https://github.com/just-containers/s6-overlay) (PID 1 in the container), so `hermes profile create <name>` automatically registers an s6 service slot at `/run/service/gateway-<name>/`. `hermes -p <name> gateway start/stop/restart` dispatches to `s6-svc` instead of spawning a bare process — crashes are auto-restarted and `docker restart` preserves the previously-running set of gateways. See [Per-profile gateway supervision](/user-guide/docker#per-profile-gateway-supervision) for details.
+:::
+
+## Configuring profiles
+
+Each profile has its own:
+
+- **`config.yaml`** — model, provider, toolsets, all settings
+- **`.env`** — API keys, bot tokens
+- **`SOUL.md`** — personality and instructions
+
+```bash
+coder config set model.default anthropic/claude-sonnet-4
+echo "You are a focused coding assistant." > ~/.hermes/profiles/coder/SOUL.md
+```
+
+If you want this profile to work in a specific project by default, also set its own `terminal.cwd`:
+
+```bash
+coder config set terminal.cwd /absolute/path/to/project
+```
+
+### From the dashboard
+
+The [web dashboard](features/web-dashboard.md#managing-multiple-profiles)
+is a machine-level surface that can manage **any** profile's config, API
+keys, skills, MCPs, and model via the profile switcher in its sidebar — no
+per-profile dashboard needed. `coder dashboard` routes to the machine
+dashboard with the `coder` profile preselected. The dashboard's Chat tab
+also follows the switcher, spawning a conversation under the selected
+profile's home.
+mostafa@MMostafa searxng % 
+mostafa@MMostafa searxng % sed -n '1,220p' ~/.hermes/hermes-agent/docs/design/profile-builder.md
+# Profile Builder — Dashboard-Native, Full-Featured Profile Creation
+
+Status: design proposal (not yet implemented)
+Author: drafted for Teknium
+Supersedes: PR #31781 (prompt_toolkit `hermes profile wizard`)
+
+## Why this, not the CLI wizard
+
+PR #31781 added a keyboard-driven `hermes profile wizard` in the terminal.
+The decision is to **not** build the profile-creation experience in the CLI.
+The dashboard already owns mature, separate pages for every element a profile
+needs, and a profile is just a HERMES_HOME directory — so the dashboard is the
+right home for a full-featured builder, and it can reuse everything that
+already exists.
+
+A profile = a full `~/.hermes/profiles/<name>/` directory with its own:
+- `config.yaml` — holds `model`/`provider`, `mcp_servers`, enabled skills
+- `skills/` — physical SKILL.md files (built-in seed + optional + hub installs)
+- `.env` — secrets
+- `SOUL.md` / `USER.md` — identity
+
+So per-profile scoping of Model, MCPs, and Skills is **native** — no data-model
+change needed. The gap is purely UX: creation today is a thin modal
+(name + clone + model + description), and you can only compose skills/MCPs
+*after* the profile exists, by visiting other pages and remembering to scope
+them.
+
+## What already exists (reuse, don't rebuild)
+
+| Element | Existing page | Existing API | Profile-scopable? |
+|---|---|---|---|
+| Name / Description | ProfilesPage create modal | `POST /api/profiles` (`create_profile`) | yes (args) |
+| Model + Provider | ModelsPage | `_write_profile_model(profile_dir, …)` | yes — HERMES_HOME override, already wired into create endpoint |
+| MCPs | McpPage | `mcp_config._save_mcp_server` + `/api/mcp/catalog` | yes — wrap with HERMES_HOME override |
+| Skills (built-in/optional) | SkillsPage | `GET /api/skills`, `/api/skills/toggle` | yes — config write |
+| Skills (hub) | SkillsPage | `/api/skills/hub/search`, `/api/skills/hub/install` | **only via subprocess** — see seam #1 |
+
+## Two architectural seams found while grounding this design
+
+These are load-bearing — they change the implementation, not just the polish.
+
+### Seam #1 — hub-skill install cannot use the HERMES_HOME override
+
+`tools/skills_hub.py` binds `SKILLS_DIR = HERMES_HOME / "skills"` at **module
+import time**. The context-local `set_hermes_home_override()` swap (which makes
+`_write_profile_model` and the MCP write land in the target profile) does NOT
+retroactively rebind that already-imported module global. So a data-layer wrap
+of hub install would write into the dashboard's *own* active profile, not the
+new one.
+
+The correct mechanism is the existing subprocess path: `_spawn_hermes_action`
+runs `python -m hermes_cli.main <subcommand>`, and `_apply_profile_override()`
+re-reads `sys.argv` at import in the fresh child. Prepend `-p <profile>`:
+
+```python
+_spawn_hermes_action(["-p", profile, "skills", "install", identifier], "skills-install")
+```
+
+A fresh subprocess re-imports `skills_hub` with the profile's HERMES_HOME bound
+from the start, so `SKILLS_DIR` resolves to `<profile>/skills/`. Correct by
+construction.
+
+### Seam #2 — hub installs are async, so create cannot be fully atomic
+
+Built-in/optional skill enabling and MCP writes are **synchronous config ops**
+and can be part of the create call. Hub installs are long-running git fetches
+spawned detached (`_spawn_hermes_action` returns a PID immediately). So the
+create flow is:
+
+1. `create_profile()` — make the dir (synchronous)
+2. write model (synchronous, HERMES_HOME override)
+3. write selected MCP servers (synchronous, HERMES_HOME override)
+4. seed/enable selected built-in + optional skills (synchronous)
+5. spawn `hermes -p <profile> skills install <id>` per hub skill (async, returns PIDs)
+
+Steps 1–4 commit before the response; step 5 returns a list of action PIDs the
+UI polls (same pattern as today's SkillsPage hub install). The builder's
+"Review → Create" returns `{ok, name, path, hub_installs: [{id, pid}]}` and the
+final screen shows live install progress for the hub skills.
+
+## Proposed backend change (small, follows existing patterns)
+
+Extend `ProfileCreate` and the create endpoint — no new endpoints, no rewrite:
+
+```python
+class ProfileCreate(BaseModel):
+    name: str
+    clone_from: Optional[str] = None
+    # Backward compatibility for older dashboard/desktop clients.
+    clone_from_default: bool = False
+    clone_all: bool = False
+    no_skills: bool = False
+    description: Optional[str] = None
+    provider: Optional[str] = None
+    model: Optional[str] = None
+    # NEW — all optional, all best-effort post-create (profile already exists)
+    mcp_servers: List[MCPServerCreate] = []      # synchronous, HERMES_HOME override
+    builtin_skills: List[str] = []               # synchronous enable/seed
+    hub_skills: List[str] = []                   # async spawn, returns PIDs
+```
+
+The endpoint already does best-effort post-create steps (`seed_profile_skills`,
+`_write_profile_model`). Add two more best-effort blocks (MCP write, hub-skill
+spawn) in the same style — a failure in any of them must not 500 the create,
+since the profile dir already exists and the user can fix it from the relevant
+page afterward. Mirror `_write_profile_model`'s HERMES_HOME-override helper for
+the MCP write (`_write_profile_mcp_servers(profile_dir, servers)`).
+
+## Proposed frontend — dedicated builder page `/profiles/new`
+
+A full page (not the cramped modal), stepped, each step reusing the existing
+page's component + API, targeted at the new profile:
+
+```
+① Identity   Name + Description (+ optional clone-from existing profile)
+② Model      Provider + model picker  (reuse ModelsPage picker)
+③ Skills     Tabs: Built-in · Optional · Hub-search
+             multi-select; "Start from default bundle" preset button
+④ MCPs       Tabs: Catalog browse · Manual add  (reuse McpPage form)
+⑤ Review     Blueprint preview → Create
+             → progress screen for async hub installs
+```
+
+Nothing writes to disk until ⑤.
+
+## Open product decisions (need Teknium)
+
+1. **Skills seeding default.** Fresh profiles auto-seed the default bundle
+   today. In the builder, should the skill step **replace** the bundle (pick
+   exactly what you want; offer a "start from default bundle" preset) or
+   **augment** it? Recommendation: replace + preset button.
+
+2. **Page vs richer modal.** Dedicated `/profiles/new` page (room to grow:
+   SOUL editing, multi-agent fleets later) vs a bigger create modal on
+   ProfilesPage. Recommendation: dedicated page — matches "full-featured / way
+   more options."
+
+## Verification plan (when built)
+
+- Backend E2E with isolated HERMES_HOME: POST a full create body
+  (name + model + 2 MCPs + 3 builtin skills + 1 hub skill), assert the new
+  profile dir has the model in config.yaml, both MCP servers in config.yaml,
+  the builtin skills enabled, and a spawned PID for the hub skill. Negative:
+  a bad MCP entry must not 500 the create.
+- `cd web && npm run build` (no JS test suite in web/).
+- Targeted: `pytest tests/<web_server profile tests> -k profile_create`.
+mostafa@MMostafa searxng % ls -la ~/Workspace
+total 80
+drwxr-xr-x  20 mostafa  staff    640 Aug 21 22:46 .
+drwxr-xr--+ 95 mostafa  staff   3040 Aug 21 22:52 ..
+-rw-r--r--@  1 mostafa  staff  10244 Aug 22 00:04 .DS_Store
+-rw-r--r--   1 mostafa  staff      0 Aug 19 18:56 .research_os
+-rw-r--r--   1 mostafa  staff    153 Aug 19 20:45 .research_os_frozen
+drwxr-xr-x   7 mostafa  staff    224 Aug 19 20:41 00_Inbox
+drwxr-xr-x   7 mostafa  staff    224 Aug 19 20:41 01_Research
+drwxr-xr-x   9 mostafa  staff    288 Aug 20 21:36 02_AI_Lab
+drwxr-xr-x   8 mostafa  staff    256 Aug 19 20:41 03_Engineering
+drwxr-xr-x   3 mostafa  staff     96 Aug 21 22:46 03_System
+drwxr-xr-x  14 mostafa  staff    448 Aug 20 05:14 04_Knowledge
+drwxr-xr-x   7 mostafa  staff    224 Aug 19 20:41 05_Archives
+drwxr-xr-x  12 mostafa  staff    384 Aug 19 20:41 06_System
+drwxr-xr-x   6 mostafa  staff    192 Aug 19 20:41 99_Sandbox
+-rw-r--r--   1 mostafa  staff    361 Aug 19 18:55 ARCHITECTURE.md
+-rw-r--r--   1 mostafa  staff    342 Aug 19 18:56 INDEX.md
+-rw-r--r--   1 mostafa  staff    387 Aug 19 18:49 README.md
+-rw-r--r--   1 mostafa  staff    532 Aug 19 20:45 RESEARCH_OS_STATUS.md
+-rw-r--r--   1 mostafa  staff    299 Aug 19 18:55 WORKSPACE.md
+-rw-r--r--   1 mostafa  staff    225 Aug 19 18:49 WORKSPACE_COMMANDS.md
+mostafa@MMostafa searxng % find ~/Workspace -maxdepth 2 -type d | sort
+/Users/mostafa/Workspace
+/Users/mostafa/Workspace/00_Inbox
+/Users/mostafa/Workspace/00_Inbox/Incoming
+/Users/mostafa/Workspace/00_Inbox/Temporary
+/Users/mostafa/Workspace/00_Inbox/To_Sort
+/Users/mostafa/Workspace/01_Research
+/Users/mostafa/Workspace/01_Research/Conferences
+/Users/mostafa/Workspace/01_Research/PhD
+/Users/mostafa/Workspace/01_Research/Publications
+/Users/mostafa/Workspace/01_Research/Teaching
+/Users/mostafa/Workspace/02_AI_Lab
+/Users/mostafa/Workspace/02_AI_Lab/Agent_Experiments
+/Users/mostafa/Workspace/02_AI_Lab/Fine_Tuning
+/Users/mostafa/Workspace/02_AI_Lab/Hermes
+/Users/mostafa/Workspace/02_AI_Lab/MCP
+/Users/mostafa/Workspace/02_AI_Lab/Models
+/Users/mostafa/Workspace/02_AI_Lab/Prompt_Engineering
+/Users/mostafa/Workspace/03_Engineering
+/Users/mostafa/Workspace/03_Engineering/Automation
+/Users/mostafa/Workspace/03_Engineering/Experiments
+/Users/mostafa/Workspace/03_Engineering/Projects
+/Users/mostafa/Workspace/03_Engineering/Scripts
+/Users/mostafa/Workspace/03_Engineering/Tools
+/Users/mostafa/Workspace/03_System
+/Users/mostafa/Workspace/03_System/Infrastructure
+/Users/mostafa/Workspace/04_Knowledge
+/Users/mostafa/Workspace/04_Knowledge/.obsidian
+/Users/mostafa/Workspace/04_Knowledge/AI
+/Users/mostafa/Workspace/04_Knowledge/Art_Theory
+/Users/mostafa/Workspace/04_Knowledge/Concepts
+/Users/mostafa/Workspace/04_Knowledge/Literature
+/Users/mostafa/Workspace/04_Knowledge/Methodology
+/Users/mostafa/Workspace/04_Knowledge/Notes
+/Users/mostafa/Workspace/04_Knowledge/Philosophy
+/Users/mostafa/Workspace/04_Knowledge/Reading
+/Users/mostafa/Workspace/04_Knowledge/Research_Log
+/Users/mostafa/Workspace/04_Knowledge/Synthesis
+/Users/mostafa/Workspace/05_Archives
+/Users/mostafa/Workspace/05_Archives/Backups
+/Users/mostafa/Workspace/05_Archives/Old_Hermes
+/Users/mostafa/Workspace/05_Archives/Old_Projects
+/Users/mostafa/Workspace/05_Archives/Snapshots
+/Users/mostafa/Workspace/06_System
+/Users/mostafa/Workspace/06_System/Automation
+/Users/mostafa/Workspace/06_System/Configuration
+/Users/mostafa/Workspace/06_System/Diagnostics
+/Users/mostafa/Workspace/06_System/Documentation
+/Users/mostafa/Workspace/06_System/Environment
+/Users/mostafa/Workspace/06_System/Governance
+/Users/mostafa/Workspace/06_System/Logs
+/Users/mostafa/Workspace/06_System/Policies
+/Users/mostafa/Workspace/06_System/Templates
+/Users/mostafa/Workspace/99_Sandbox
+/Users/mostafa/Workspace/99_Sandbox/Dangerous
+/Users/mostafa/Workspace/99_Sandbox/Temporary
+/Users/mostafa/Workspace/99_Sandbox/Testing
+mostafa@MMostafa searxng % 
